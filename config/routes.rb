@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'steps/show'
+  get 'steps/index'
   devise_for :users
   root to: 'pages#home'
   resources :trips do
