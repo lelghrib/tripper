@@ -10,9 +10,86 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2019_06_03_143354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "activities", force: :cascade do |t|
+    t.string "address"
+    t.integer "duration"
+    t.bigint "city_id"
+    t.json "activity_types"
+    t.string "name"
+    t.integer "ranking_interest"
+    t.string "photo"
+    t.text "description"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_activities_on_city_id"
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string "country"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "step_activities", force: :cascade do |t|
+    t.bigint "step_id"
+    t.bigint "activity_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_step_activities_on_activity_id"
+    t.index ["step_id"], name: "index_step_activities_on_step_id"
+  end
+
+  create_table "steps", force: :cascade do |t|
+    t.bigint "city_id"
+    t.bigint "trip_id"
+    t.integer "duration"
+    t.integer "order"
+    t.integer "time_next_step"
+    t.integer "distance_next_step"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_steps_on_city_id"
+    t.index ["trip_id"], name: "index_steps_on_trip_id"
+  end
+
+  create_table "trips", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "departure_city"
+    t.string "arrival_city"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.json "criteria"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_trips_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "phone_number"
+    t.string "username"
+    t.string "photo", default: "avatar.jpeg"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "activities", "cities"
+  add_foreign_key "step_activities", "activities"
+  add_foreign_key "step_activities", "steps"
+  add_foreign_key "steps", "cities"
+  add_foreign_key "steps", "trips"
+  add_foreign_key "trips", "users"
 end
