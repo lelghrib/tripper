@@ -29,9 +29,16 @@ class TripsController < ApplicationController
   end
 
   def edit
+    @trip = Trip.find(params[:id])
   end
 
   def update
+    @trip = Trip.find(params[:id])
+    if @trip.update(trip_params)
+      render :show
+    else
+      render_error
+    end
   end
 
   def details
