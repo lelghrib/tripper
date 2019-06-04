@@ -6,7 +6,7 @@ class CreateActivities < ActiveRecord::Migration[5.2]
       t.references :city, foreign_key: true
       t.json :activity_types
       t.string :name
-      t.integer :ranking_interest
+      t.float :ranking_interest
       t.string :photo
       t.text :description
       t.integer :price
