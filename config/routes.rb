@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'steps/show'
-  get 'steps/index'
   devise_for :users
   root to: 'pages#home'
   resources :trips do
@@ -9,5 +7,6 @@ Rails.application.routes.draw do
       get :details
     end
   end
+  resources :steps, only: ['index']
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
