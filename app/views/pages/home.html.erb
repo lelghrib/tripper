@@ -1,15 +1,61 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner">
+  <div class="container">
+    <h1>Tripper</h1>
+    <p>Trouver une jolie petite phrase.</p>
+    <a class="btn btn-flat" href="#">Apply now</a>
+  </div>
+</div>
 
+<div class="sentences">
+  <p>Peut être mettre uns slider dans cette div :) </p>
+</div>
 
-<% City.all.each do |city| %>
-  <h6><%= city.name%></h6>
-  <% city.activities.each do |activity| %>
-    <p><%= activity.name %></p>
-    <p><%= activity.address %></p>
-    <p><%= activity.duration %></p>
-    <p><%= activity.ranking_interest %></p>
-    <%= image_tag(activity.photo) %>
-    <p>***********************</p>
-  <% end %>
-<% end %>
+<div class="explications">
+  <div class="rea d-flex">
+    <div class="photo"></div>
+    <div class="explain">
+      <h4>Blabla</h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit.</p>
+      <a href="#">Bouton</a>
+    </div>
+ </div>
+ <div class="rea d-flex">
+    <div class="explain">
+      <h4>Blabla</h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit.</p>
+      <a href="#">Bouton</a>
+    </div>
+    <div class="photo"></div>
+ </div>
+ <div class="rea d-flex">
+    <div class="photo"></div>
+    <div class="explain">
+      <h4>Blabla</h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit.</p>
+      <a href="#">Bouton</a>
+    </div>
+ </div>
+</div>
+
+<div class="newlsetter-container d-flex justify-content-center">
+  <div class="newsletter">
+    <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+  #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; width:100%;}
+  /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
+     We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+</style>
+<div id="mc_embed_signup bg-transparent">
+<form action="https://gmail.us20.list-manage.com/subscribe/post?u=6ef839fa1bfb8b345eaf309b1&amp;id=b1c52c9a24" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+    <div id="mc_embed_signup_scroll">
+  <label for="mce-EMAIL">Subscribe to our mail list</label>
+  <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_6ef839fa1bfb8b345eaf309b1_b1c52c9a24" tabindex="-1" value=""></div>
+    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+    </div>
+</form>
+</div>
+
+  </div>
+</div>
