@@ -10,7 +10,15 @@
   margin-bottom: 7vh;
   transition: all 0.4s ease;
   text-align: center;
+}
 
+.green-btn:hover{
+  text-decoration: none;
+  color:  #57B894;
+  background-color: inherit;
+  font-size: 20px;
+  border: 1px solid #57B894;
+  transition: all 0.4s ease;
 }
 
 a:hover {
