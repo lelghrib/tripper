@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2019_06_04_104956) do
     t.bigint "city_id"
     t.json "activity_types"
     t.string "name"
-    t.integer "ranking_interest"
+    t.float "ranking_interest"
     t.string "photo"
     t.text "description"
     t.integer "price"

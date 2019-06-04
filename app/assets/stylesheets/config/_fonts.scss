@@ -5,6 +5,7 @@
 $body-font: "Open Sans", "Helvetica", "sans-serif";
 $headers-font: "Raleway", "Helvetica", "sans-serif";
 
+
 // To use a font file (.woff) uncomment following lines
 // @font-face {
 //   font-family: "Font Name";
@@ -14,3 +15,8 @@ $headers-font: "Raleway", "Helvetica", "sans-serif";
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
+
+h1, h2, h3, h4, h5, p, a, span, li, ul {
+  font-family: ‘Montserrat’, sans-serif;
+  color: #333333;
+}
