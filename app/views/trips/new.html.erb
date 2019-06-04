@@ -5,8 +5,8 @@
     <div class="d-flex justify-content-center">
       <div class="col-md-6 mt-8">
         <%= simple_form_for @trip do |f| %>
-        <%= f.input :arrival_city, collection: ["Florence", "Rome", "Naples", "Bologne", "Bari", "Positano", "Anzio", "Piombino"] %>
-        <%= f.input :departure_city, collection: ["Florence", "Rome", "Naples", "Bologne", "Bari", "Positano", "Anzio", "Piombino"] %>
+        <%= f.association :arrival_city%>
+        <%= f.association :departure_city%>
         <%= f.input :start_date, as: :date %>
         <%= f.input :end_date, as: :date %>
         <div class="d-flex justify-content-center mb-4">

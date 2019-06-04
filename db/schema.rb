@@ -65,13 +65,15 @@ ActiveRecord::Schema.define(version: 2019_06_04_104956) do
 
   create_table "trips", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "departure_city"
-    t.string "arrival_city"
+    t.bigint "arrival_city_id"
+    t.bigint "departure_city_id"
     t.datetime "start_date"
     t.datetime "end_date"
     t.json "criteria"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["arrival_city_id"], name: "index_trips_on_arrival_city_id"
+    t.index ["departure_city_id"], name: "index_trips_on_departure_city_id"
     t.index ["user_id"], name: "index_trips_on_user_id"
   end
 
@@ -95,5 +97,7 @@ ActiveRecord::Schema.define(version: 2019_06_04_104956) do
   add_foreign_key "step_activities", "steps"
   add_foreign_key "steps", "cities"
   add_foreign_key "steps", "trips"
+  add_foreign_key "trips", "cities", column: "arrival_city_id"
+  add_foreign_key "trips", "cities", column: "departure_city_id"
   add_foreign_key "trips", "users"
 end
