@@ -1,2 +1,20 @@
 <h1>Trips#new</h1>
 <p>Find me in app/views/trips/new.html.erb</p>
+
+ <div class="container">
+    <h1>New trip</h1>
+    <div class="d-flex">
+      <div class="col-md-6">
+        <%= simple_form_for @trip do |f| %>
+        <%= f.input :arrival_city, collection: ["Florence", "Rome", "Naples", "Bologne", "Bari", "Positano", "Anzio", "Piombino"] %>
+        <%= f.input :departure_city, collection: ["Florence", "Rome", "Naples", "Bologne", "Bari", "Positano", "Anzio", "Piombino"] %>
+        <%= f.input :start_date, as: :date %>
+        <%= f.input :end_date, as: :date %>
+          <%= f.button :submit, class: "btn btn-outline-primary" %>
+          <% end %>
+      </div>
+    </div>
+
+</div>
+
+
