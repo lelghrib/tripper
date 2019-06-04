@@ -1,3 +1,10 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 
+<% Activity.all.each do |activity| %>
+  <p><%= activity.name %></p>
+  <%= activity.address %>
+  <%= activity.duration %>
+  <%= activity.ranking_interest %>
+  <%= image_tag(activity.photo) %>
+<% end %>
