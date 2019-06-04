@@ -1,7 +1,9 @@
 class StepsController < ApplicationController
-  def show
-  end
+  # def show
+  #   @step = Step.find(params[:id])
+  # end
 
   def index
+    @steps = Step.all
   end
 end
