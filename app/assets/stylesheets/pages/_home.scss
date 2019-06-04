@@ -1,1 +1,92 @@
-// Specific CSS for your home-page
+body{
+  background-color:white;
+}
+
+.banner {
+  background-size: cover;
+  background-position: center;
+  background-image: asset-url("homepage/Frame.png");
+  padding: 150px 0;
+  height: 540px;
+}
+
+.banner h1 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.banner p {
+  font-size: 20px;
+  opacity: .7;
+}
+
+.banner a{
+  background-color:green;
+  color: white;
+  border-radius: 8px;
+}
+
+.sentences{
+  height:100px;
+  background-color: red;
+}
+
+.explications{
+  height:auto;
+  padding: 20px;
+}
+
+.rea{
+  display: flex;
+  justify-content:center;
+  background-color:white;
+  height:auto;
+  margin:20px;
+}
+
+.photo{
+  border-radius:8px;
+  box-shadow:0 0 15px rgba(0,0,0,0.2);
+  height:350px;
+  width: 450px;
+  background-color: blue;
+  margin: 20px;
+  background-image: asset-url('road.jpg');
+  background-size:cover;
+}
+
+.explain{
+  padding:20px;
+  // border-radius: 8px;
+  height:350px;
+  width: 350px;
+  margin:20px;
+  // box-shadow:0 0 15px rgba(0,0,0,0.2);
+}
+
+.newlsetter-container{
+  height:300px;
+}
+
+.newsletter{
+  box-shadow:0 0 15px rgba(0,0,0,0.2);
+  border-radius:8px;
+  height: 250px;
+  width:50%;
+  background-image: asset-url('news.png');
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.rea a{
+  background-color:green;
+  padding:8px;
+  color: white;
+  border-radius: 8px;
+}
+
+.validate{
+  position: relative;
+  top: 100px;
+}
