@@ -1,11 +1,26 @@
 <h1>Trips#edit</h1>
 
-
-
-<%= simple_form_for(@trip) do |f| %>
+<!-- <%= simple_form_for(@trip) do |f| %>
   <%= f.label :arrival_city, collection: ["Florence", "Rome", "Naples", "Bologne", "Bari", "Positano", "Anzio", "Piombino"] %>
   <%= f.text_field :departure_city, collection: ["Florence", "Rome", "Naples", "Bologne", "Bari", "Positano", "Anzio", "Piombino"] %>
   <%= f.label :start_date, as: :date %>
   <%= f.text_field :end_date, as: :date %>
   <%= f.submit %>
-<% end %>
+<% end %> -->
+
+<div class="form-container form-border">
+    <h1 class="mb-4 text-center">New trip</h1>
+    <div class="d-flex justify-content-center">
+      <div class="col-md-6 mt-8">
+        <%= simple_form_for @trip do |f| %>
+        <%= f.association :arrival_city %>
+        <%= f.association :departure_city %>
+        <%= f.input :start_date, as: :date %>
+        <%= f.input :end_date, as: :date %>
+        <div class="d-flex justify-content-center mb-4">
+          <%= f.button :submit, class: "green-btn" %>
+          </div>
+          <% end %>
+      </div>
+    </div>
+

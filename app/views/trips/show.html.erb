@@ -1,32 +1,38 @@
-<ul>
-  <% @activities.each do |activity| %>
-  <li>
-    <%= activity.name %> - <%= activity.duration %>- <%= activity.latitude %>- <%= activity.longitude %>
-  </li>
+
+<p> TRIP </p>
+<div>
+  <p>FROM <%= @trip.start_date %> UNTIL <%= @trip.end_date %></p>
+  <p>Total duration of activities: <%= @total_trip_duration %> min</p>
+  <p>User criteria: <%= @trip.criteria %></p>
+  <p>Ratio time in min: <%= @ratio_type_activities %></p>
+  <p>TOTAL SELECTED ACTIVITIES: <%= @total_activities %> min</p>
+</div>
+<p>*************</p>
+
+<ul>Beach
+  <p><%= @list_acti_beach.count %> | <%= @total_beach %> min</p>
+  <% @list_acti_beach.each do |act| %>
+  <li><%= act.name %> - <%= act.duration %> min- <%= act.ranking_interest %></li>
   <% end %>
 </ul>
-<%= @activities.count %>
 
-<ul>Beach <li>
-  <% @order_beach.each do |act_beach| %>
-  <%= act_beach.name %>
+<ul>Culture
+  <p><%= @list_acti_culture.count %> | <%= @total_culture %> min</p>
+  <% @list_acti_culture.each do |act| %>
+  <li><%= act.name %> - <%= act.duration %> min- <%= act.ranking_interest %></li>
   <% end %>
-</li></ul>
+</ul>
 
-<ul>Culture <li>
-<% @order_culture.each do |act_culture| %>
-<%= act_culture.name %>
-<% end %>
-</li></ul>
+<ul>Sport
+  <p><%= @list_acti_sport.count %> | <%= @total_sport %> min</p>
+  <% @list_acti_culture.each do |act| %>
+  <li><%= act.name %> - <%= act.duration %> min- <%= act.ranking_interest %></li>
+  <% end %>
+</ul>
 
-<ul>Visit <li>
-<% @order_visit.each do |act_visit| %>
-<%= act_visit.name %>
-<% end %>
-</li></ul>
-
-<ul>Sport <li>
-<% @order_sport.each do |act_sport| %>
-<%= act_sport.name %>
-<% end %>
-</li></ul>
+<ul>Visit
+  <p><%= @list_acti_visit.count %> | <%= @total_visit %> min</p>
+  <% @list_acti_visit.each do |act| %>
+  <li><%= act.name %> - <%= act.duration %> min- <%= act.ranking_interest %></li>
+  <% end %>
+</ul>
