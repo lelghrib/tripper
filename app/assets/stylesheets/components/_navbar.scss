@@ -1,7 +1,13 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: rgba(142, 187, 239, 0.47);
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  background: transparent;
+  margin-top: -93.5px;
+
+}
+.navbar-scrolled {
+  color:black;
+  background: white;
+  box-shadow: 0 0 15px rgba(25,108,221,0.2);
 }
 
 .navbar-lewagon p {

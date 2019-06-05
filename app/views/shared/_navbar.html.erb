@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top" id="tripper_navbar">
   <%= link_to root_path, class: "navbar-brand" do %>
   <%= image_tag "https://branditprintit.com/wp-content/uploads/2017/04/logo-degin-logo-design-design-art-free.png" %>
   <p>TRIPPER</p>
@@ -8,10 +8,12 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+      <% if user_signed_in? %>
       <li class="nav-item">
         <%= link_to "My trip", trips_path, class: "nav-link" %>
       </li>
-      <li class="nav-item">
+      <% end %>
+      <li class="nav-item active">
         <%= link_to "New trip", new_trip_path, class: "nav-link" %>
       </li>
 

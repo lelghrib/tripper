@@ -1,38 +1,105 @@
 
   <div class="tabs-container">
-        <div class="tab-button">1</div>
-        <hr>
-        <div class="tab-button">2</div>
-        <hr>
-        <div class="tab-button">3</div>
-      </div>
+    <div class="tab-button">1</div>
+    <hr>
+    <div class="tab-button">2</div>
+    <hr>
+    <div class="tab-button">3</div>
+  </div>
 
 <%= simple_form_for @trip do |f| %>
-
-  <div class="criteria-slider">
+           <!-- Planning 1 -->
+ <div class="criteria-slider">
  <div class="form-container-criteria-slider">
           <h1 class="mb-4 text-center form-header">Add your trip</h1>
       <div class="d-flex justify-content-center">
         <div class="col-md-6 mt-8">
+          
+    <h1 class="mb-4 text-center">New trip</h1>
+
+    <!-- Planning 1 -->
+    <div class="d-flex justify-content-center">
+      <div class="col-md-6 mt-8">
           <%= f.association :arrival_city %>
           <%= f.association :departure_city %>
           <%= f.input :start_date, as: :date %>
           <%= f.input :end_date, as: :date %>
+          <%= hidden_field_tag :criteria %>
           <span class="btn-next">
             SUIVANT
           </span>
-        </div>
+       </div>
+    </div>
+ </div>
+        <!-- Planning 2 -->
+    <div>your content 2
+     <h1 class="mb-4 text-center">Choose preferences</h1>
+    <div class="d-flex justify-content-center">
+      <div class="col-md-6 mt-8">
+        <!-- <form action="/trips/<%= @trip.id %>" method="post"> -->
+        <!-- <form action="/trips" method="post"> -->
+<!--           <input name="_method" type="hidden" value="create" />
+ -->          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <div class="form-group">
+            <label for="beach">Beach</label>
+            <input type="text" class="form-control" id="beach" name="trip[criteria][beach]" placeholder="20%">
+          </div>
+          <div class="form-group">
+            <label for="sport">Sport</label>
+            <input type="text" class="form-control" id="sport" name="trip[criteria][sport]"placeholder="20%">
+          </div>
+          <div class="form-group">
+            <label for="culture">Culture</label>
+            <input type="text" class="form-control" id="culture" name="trip[criteria][culture]"placeholder="20%">
+          </div>
+          <div class="form-group">
+            <label for="visit">Visit</label>
+            <input type="text" class="form-control" id="visit" name="trip[criteria][visit]"placeholder="20%">
+          </div>
+            <button class="green-btn next" id="buttonTwo">Next</button>
+        <!--</form>  -->
       </div>
     </div>
-    <div>your content 2
       <span class="btn-next">
         SUIVANT
       </span>
     </div>
-    <div>your content 3
-      <div class="d-flex justify-content-center mb-4">
-        <%= f.button :submit, class: "green-btn" %>
+        
+        
+        <!-- Planning 3 -->
+    <div>your content 3   
+    <h1 class="mb-4 text-center">Select activities</h1>
+    <div class="d-flex justify-content-center">
+      <div class="col-md-6 mt-8">
+        <form action="/trips/<%= @trip.id %>" method="post">
+          <input name="_method" type="hidden" value="create" />
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <!-- <div class="form-group">
+            <label for="beach">Beach</label>
+            <input type="text" class="form-control" id="beach" name="trip[criteria][beach]" placeholder="20%">
+          </div>
+          <div class="form-group">
+            <label for="sport">Sport</label>
+            <input type="text" class="form-control" id="sport" name="trip[criteria][sport]"placeholder="20%">
+          </div>
+          <div class="form-group">
+            <label for="culture">Culture</label>
+            <input type="text" class="form-control" id="culture" name="trip[criteria][culture]"placeholder="20%">
+          </div>
+          <div class="form-group">
+            <label for="visit">Visit</label>
+            <input type="text" class="form-control" id="visit" name="trip[criteria][visit]"placeholder="20%">
+          </div> -->
+         <div class="d-flex justify-content-center mb-4">
+             <%= f.button :submit, class: "green-btn" %>
+        </div>
+        </form>
       </div>
+    </div>
+      
     </div>
   </div>
 <% end %>
+
+<%= javascript_pack_tag 'next' %>
+

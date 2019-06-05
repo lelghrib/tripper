@@ -8,17 +8,19 @@ body{
   background-image: asset-url("homepage/Frame.png");
   padding: 150px 0;
   height: 540px;
+  margin-bottom: 79px;
 }
 
 .banner h1 {
   margin: 0;
   font-size: 32px;
   font-weight: bold;
+  color: white;
 }
 
 .banner p {
   font-size: 20px;
-  opacity: .7;
+  color:white;
 }
 
 .banner a{
