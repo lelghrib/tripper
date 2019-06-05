@@ -1,9 +1,4 @@
-import "bootstrap";
-import "slick-carousel";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
-$(function(){
+window.onload=function(){
   $('.slider').slick({
   autoplay:true,
   autoplaySpeed:1500,
@@ -14,5 +9,6 @@ $(function(){
   slidesToShow:3,
   slidesToScroll:1
   });
-});
+};
+
 
