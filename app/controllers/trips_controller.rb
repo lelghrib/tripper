@@ -85,6 +85,7 @@ class TripsController < ApplicationController
     visit_ratio = (total_trip_duration * trip.criteria["visit"].to_f) / 100
     culture_ratio = (total_trip_duration * trip.criteria["culture"].to_f) / 100
     sport_ratio = (total_trip_duration * trip.criteria["sport"].to_f) / 100
+
     ratio_duration = { "beach" => beach_ratio, "visit" => visit_ratio, "culture" => culture_ratio, "sport" => sport_ratio}
     @total_trip_duration = total_trip_duration
     return ratio_duration
