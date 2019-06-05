@@ -1,0 +1,23 @@
+.tabs-container{
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  margin: 0px 50px;
+}
+.tab-button{
+  padding: 12px 22px;
+  border-radius: 50%;
+  background-color: rgba(87, 184, 148, 0.16);
+  border: 1px solid #57B894;
+  color: #86228E;
+  font-weight: bold;
+  font-size: 24px;
+}
+.tab-active{
+  background-color: #57B894;
+}
+
+
+.tabs-container > hr {
+  width: 100%;
+}
