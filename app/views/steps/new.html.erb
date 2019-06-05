@@ -8,31 +8,43 @@
      <hr>
      <div class="tab-button">Go</div>
    </div>
-    <h1 class="mb-4 text-center">Choose activities</h1>
-
    <div class="form-container-criteria-slider ">
       <h1 class="mb-4 text-center form-header">Choose activities</h1>
       <div class="d-flex justify-content-center">
           <div class="col-md-6 mt-8">
-              <%= simple_form_for([@trip, @step]) do |f| %>
-                <div class="form-group">
-                  <input type="hidden" name="activities_ids[]" value="">
-                  <div class="category-choices">
-                    <% @list_acti_culture.each do |acti_culture| %>
-                      <input type="checkbox"class="hidden" value="<%= acti_culture.id %>" name="activities_ids[]" id="step_activity_activity_ids_<%= acti_culture.id %>">
-                      <label for="step_activity_activity_ids_<%= acti_culture.id %>" class="category-choice">
-                        <%= acti_culture.name %>
-                        <i class="fa fa-check"></i>
-                      </label>
-                    <% end %>
-                   </div>
-                </div>
-                <%#= f.input :content, placeholder: "In this tutorial..." %>
-                <%= f.submit "Save", value: "Go!", class: "green-btn"  %>
+              <div class="form-post">
+              <!-- Inject categories here -->
+              <p>all acti cult <%= @activities_culture.count %></p>
+              <p>acti real <%= @list_acti_culture_real.count %></p>
+              <% @list_acti_culture_real.each do |acti| %>
+                <%= acti.name %>
               <% end %>
+              <p>acti double <%= @list_acti_culture_double.count %></p>
+              <% @list_acti_culture_double.each do |acti| %>
+                <%= acti.name %>
+              <% end %>
+                
+              <%= simple_form_for([@trip, @step]) do |f| %>
+              <div class="form-group">
+                <input type="hidden" name="activities_ids[]" value="">
+                <% unless @list_acti_culture_fixed == [] %>
+                  <input type="hidden" name="activities_fixed_ids[]" value="<%= @list_acti_culture_fixed %>">
+                <% end %>
+                <div class="category-choices">
+                  <% @list_acti_culture_choose.each do |acti_culture| %>
+                    <input type="checkbox"class="hidden" value="<%= acti_culture.id %>" name="activities_ids[]" id="step_activity_activity_ids_<%= acti_culture.id %>">
+                    <label for="step_activity_activity_ids_<%= acti_culture.id %>" class="category-choice">
+                      <%= acti_culture.name %>
+                      <i class="fa fa-check"></i>
+                    </label>
+                  <% end %>
+                 </div>
+              </div>
+
+              <%#= f.input :content, placeholder: "In this tutorial..." %>
+              <%= f.submit "Go", class: "green-btn"  %>
+            <% end %>
+            </div>
          </div>
     </div>
-
-
-
 </div>
