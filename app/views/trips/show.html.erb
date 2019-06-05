@@ -12,27 +12,36 @@
 <ul>Beach
   <p><%= @list_acti_beach.count %> | <%= @total_beach %> min</p>
   <% @list_acti_beach.each do |act| %>
-  <li><%= act.name %> - <%= act.duration %> min- <%= act.ranking_interest %></li>
+  <li><%= act.name %> - <%= act.duration %> min- <%= act.ranking_interest %> - <%= act.city.id%> - <%= act.activity_types%></li>
   <% end %>
 </ul>
 
 <ul>Culture
   <p><%= @list_acti_culture.count %> | <%= @total_culture %> min</p>
   <% @list_acti_culture.each do |act| %>
-  <li><%= act.name %> - <%= act.duration %> min- <%= act.ranking_interest %></li>
+  <li><%= act.name %> - <%= act.duration %> min- <%= act.ranking_interest %> - <%= act.city.id%> - <%= act.activity_types%></li>
   <% end %>
 </ul>
 
 <ul>Sport
   <p><%= @list_acti_sport.count %> | <%= @total_sport %> min</p>
-  <% @list_acti_culture.each do |act| %>
-  <li><%= act.name %> - <%= act.duration %> min- <%= act.ranking_interest %></li>
+  <% @list_acti_sport.each do |act| %>
+  <li><%= act.name %> - <%= act.duration %> min- <%= act.ranking_interest %> - <%= act.city.id%> - <%= act.activity_types%></li>
   <% end %>
 </ul>
 
 <ul>Visit
   <p><%= @list_acti_visit.count %> | <%= @total_visit %> min</p>
   <% @list_acti_visit.each do |act| %>
-  <li><%= act.name %> - <%= act.duration %> min- <%= act.ranking_interest %></li>
+  <li><%= act.name %> - <%= act.duration %> min- <%= act.ranking_interest %> - <%= act.city.id%> - <%= act.activity_types%></li>
   <% end %>
 </ul>
+
+
+<div
+  id="map"
+  style="width: 100%;
+  height: 600px;"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+></div>

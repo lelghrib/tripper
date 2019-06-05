@@ -36,29 +36,39 @@ class TripsController < ApplicationController
     @total_culture = total_duration(@list_acti_culture)
     @list_acti_sport = filter_activities_by_time("sport")
     @total_sport = total_duration(@list_acti_sport)
-    @list_acti_visit= filter_activities_by_time("visit")
+    @list_acti_visit = filter_activities_by_time("visit")
     @total_visit = total_duration(@list_acti_visit)
     @total_activities = @total_beach + @total_sport + @total_visit + @total_culture
-
-
     #@order_culture = order_by_ranking(@activities, 'culture')
     #@total_culture = total_duration(@order_culture)
     #@order_sport = order_by_ranking(@activities, 'sport')
     #@total_sport = total_duration(@order_sport)
     #@order_visit = order_by_ranking(@activities, 'visit')
     #@total_visit = total_duration(@order_visit)
+    @list_all_acti = @list_acti_beach + @list_acti_culture + @list_acti_visit
+    # + @list_acti_culture + @list_acti_sport + @list_acti_visit
+    # @list_all_acti.flatten!
+    activities_to_map(@list_acti_culture)
+  end
+
+  def activities_to_map(activities)
+    # .select {|item| !(item[:lat].nil? || item[:long].nil?)}.
+    @markers = activities.map do |activity|
+      {
+        lat: activity.latitude,
+        lng: activity.longitude
+      }
+    end
   end
 
   def filter_activities_by_time(criteria)
     order_list = order_by_ranking(@activities, criteria)
     total_list = total_duration(order_list)
     list_acti = []
-    # if total duration of list activities of type TYPE < ratio --> add all list in proposition
     if total_list < @ratio_type_activities[criteria]
       list_acti << order_list
       list_acti.flatten!
       return list_acti
-    # if total duration > ratio -> rank list and progressively add activity to proposition until total ~ ratio
     else
       order_list.each do |acti|
         return list_acti if (total_duration(list_acti) + acti.duration) > @ratio_type_activities[criteria]
