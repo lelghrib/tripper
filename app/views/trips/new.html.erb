@@ -1,41 +1,36 @@
 
+  <div class="tabs-container">
+    <div class="tab-button">1</div>
+    <hr>
+    <div class="tab-button">2</div>
+    <hr>
+    <div class="tab-button">3</div>
+  </div>
 
-  <div class="form-container form-border">
-    <div class="tabs-container">
-     <div class="tab-button tab-active">1</div>
-     <hr>
-     <div class="tab-button">2</div>
-     <hr>
-     <div class="tab-button">3</div>
-   </div>
-    <h1 class="mb-4 text-center">New trip</h1>
-
+<%= simple_form_for @trip do |f| %>
+           <!-- Planning 1 -->
+ <div class="criteria-slider">
+ <div class="form-container-criteria-slider">
+      <h1 class="mb-4 text-center form-header">Add your trip</h1>
+      <div class="d-flex justify-content-center">
+        <div class="col-md-6 mt-8">
     <!-- Planning 1 -->
-    <div class="d-flex justify-content-center">
-      <div class="col-md-6 mt-8">
-        <%= simple_form_for @trip do |f| %>
+    <!-- <div class="d-flex justify-content-center"> -->
+      <!-- <div class="col-md-6 mt-8"> -->
           <%= f.association :arrival_city %>
           <%= f.association :departure_city %>
           <%= f.input :start_date, as: :date %>
           <%= f.input :end_date, as: :date %>
           <%= hidden_field_tag :criteria %>
-      <div class="d-flex justify-content-center mb-4">
-        <%= link_to 'Next', new_trip_path(anchor: 'step2') %>
-        <!-- <button class="green-btn" id="buttonOne">Next</button> -->
-      </div>
-      </div>
-      </div>
+          <span class="btn-next green-btn">
+            Next
+          </span>
+       </div>
     </div>
-    <!-- Planning 2 -->
-  <div class="form-container form-border" id="step2">
-   <div class="tabs-container">
-     <div class="tab-button">1</div>
-     <hr>
-     <div class="tab-button tab-active">2</div>
-     <hr>
-     <div class="tab-button">3</div>
-   </div>
-    <h1 class="mb-4 text-center">Choose preferences</h1>
+ </div>
+        <!-- Planning 2 -->
+    <div class="form-container-criteria-slider">
+     <h1 class="mb-4 text-center form-header">Choose preferences</h1>
     <div class="d-flex justify-content-center">
       <div class="col-md-6 mt-8">
         <!-- <form action="/trips/<%= @trip.id %>" method="post"> -->
@@ -58,22 +53,17 @@
             <label for="visit">Visit</label>
             <input type="text" class="form-control" id="visit" name="trip[criteria][visit]"placeholder="20%">
           </div>
-            <button class="green-btn next" id="buttonTwo">Next</button>
-        </form>
+        <!--</form>  -->
       </div>
     </div>
-</div>
-<% end %>
+      <div class=" btn-next d-flex justify-content-center mb-4">
+        <%= f.button :submit, value: "Next",class: "green-btn" %>
+      </div>
+    </div>
 
-    <!-- Planning 3 -->
-  <div class="form-container form-border" id="step3">
-   <div class="tabs-container">
-     <div class="tab-button">1</div>
-     <hr>
-     <div class="tab-button">2</div>
-     <hr>
-     <div class="tab-button tab-active">3</div>
-   </div>
+
+        <!-- Planning 3 -->
+    <div>
     <h1 class="mb-4 text-center">Select activities</h1>
     <div class="d-flex justify-content-center">
       <div class="col-md-6 mt-8">
@@ -96,11 +86,11 @@
             <label for="visit">Visit</label>
             <input type="text" class="form-control" id="visit" name="trip[criteria][visit]"placeholder="20%">
           </div> -->
-            <button class="green-btn" id="buttonThree">Go!</button>
         </form>
       </div>
     </div>
-  </div>
 
-<%= javascript_pack_tag 'next' %>
+    </div>
+  </div>
+<% end %>
 
