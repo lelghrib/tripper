@@ -111,7 +111,7 @@ class TripsController < ApplicationController
   def update
     @trip = Trip.find(params[:id])
     if @trip.update(trip_params)
-      redirect_to trip_path(@trip)
+      redirect_to new_trip_step_path(@trip)
     else
       render :edit
     end
