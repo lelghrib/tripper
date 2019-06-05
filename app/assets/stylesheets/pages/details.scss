@@ -1,0 +1,64 @@
+h2{
+  margin-top: 10px;
+}
+
+.btn{
+  color:white;
+  margin: 8px;
+  position: relative;
+  left: 520px;
+}
+
+.container{
+  padding: 15px;
+}
+
+.preferences{
+  width:600px;
+  height:90px;
+  background-color:black;
+}
+
+.filter{
+  background-color:white;
+  height:50px;
+  width:100px;
+  margin:10px;
+}
+
+.map{
+  height: 600px;
+  width: 600px;
+  border-radius:8px;
+  background-color: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
+}
+
+.list-activity{
+  text-align: center;
+  height: auto;
+  width:500px;
+  background-color: white;
+  margin-left: 10px;
+}
+
+.list-activity h3{
+color: black;
+}
+
+.steps{
+  height:300px;
+  width:auto;
+  background-color:white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin:10px;
+  padding:30px;
+  border-radius: 8px;
+}
+
+.step-details{
+  height:240px;
+  width:auto;
+  background-color: red;
+}
