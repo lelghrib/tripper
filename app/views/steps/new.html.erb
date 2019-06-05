@@ -1,0 +1,48 @@
+ <div class="form-container form-border">
+   <div class="tabs-container">
+     <div class="tab-button tab-active">1</div>
+     <hr>
+     <div class="tab-button tab-active">2</div>
+     <hr>
+     <div class="tab-button">3</div>
+   </div>
+    <h1 class="mb-4 text-center">Choose activities</h1>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+          <div class="form-post">
+            <!-- <h1>Write a post</h1>
+            <%#= simple_form_for([@trip, @step]) do |f| %>
+            <div class="row">
+              <div class="col-xs-6">
+                <%#= f.input :duration, placeholder: "How to design a form" %>
+              </div>
+              <div class="col-xs-6">
+                <%#= f.input :order, prompt: "Which status" %>
+              </div>
+            </div> -->
+              <!-- Inject categories here -->
+              <%= simple_form_for([@trip, @step]) do |f| %>
+              <div class="form-group">
+                <input type="hidden" name="activities_ids[]" value="">
+                <div class="category-choices">
+                  <% @list_acti_culture.each do |acti_culture| %>
+                    <input type="checkbox"class="hidden" value="<%= acti_culture.id %>" name="activities_ids[]" id="step_activity_activity_ids_<%= acti_culture.id %>">
+                    <label for="step_activity_activity_ids_<%= acti_culture.id %>" class="category-choice">
+                      <%= acti_culture.name %>
+                      <i class="fa fa-check"></i>
+                    </label>
+                  <% end %>
+                 </div>
+              </div>
+
+              <%#= f.input :content, placeholder: "In this tutorial..." %>
+              <%= f.submit "Save", class: "green-btn"  %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
