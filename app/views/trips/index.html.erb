@@ -1,2 +1,7 @@
 <h1>Trips#index</h1>
 <p>Find me in app/views/trips/index.html.erb</p>
+<% @trips.each do |trip| %>
+<p>trip id:<%= trip.id %></p>
+<p>criteria:<%= trip.criteria %></p>
+
+<% end %>
