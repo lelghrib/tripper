@@ -9,18 +9,8 @@ class TripsController < ApplicationController
 
   def create
     @trip = Trip.new(trip_params)
-    # Ajout manuel de criteria
-    # new_criteria = { beach: 30,
-    #             trecking: 30,
-    #             culture: 20,
-    #             out: 20
-    #             }
-    # @trip.criteria = new_criteria
-
     if @trip.save
-      redirect_to trip_path(@trip)
-      # redirect_to edit_trip_path(@trip)
-      # scroll/passage au next tab
+      redirect_to edit_trip_path(@trip)
     else
       render :new
     end
@@ -122,18 +112,15 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
     raise
     if @trip.update(trip_params)
-      render :show
+      redirect_to trip_path(@trip)
     else
       render :edit
     end
   end
 
-  def details
-  end
-
   private
 
   def trip_params
-    params.require(:trip).permit(:departure_city_id, :arrival_city_id, :start_date, :end_date, :trip_sport, :trip_visit, :trip_culture, :trip_beach)
+    params.require(:trip).permit(:departure_city_id, :arrival_city_id, :start_date, :end_date, criteria: {})
   end
 end

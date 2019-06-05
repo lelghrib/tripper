@@ -1,26 +1,39 @@
-<h1>Trips#edit</h1>
 
-<!-- <%= simple_form_for(@trip) do |f| %>
-  <%= f.label :arrival_city, collection: ["Florence", "Rome", "Naples", "Bologne", "Bari", "Positano", "Anzio", "Piombino"] %>
-  <%= f.text_field :departure_city, collection: ["Florence", "Rome", "Naples", "Bologne", "Bari", "Positano", "Anzio", "Piombino"] %>
-  <%= f.label :start_date, as: :date %>
-  <%= f.text_field :end_date, as: :date %>
-  <%= f.submit %>
-<% end %> -->
 
-<div class="form-container form-border">
-    <h1 class="mb-4 text-center">New trip</h1>
+ <div class="form-container form-border">
+   <div class="tabs-container">
+     <div class="tab-button tab-active">1</div>
+     <hr>
+     <div class="tab-button">2</div>
+     <hr>
+     <div class="tab-button">3</div>
+   </div>
+    <h1 class="mb-4 text-center">Choose preferences</h1>
     <div class="d-flex justify-content-center">
       <div class="col-md-6 mt-8">
-        <%= simple_form_for @trip do |f| %>
-        <%= f.association :arrival_city %>
-        <%= f.association :departure_city %>
-        <%= f.input :start_date, as: :date %>
-        <%= f.input :end_date, as: :date %>
-        <div class="d-flex justify-content-center mb-4">
-          <%= f.button :submit, class: "green-btn" %>
+        <form action="/trips/<%= @trip.id %>" method="post">
+          <input name="_method" type="hidden" value="patch" />
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <div class="form-group">
+            <label for="beach">Beach</label>
+            <input type="text" class="form-control" id="beach" name="trip[criteria][beach]" placeholder="20%">
           </div>
-          <% end %>
+          <div class="form-group">
+            <label for="sport">Sport</label>
+            <input type="text" class="form-control" id="sport" name="trip[criteria][sport]"placeholder="20%">
+          </div>
+          <div class="form-group">
+            <label for="culture">Culture</label>
+            <input type="text" class="form-control" id="culture" name="trip[criteria][culture]"placeholder="20%">
+          </div>
+          <div class="form-group">
+            <label for="visit">Visit</label>
+            <input type="text" class="form-control" id="visit" name="trip[criteria][visit]"placeholder="20%">
+          </div>
+
+            <button type="submit" class="green-btn">Next</button>
+        </form>
       </div>
     </div>
 
+</div>
