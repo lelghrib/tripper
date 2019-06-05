@@ -9,8 +9,8 @@ class TripsController < ApplicationController
   end
 
   def create
-    @trip.user = current_user if current_user.present?
     @trip = Trip.new(trip_params)
+    @trip.user = current_user if current_user.present?
     @trip.save!
   end
 
