@@ -8,6 +8,7 @@ body{
   background-image: asset-url("homepage/Frame.png");
   padding: 150px 0;
   height: 540px;
+  margin-bottom: 79px;
 }
 
 .banner h1 {
@@ -25,11 +26,6 @@ body{
   background-color:green;
   color: white;
   border-radius: 8px;
-}
-
-.sentences{
-  height:100px;
-  background-color: red;
 }
 
 .explications{
@@ -89,4 +85,20 @@ body{
 .validate{
   position: relative;
   top: 100px;
+}
+
+.slider{
+  height:100px;
+  background-color: red;
+  position:relative;
+  top:-80px;
+  .parent-slide{padding:15px;}
+  img{display: block;margin:auto;}
+}
+
+.slide{
+  height: auto;
+  width:250px;
+  background-color:white;
+  margin: 10px;
 }
