@@ -4,7 +4,7 @@
   color : white;
   font-family: 'Montserrat', sans-serif;
   font-size: 17px;
-  padding: 12px;
+  padding: 10px 15px;
   font-weight: bold;
   margin-top: 7vh;
   margin-bottom: 7vh;
@@ -50,4 +50,8 @@ a:hover {
     color: white;
     transition: all 0.5s ease;
     padding: 1%;
+}
+
+.btn-next{
+  margin: auto;
 }

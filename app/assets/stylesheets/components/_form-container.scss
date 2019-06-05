@@ -10,12 +10,17 @@
 
 .form-container-criteria-slider{
   margin: auto;
-  margin-top: 10vh;
   margin-bottom: 10vh;
-  padding-top: 10vh;
+  padding-top: 6vh;
   font-family: ‘Montserrat’, sans-serif;
   width: 50%;
 }
+// .box-shadow{
+//   border: 1px solid rgba(142, 187, 239, 0.1);
+//   box-shadow: 0 0 3px rgba(0,0,0,0.1);
+//   margin: 0% 20% 0% 20%;
+//   border-radius: 1%;
+// }
 
 .criteria-slider{
   background-color: rgba(142, 187, 239, 0.04);
@@ -27,31 +32,16 @@
   font-family: 'Raleway', ‘Montserrat’, sans-serif;
   font-size: 28px;
 }
-
-.mt-8{
-  margin-top: 8vh;
-}
-
-.pt-6 {
-  padding-top: 6vh;
-}
-
-.pb-8 {
-  padding-bottom: 8vh;
-}
-
 .form-border{
   border: 1px solid rgba(69,77,102,0.4);
   border-radius: 1%;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
-
 .form-control-label {
   padding-left: 0.5vw;
   font-weight: lighter;
   color: #454D66;
 }
-
 .form-control {
   border: inherit;
   border: 1px solid transparent;
@@ -60,14 +50,8 @@
   color: #454D66;
 }
 
-
 .form-inputs{
   width: 70%;
   margin: auto;
 }
-
-// .form-actions{
-// width: 100%;
-// margin: auto;
-// }
 
