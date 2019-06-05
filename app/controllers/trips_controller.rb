@@ -6,12 +6,13 @@ class TripsController < ApplicationController
 
   def new
     @trip = Trip.new
+    @step = Step.new
   end
 
   def create
     @trip = Trip.new(trip_params)
     @trip.user = current_user if current_user.present?
-    @trip.save!
+    redirect_to new_trip_step_path(@trip) if @trip.save!
   end
 
   def show
@@ -36,7 +37,12 @@ class TripsController < ApplicationController
     @list_all_acti = @list_acti_beach + @list_acti_culture + @list_acti_visit
     # + @list_acti_culture + @list_acti_sport + @list_acti_visit
     # @list_all_acti.flatten!
-    activities_to_map(@list_acti_culture)
+    @list_acti_map = []
+    @trip.steps.each do |step|
+        @list_acti_map << step.activities
+    end
+    @list_acti_map.flatten!
+    activities_to_map(@list_acti_map)
   end
 
   def activities_to_map(activities)
