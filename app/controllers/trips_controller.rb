@@ -23,8 +23,8 @@ class TripsController < ApplicationController
     long_min = [@trip.arrival_city.longitude, @trip.departure_city.longitude].min
     lat_max = [@trip.arrival_city.latitude, @trip.departure_city.latitude].max
     lat_min = [@trip.arrival_city.latitude, @trip.departure_city.latitude].min
-
-    @activities = Activity.where('longitude BETWEEN ? AND ?', long_min-0.5, long_max+0.5).where('latitude BETWEEN ? AND ?', lat_min-0.5, lat_max+0.5)
+    @activities = Activity.all
+    # @activities = Activity.where('longitude BETWEEN ? AND ?', long_min-0.5, long_max+0.5).where('latitude BETWEEN ? AND ?', lat_min-0.5, lat_max+0.5)
     # Comment.where('created_at BETWEEN ? AND ?', @selected_date.beginning_of_day, @selected_date.end_of_day)
     # and (:latitude.between?(lat_ar, lat_dep))))
     @order_beach = ranking(@activities, 'beach')
