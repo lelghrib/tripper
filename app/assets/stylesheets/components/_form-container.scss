@@ -22,14 +22,22 @@
 }
 
 .form-header{
-  font-weight: bold;
+  font-weight: 500;
   color: #454D66;
-  font-family: ‘Montserrat’, sans-serif;
+  font-family: 'Raleway', ‘Montserrat’, sans-serif;
   font-size: 28px;
 }
 
 .mt-8{
   margin-top: 8vh;
+}
+
+.pt-6 {
+  padding-top: 6vh;
+}
+
+.pb-8 {
+  padding-bottom: 8vh;
 }
 
 .form-border{
@@ -53,4 +61,13 @@
 }
 
 
+.form-inputs{
+  width: 70%;
+  margin: auto;
+}
+
+// .form-actions{
+// width: 100%;
+// margin: auto;
+// }
 
