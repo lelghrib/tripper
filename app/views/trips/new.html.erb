@@ -1,19 +1,19 @@
 
-  <div class="tabs-container mt-3">
+  <div class="tabs-container">
     <div class="tab-button">1</div>
     <hr>
     <div class="tab-button">2</div>
     <hr>
     <div class="tab-button">3</div>
     <hr>
-    <div class="tab-button">Go</div>
+    <div class="tab-button" id="go-button">Go</div>
   </div>
 
 <%= simple_form_for @trip do |f| %>
            <!-- Planning 1 -->
  <div class="criteria-slider">
  <div class="form-container-criteria-slider">
-      <h1 class="mb-4 text-center form-header">Add your trip</h1>
+      <h1 class="mb-8 text-center form-header">Create your trip</h1>
       <div class="d-flex justify-content-center">
         <div class="col-md-6 mt-8">
     <!-- Planning 1 -->
@@ -24,16 +24,18 @@
           <%= f.input :start_date, as: :date %>
           <%= f.input :end_date, as: :date %>
           <%= hidden_field_tag :criteria %>
+          <div class="pt-6 mb-6 d-flex justify-content-center">
           <span class="btn-next green-btn">
             Next
           </span>
+          </div>
        </div>
     </div>
  </div>
         <!-- Planning 2 -->
     <div class="form-container-criteria-slider">
-     <h1 class="mb-4 text-center form-header">Choose preferences</h1>
-    <div class="d-flex justify-content-center">
+     <h1 class="mb-8 text-center form-header">Choose preferences</h1>
+    <div class="d-flex justify-content-center pb-4">
       <div class="col-md-6 mt-8">
         <!-- <form action="/trips/<%= @trip.id %>" method="post"> -->
         <!-- <form action="/trips" method="post"> -->
@@ -58,7 +60,7 @@
         <!--</form>  -->
       </div>
     </div>
-      <div class=" btn-next d-flex justify-content-center mb-4">
+      <div class=" btn-next d-flex justify-content-center ml-2 pt-6 mb-6">
         <%= f.button :submit, value: "Next",class: "green-btn" %>
       </div>
     </div>
