@@ -1,29 +1,38 @@
 
+  <div class="tabs-container">
+        <div class="tab-button">1</div>
+        <hr>
+        <div class="tab-button">2</div>
+        <hr>
+        <div class="tab-button">3</div>
+      </div>
 
- <div class="form-container form-border">
-   <div class="tabs-container">
-     <div class="tab-button">1</div>
-     <hr>
-     <div class="tab-button">2</div>
-     <hr>
-     <div class="tab-button">3</div>
-   </div>
-    <h1 class="mb-4 text-center">New trip</h1>
+<%= simple_form_for @trip do |f| %>
 
-    <div class="d-flex justify-content-center">
-      <div class="col-md-6 mt-8">
-        <%= simple_form_for @trip do |f| %>
-        <%= f.association :arrival_city %>
-        <%= f.association :departure_city %>
-        <%= f.input :start_date, as: :date %>
-        <%= f.input :end_date, as: :date %>
-        <div class="d-flex justify-content-center mb-4">
-          <%= f.button :submit, class: "green-btn" %>
-          </div>
-          <% end %>
+  <div class="criteria-slider">
+ <div class="form-container-criteria-slider">
+          <h1 class="mb-4 text-center form-header">Add your trip</h1>
+      <div class="d-flex justify-content-center">
+        <div class="col-md-6 mt-8">
+          <%= f.association :arrival_city %>
+          <%= f.association :departure_city %>
+          <%= f.input :start_date, as: :date %>
+          <%= f.input :end_date, as: :date %>
+          <span class="btn-next">
+            SUIVANT
+          </span>
+        </div>
       </div>
     </div>
-
-</div>
-
-
+    <div>your content 2
+      <span class="btn-next">
+        SUIVANT
+      </span>
+    </div>
+    <div>your content 3
+      <div class="d-flex justify-content-center mb-4">
+        <%= f.button :submit, class: "green-btn" %>
+      </div>
+    </div>
+  </div>
+<% end %>
