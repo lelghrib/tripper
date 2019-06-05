@@ -12,6 +12,7 @@ class TripsController < ApplicationController
     @trip = Trip.new(trip_params)
     @trip.user = current_user if current_user.present?
     @trip.save!
+    redirect_to new_trip_step_path(@trip)
   end
 
   def show
