@@ -9,14 +9,6 @@ class TripsController < ApplicationController
 
   def create
     @trip = Trip.new(trip_params)
-    # Ajout manuel de criteria
-    # new_criteria = { beach: 30,
-    #             trecking: 30,
-    #             culture: 20,
-    #             out: 20
-    #             }
-    # @trip.criteria = new_criteria
-
     if @trip.save
       redirect_to edit_trip_path(@trip)
       # scroll/passage au next tab
