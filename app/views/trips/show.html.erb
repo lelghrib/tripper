@@ -1,32 +1,35 @@
-<ul>
-  <% @activities.each do |activity| %>
-  <li>
-    <%= activity.name %>
-  </li>
+
+  <ul>
+    <% @activities.each do |activity| %>
+    <li>
+      <%= activity.name %>
+    </li>
+    <% end %>
+  </ul>
+  <%= @activities.count %>
+
+  <ul>Beach <li>
+    <% @order_beach.each do |act_beach| %>
+    <%= act_beach.name %>
+    <% end %>
+  </li></ul>
+
+  <ul>Culture <li>
+  <% @order_culture.each do |act_culture| %>
+  <%= act_culture.name %>
   <% end %>
-</ul>
-<%= @activities.count %>
+  </li></ul>
 
-<ul>Beach <li>
-  <% @order_beach.each do |act_beach| %>
-  <%= act_beach.name %>
+  <ul>Visit <li>
+  <% @order_visit.each do |act_visit| %>
+  <%= act_visit.name %>
   <% end %>
-</li></ul>
+  </li></ul>
 
-<ul>Culture <li>
-<% @order_culture.each do |act_culture| %>
-<%= act_culture.name %>
-<% end %>
-</li></ul>
+  <ul>Sport <li>
+  <% @order_sport.each do |act_sport| %>
+  <%= act_sport.name %>
+  <% end %>
+  </li></ul>
 
-<ul>Visit <li>
-<% @order_visit.each do |act_visit| %>
-<%= act_visit.name %>
-<% end %>
-</li></ul>
 
-<ul>Sport <li>
-<% @order_sport.each do |act_sport| %>
-<%= act_sport.name %>
-<% end %>
-</li></ul>
