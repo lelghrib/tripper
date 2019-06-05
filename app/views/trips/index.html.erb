@@ -2,6 +2,7 @@
 <p>Find me in app/views/trips/index.html.erb</p>
 <% @trips.each do |trip| %>
 <p>trip id:<%= trip.id %></p>
+<p>trip depar : <%= trip.departure_city.name %></p>
 <p>criteria:<%= trip.criteria %></p>
 
 <% end %>
