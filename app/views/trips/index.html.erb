@@ -1,6 +1,9 @@
 <div class="container mt-4 container-fullscreen">
 <% @trips.each do |trip| %>
-
+<p>trip id:<%= trip.id %></p>
+<p>trip depar : <%= trip.departure_city.name %></p>
+<p>criteria:<%= trip.criteria %></p>
+  
 <div class="card-trip">
   <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg">
   <div class="card-trip-infos">

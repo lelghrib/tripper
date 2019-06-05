@@ -9,13 +9,9 @@ class TripsController < ApplicationController
   end
 
   def create
-    @trip = Trip.new(trip_params)
     @trip.user = current_user if current_user.present?
-    if @trip.save
-      redirect_to edit_trip_path(@trip)
-    else
-      render :new
-    end
+    @trip = Trip.new(trip_params)
+    @trip.save!
   end
 
   def show
