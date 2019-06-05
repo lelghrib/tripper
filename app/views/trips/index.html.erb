@@ -1,8 +1,18 @@
-<h1>Trips#index</h1>
-<p>Find me in app/views/trips/index.html.erb</p>
+<div class="container mt-4 container-fullscreen">
 <% @trips.each do |trip| %>
 <p>trip id:<%= trip.id %></p>
 <p>trip depar : <%= trip.departure_city.name %></p>
 <p>criteria:<%= trip.criteria %></p>
-
-<% end %>
+  
+<div class="card-trip">
+  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg">
+  <div class="card-trip-infos">
+    <div>
+      <h2><%= trip.user.username %></h2>
+      <div><%= trip.arrival_city.name %> to <%= trip.departure_city.name %></div>
+    </div>
+   <%= image_tag current_user.photo, class: "card-trip-user avatar-bordered"%>
+<p> Starting <%= trip.start_date.to_formatted_s(:short) %></p>
+  </div>
+</div>
+<% end %></div>

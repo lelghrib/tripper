@@ -4,8 +4,12 @@ window.onscroll = function() {scrollFunction()};
 function scrollFunction() {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
     document.getElementById("myBtn").style.display = "block";
+    document.getElementById("tripper_navbar").classList.add("navbar-scrolled");
+
   } else {
     document.getElementById("myBtn").style.display = "none";
+    document.getElementById("tripper_navbar").classList.remove("navbar-scrolled");
+
   }
 }
 
