@@ -1,7 +1,29 @@
-<h1>Trips#index</h1>
-<p>Find me in app/views/trips/index.html.erb</p>
+<div class="container mt-4">
 <% @trips.each do |trip| %>
-<p>trip id:<%= trip.id %></p>
-<p>criteria:<%= trip.criteria %></p>
 
-<% end %>
+<div class="card-trip">
+  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg">
+  <div class="card-trip-infos">
+    <div>
+      <h2><%= trip.user.username %></h2>
+      <div><%= trip.arrival_city.name %> to <%= trip.departure_city.name %></div>
+    </div>
+   <%= image_tag current_user.photo, class: "card-trip-user avatar-bordered"%>
+<p> Starting <%= trip.start_date.to_formatted_s(:short) %></p>
+  </div>
+</div>
+<% end %></div>
+<!--
+create_table "trips", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "arrival_city_id"
+    t.bigint "departure_city_id"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.json "criteria"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["arrival_city_id"], name: "index_trips_on_arrival_city_id"
+    t.index ["departure_city_id"], name: "index_trips_on_departure_city_id"
+    t.index ["user_id"], name: "index_trips_on_user_id"
+  end -->
