@@ -1,35 +1,48 @@
 
-  <ul>
-    <% @activities.each do |activity| %>
-    <li>
-      <%= activity.name %>
-    </li>
-    <% end %>
-  </ul>
-  <%= @activities.count %>
 
-  <ul>Beach <li>
-    <% @order_beach.each do |act_beach| %>
-    <%= act_beach.name %>
-    <% end %>
-  </li></ul>
+<p> TRIP </p>
+<div>
+  <p>FROM <%= @trip.start_date %> UNTIL <%= @trip.end_date %></p>
+  <p>Total duration of activities: <%= @total_trip_duration %> min</p>
+  <p>User criteria: <%= @trip.criteria %></p>
+  <p>Ratio time in min: <%= @ratio_type_activities %></p>
+  <p>TOTAL SELECTED ACTIVITIES: <%= @total_activities %> min</p>
+</div>
+<p>*************</p>
 
-  <ul>Culture <li>
-  <% @order_culture.each do |act_culture| %>
-  <%= act_culture.name %>
+<ul>Beach
+  <p><%= @list_acti_beach.count %> | <%= @total_beach %> min</p>
+  <% @list_acti_beach.each do |act| %>
+  <li><%= act.name %> - <%= act.duration %> min- <%= act.ranking_interest %> - <%= act.city.id%> - <%= act.activity_types%></li>
   <% end %>
-  </li></ul>
+</ul>
 
-  <ul>Visit <li>
-  <% @order_visit.each do |act_visit| %>
-  <%= act_visit.name %>
+<ul>Culture
+  <p><%= @list_acti_culture.count %> | <%= @total_culture %> min</p>
+  <% @list_acti_culture.each do |act| %>
+  <li><%= act.name %> - <%= act.duration %> min- <%= act.ranking_interest %> - <%= act.city.id%> - <%= act.activity_types%></li>
   <% end %>
-  </li></ul>
+</ul>
 
-  <ul>Sport <li>
-  <% @order_sport.each do |act_sport| %>
-  <%= act_sport.name %>
+<ul>Sport
+  <p><%= @list_acti_sport.count %> | <%= @total_sport %> min</p>
+  <% @list_acti_sport.each do |act| %>
+  <li><%= act.name %> - <%= act.duration %> min- <%= act.ranking_interest %> - <%= act.city.id%> - <%= act.activity_types%></li>
   <% end %>
-  </li></ul>
+</ul>
+
+<ul>Visit
+  <p><%= @list_acti_visit.count %> | <%= @total_visit %> min</p>
+  <% @list_acti_visit.each do |act| %>
+  <li><%= act.name %> - <%= act.duration %> min- <%= act.ranking_interest %> - <%= act.city.id%> - <%= act.activity_types%></li>
+  <% end %>
+</ul>
 
 
+<div
+  id="map"
+  style="width: 100%;
+  height: 600px;"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+></div>

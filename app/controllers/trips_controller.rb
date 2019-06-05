@@ -11,7 +11,6 @@ class TripsController < ApplicationController
     @trip = Trip.new(trip_params)
     if @trip.save
       redirect_to edit_trip_path(@trip)
-      # scroll/passage au next tab
     else
       render :new
     end
@@ -19,25 +18,90 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
-    long_max = [@trip.arrival_city.longitude, @trip.departure_city.longitude].max
-    long_min = [@trip.arrival_city.longitude, @trip.departure_city.longitude].min
-    lat_max = [@trip.arrival_city.latitude, @trip.departure_city.latitude].max
-    lat_min = [@trip.arrival_city.latitude, @trip.departure_city.latitude].min
-    @activities = Activity.all
-    # @activities = Activity.where('longitude BETWEEN ? AND ?', long_min-0.5, long_max+0.5).where('latitude BETWEEN ? AND ?', lat_min-0.5, lat_max+0.5)
-    # Comment.where('created_at BETWEEN ? AND ?', @selected_date.beginning_of_day, @selected_date.end_of_day)
-    # and (:latitude.between?(lat_ar, lat_dep))))
-    @order_beach = ranking(@activities, 'beach')
-    @order_culture = ranking(@activities, 'culture')
-    @order_sport = ranking(@activities, 'sport')
-    @order_visit = ranking(@activities, 'visit')
+    @activities = activities_in_zone(@trip)
+    @ratio_type_activities = ratio_duration(@trip)
+    @list_acti_beach = filter_activities_by_time("beach")
+    @total_beach = total_duration(@list_acti_beach)
+    @list_acti_culture = filter_activities_by_time("culture")
+    @total_culture = total_duration(@list_acti_culture)
+    @list_acti_sport = filter_activities_by_time("sport")
+    @total_sport = total_duration(@list_acti_sport)
+    @list_acti_visit = filter_activities_by_time("visit")
+    @total_visit = total_duration(@list_acti_visit)
+    @total_activities = @total_beach + @total_sport + @total_visit + @total_culture
+    #@order_culture = order_by_ranking(@activities, 'culture')
+    #@total_culture = total_duration(@order_culture)
+    #@order_sport = order_by_ranking(@activities, 'sport')
+    #@total_sport = total_duration(@order_sport)
+    #@order_visit = order_by_ranking(@activities, 'visit')
+    #@total_visit = total_duration(@order_visit)
+    @list_all_acti = @list_acti_beach + @list_acti_culture + @list_acti_visit
+    # + @list_acti_culture + @list_acti_sport + @list_acti_visit
+    # @list_all_acti.flatten!
+    activities_to_map(@list_acti_culture)
   end
-  def ranking(array, type)
-      result = array.select do |array_act|
+
+  def activities_to_map(activities)
+    # .select {|item| !(item[:lat].nil? || item[:long].nil?)}.
+    @markers = activities.map do |activity|
+      {
+        lat: activity.latitude,
+        lng: activity.longitude
+      }
+    end
+  end
+
+  def filter_activities_by_time(criteria)
+    order_list = order_by_ranking(@activities, criteria)
+    total_list = total_duration(order_list)
+    list_acti = []
+    if total_list < @ratio_type_activities[criteria]
+      list_acti << order_list
+      list_acti.flatten!
+      return list_acti
+    else
+      order_list.each do |acti|
+        return list_acti if (total_duration(list_acti) + acti.duration) > @ratio_type_activities[criteria]
+        list_acti << acti
+      end
+    end
+  end
+
+  def activities_in_zone(trip)
+    long_max = [trip.arrival_city.longitude, trip.departure_city.longitude].max
+    long_min = [trip.arrival_city.longitude, trip.departure_city.longitude].min
+    lat_max = [trip.arrival_city.latitude, trip.departure_city.latitude].max
+    lat_min = [trip.arrival_city.latitude, trip.departure_city.latitude].min
+    activities = Activity.where('longitude BETWEEN ? AND ?', long_min - 0.5, long_max + 0.5).where('latitude BETWEEN ? AND ?', lat_min - 0.5, lat_max + 0.5)
+    return activities
+  end
+
+  def ratio_duration(trip)
+    # calculates ratio of duration of each criteria vs total duration of trip activity
+    total_trip_duration = ((trip.end_date - trip.start_date) / 86400) * 8 * 60 # -> nb days * 8h * 60min
+    beach_ratio = (total_trip_duration * trip.criteria["beach"]) / 100
+    visit_ratio = (total_trip_duration * trip.criteria["visit"]) / 100
+    culture_ratio = (total_trip_duration * trip.criteria["culture"]) / 100
+    sport_ratio = (total_trip_duration * trip.criteria["sport"]) / 100
+    ratio_duration = { "beach" => beach_ratio, "visit" => visit_ratio, "culture" => culture_ratio, "sport" => sport_ratio}
+    @total_trip_duration = total_trip_duration
+    return ratio_duration
+  end
+
+  def order_by_ranking(array, type)
+    result = array.select do |array_act|
       array_act.activity_types == type
     end
     result.sort_by!{|act| act.ranking_interest }
     return result
+  end
+
+  def total_duration(array)
+    sum = 0
+    array.each do |act|
+      sum += act.duration
+    end
+    return sum
   end
 
   def edit
@@ -46,6 +110,7 @@ class TripsController < ApplicationController
 
   def update
     @trip = Trip.find(params[:id])
+    raise
     if @trip.update(trip_params)
       redirect_to trip_path(@trip)
     else
