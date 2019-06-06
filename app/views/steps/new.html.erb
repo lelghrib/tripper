@@ -9,7 +9,7 @@
      <div class="tab-button">Go</div>
    </div>
    <div class="form-container-criteria-slider ">
-      <h1 class="mb-4 text-center form-header">Choose activities</h1>
+      <h1 class="mb-4 text-center form-header">Choose two activities</h1>
       <div class="d-flex justify-content-center">
           <div class="col-md-6 mt-8">
               <div class="form-post">
@@ -58,7 +58,7 @@
 
 
 
-                
+
 
               <%= simple_form_for([@trip, @step]) do |f| %>
               <!-- Inject fixed activities -->
@@ -72,10 +72,10 @@
               <% unless @list_acti_culture_choose == [] %>
                 <div class="form-group">
                   <input type="hidden" name="activities_ids[]" value="">
-                  <div class="category-choices">
+                  <div class="activity-choices">
                     <% @list_acti_culture_choose.each do |acti_culture| %>
                       <input type="checkbox"class="hidden" value="<%= acti_culture.id %>" name="activities_ids[]" id="step_activity_activity_ids_<%= acti_culture.id %>">
-                      <label for="step_activity_activity_ids_<%= acti_culture.id %>" class="category-choice">
+                      <label for="step_activity_activity_ids_<%= acti_culture.id %>" class="activity-choice">
                         <%= acti_culture.name %>
                         <i class="fa fa-check"></i>
                       </label>
@@ -87,10 +87,10 @@
               <% unless @list_acti_sport_choose == [] %>
                 <div class="form-group">
                   <input type="hidden" name="activities_ids[]" value="">
-                  <div class="category-choices">
+                  <div class="activity-choices">
                     <% @list_acti_sport_choose.each do |acti_sport| %>
                       <input type="checkbox"class="hidden" value="<%= acti_sport.id %>" name="activities_ids[]" id="step_activity_activity_ids_<%= acti_sport.id %>">
-                      <label for="step_activity_activity_ids_<%= acti_sport.id %>" class="category-choice">
+                      <label for="step_activity_activity_ids_<%= acti_sport.id %>" class="activity-choice">
                         <%= acti_sport.name %>
                         <i class="fa fa-check"></i>
                       </label>
@@ -102,10 +102,10 @@
               <% unless @list_acti_visit_choose == [] %>
                 <div class="form-group">
                   <input type="hidden" name="activities_ids[]" value="">
-                  <div class="category-choices">
+                  <div class="activity-choices">
                     <% @list_acti_visit_choose.each do |acti_visit| %>
                       <input type="checkbox"class="hidden" value="<%= acti_visit.id %>" name="activities_ids[]" id="step_activity_activity_ids_<%= acti_visit.id %>">
-                      <label for="step_activity_activity_ids_<%= acti_visit.id %>" class="category-choice">
+                      <label for="step_activity_activity_ids_<%= acti_visit.id %>" class="activity-choice">
                         <%= acti_visit.name %>
                         <i class="fa fa-check"></i>
                       </label>
@@ -117,10 +117,10 @@
               <% unless @list_acti_beach_choose == [] %>
                 <div class="form-group">
                   <input type="hidden" name="activities_ids[]" value="">
-                  <div class="category-choices">
+                  <div class="activity-choices">
                     <% @list_acti_beach_choose.each do |acti_beach| %>
                       <input type="checkbox"class="hidden" value="<%= acti_beach.id %>" name="activities_ids[]" id="step_activity_activity_ids_<%= acti_beach.id %>">
-                      <label for="step_activity_activity_ids_<%= acti_beach.id %>" class="category-choice">
+                      <label for="step_activity_activity_ids_<%= acti_beach.id %>" class="activity-choice">
                         <%= acti_beach.name %>
                         <i class="fa fa-check"></i>
                       </label>
@@ -136,3 +136,5 @@
          </div>
     </div>
 </div>
+
+

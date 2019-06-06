@@ -16,5 +16,7 @@ import {topFunction} from '../components/topbutton';
 // scrollFunction();
 // topFunction();
 
-import {updateTextInput} from '../components/range-sliders'
-// updateTextInput;
+// active class on choose activities
+import { checkboxclick } from './form';
+checkboxclick();
+
