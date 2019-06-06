@@ -124,11 +124,8 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
   end
 
-
-
   def save
     @trip = Trip.find(params[:id])
-    raise
     @trip.user = current_user if current_user.present?
     redirect_to details_trip_path(@trip) if @trip.save!
   end
