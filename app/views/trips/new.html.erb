@@ -38,21 +38,22 @@
 <!--           <input name="_method" type="hidden" value="create" />
  -->          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
           <div class="form-group">
-            <label for="beach">Beach</label>
-            <input type="range">
-            <input type="text" class="form-control" id="beach" name="trip[criteria][beach]" placeholder="20%">
+            <label for="beach" class="d-flex justify-content-around">Beach</label>
+            <input type="range" class="custom-range" name="trip[criteria][beach]" min="0" max="100" step="1" id="beach" >
+          </div>
+
+          <div class="form-group">
+           <label for="sport" class="d-flex justify-content-around">Sport</label>
+            <input type="range" class="custom-range" name="trip[criteria][sport]" min="0" max="100" step="1" id="sport">
+          </div>
+
+          <div class="form-group">
+            <label for="culture" class="d-flex justify-content-around">Culture</label>
+            <input type="range" class="custom-range" name="trip[criteria][culture]" min="0" max="100" step="1" id="culture">
           </div>
           <div class="form-group">
-            <label for="sport">Sport</label>
-            <input type="text" class="form-control" id="sport" name="trip[criteria][sport]"placeholder="20%">
-          </div>
-          <div class="form-group">
-            <label for="culture">Culture</label>
-            <input type="text" class="form-control" id="culture" name="trip[criteria][culture]"placeholder="20%">
-          </div>
-          <div class="form-group">
-            <label for="visit">Visit</label>
-            <input type="text" class="form-control" id="visit" name="trip[criteria][visit]"placeholder="20%">
+            <label for="visit" class="d-flex justify-content-around">Visit</label>
+            <input type="range" class="custom-range" name="trip[criteria][visit]" min="0" max="100" step="1" id="visit">
           </div>
         <!--</form>  -->
       </div>
