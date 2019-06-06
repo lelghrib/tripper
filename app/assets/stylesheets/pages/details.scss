@@ -9,35 +9,38 @@ h2{
   left: 520px;
 }
 
-.container{
-  padding: 15px;
-  margin-left:10px;
-}
-
 .preferences{
-  width:700px;
-  height:60px;
-  align-items: center;
   padding-left: 85px;
 }
 
-.filter{
-  background-color:white;
-  height:30px;
-  width:105px;
-  margin:5px;
-  text-align:center;
-  border: solid .5px;
-  border-radius: 2px;
-  border-color: #D9D9D9;
-  color: #535353;
+.filter {
+  width: 10em;
+  margin: 46px 42px;
+  padding: 12px;
+  text-align: center;
+  border-radius: 25px;
+  border: 1px solid rgba(69, 77, 102, 0.7);
+  color: #454D66;
 }
 
 .filter:hover{
-  background-color: red;
+  background-color: #454D66;
   color: white;
+  font-weight: 600;
+}
+.timeline-container{
+  margin: 3vw 10vw 7vw 10vw;
+}
+.timeline {
+  border: 1px solid rgba(69, 77, 102, 0.7);
+  border-radius: 50%;
+  padding: 2.5em 2em;
+  // margin: 10%;
 }
 
+.timeline-container > hr{
+  width: 50%;
+}
 .map{
   height: 600px;
   width: 600px;

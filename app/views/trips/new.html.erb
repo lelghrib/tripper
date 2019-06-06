@@ -24,8 +24,8 @@
           <%= f.input :start_date, as: :date %>
           <%= f.input :end_date, as: :date %>
           <%= hidden_field_tag :criteria %>
-          <div class="pt-2 mb-6 d-flex justify-content-end">
-          <span class="btn-next green-btn">
+          <div class="pt-6 mb-4 d-flex justify-content-end">
+          <span class="btn-next green-btn-criteria">
             Next
           </span>
           </div>
@@ -62,8 +62,8 @@
         <!--</form>  -->
       </div>
     </div>
-      <div class=" btn-next d-flex justify-content-start col-md-6 ">
-          <%= f.button :submit, value: "Next",class: "green-btn" %>
+      <div class=" pt-6 mb-4 btn-next d-flex justify-content-center col-md-6 ">
+          <%= f.button :submit, value: "Next",class: "green-btn-criteria" %>
       </div>
     </div>
 

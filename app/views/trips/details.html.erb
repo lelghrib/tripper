@@ -1,75 +1,80 @@
-<div class="container ">
-<div class="preferences d-flex">
-  <div class="filter">beach :<%= @trip.criteria["beach"] %>%</div>
-  <div class="filter">sport :<%= @trip.criteria["sport"] %>%</div>
-  <div class="filter">culture : <%= @trip.criteria["culture"] %>%</div>
-  <div class="filter">visit: <%= @trip.criteria["visit"] %>%</div>
-</div>
+<div class="mt-15 ">
+  <h3 class="form-header text-center mb-4 ">Discover your Trip</h3>
+  <div class="preferences d-flex justify-content-center mb-6">
+    <p class="filter">Beach : <%= @trip.criteria["beach"] %>%</p>
+    <p class="filter">Sport : <%= @trip.criteria["sport"] %>%</p>
+    <p class="filter">Culture : <%= @trip.criteria["culture"] %>%</p>
+    <p class="filter">Visit : <%= @trip.criteria["visit"] %>%</p>
+  </div>
+  <!-- <h3 class="form-header text-center">Timeline</h3> -->
+  <div class=" timeline-container d-flex justify-content-around align-items-center mb-8">
+    <p class="timeline"><%= Step.last.city.name %></p>
+    <hr>
+    <p class="timeline"><%= Step.last.city.name %></p>
+    <hr>
+    <p class="timeline"><%= Step.first.city.name %></p>
+  </div>
 
-<div class="d-flex">
-    <div>
-      <div class="d-flex justify-content-end">
-    <%= link_to "Save", save_trip_path(@trip), method: :patch, class:'green-btn my-2', data:{confirm:"Trip saved"} %>
-    </div>
-      <!-- Modal -->
-    <!--   <div class="modal fade" id="SaveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">SAVE</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              Your trip is sound and safe ;)
-            </div>
-            <div class="modal-footer"style="height: 50px">
-              <button type="button" class="green-btn" data-dismiss="modal">Close</button>
-            </div>
-          </div>
+  <!-- Modal -->
+  <!--   <div class="modal fade" id="SaveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">SAVE</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-      </div> -->
-
+        <div class="modal-body">
+          Your trip is sound and safe ;)
+        </div>
+        <div class="modal-footer"style="height: 50px">
+          <button type="button" class="green-btn" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <div class="d-flex justify-content-around">
     <div class="map sticky-top">
       <div
-          id="map"
-          style="width: auto;
-          height: 100%;"
-          data-markers="<%= @markers.to_json %>"
-          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-        ></div>
+        id="map"
+        style="width: auto;
+        height: 100%;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+      ></div>
     </div>
-    </div>
-
     <div class="list-activity">
-      <h3 class="my-3">Your activities</h3>
+      <h3 class="my-3">Trip details</h3>
       <div class="step-details d-flex">
-          <% @trip.steps.each do |step|  %>
-              <%= step.city.name %>
-            <% step.activities do |activity|%>
-            <div class="step-details d-flex">
-              <p><%= activity.description %></p>
-              <% end %>
-            </div>
-          <%end %>
-      </div>
+        <% @trip.steps.each do |step|  %>
+        <%= step.city.name %>
+       <!-- <% step.activities do |activity|%>
+        <div class="step-details d-flex">
+          <p><%= activity.description %></p>
+          <% end %>
+        </div>-->
+
+        <%end %>
       </div>
     </div>
+  </div>
+  <div class="d-flex justify-content-around">
+    <%= link_to "Save", save_trip_path(@trip), method: :patch, class:'green-btn my-2', data:{confirm:"Trip saved"} %>
+  </div>
 </div>
 <!--   <div class="step-details d-flex">
-    <p>Step 1</p>
-  </div>
- -->
+  <p>Step 1</p>
+</div>
+-->
 <!--
 <div class="card">vos steps
   steps.each do
-<div class="step">ville de la step
-  step.activities.all
-  <div class="activity"></div>
-</div>
-      </div>
-    </div>
-
+  <div class="step">ville de la step
+    step.activities.all
+    <div class="activity"></div>
   </div>
+</div>
+</div>
+</div>
 </div>
