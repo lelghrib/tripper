@@ -89,17 +89,18 @@ body{
 }
 
 .slider{
-  height:100px;
-  background-color: red;
+  height:200px;
   position:relative;
   top:-80px;
-  .parent-slide{padding:15px;}
-  img{display: block;margin:auto;}
+  background-color:black;
 }
 
 .slide{
-  height: auto;
-  width:250px;
-  background-color:white;
-  margin: 10px;
+  height: 70px;
+  width:auto;
+  background-color:red;
+  padding-left: 30px;
+  padding-right: 30px;
+  color:white;
+
 }

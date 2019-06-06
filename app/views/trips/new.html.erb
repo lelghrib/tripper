@@ -5,15 +5,17 @@
     <div class="tab-button">2</div>
     <hr>
     <div class="tab-button">3</div>
+    <hr>
+    <div class="tab-button" id="go-button">Go</div>
   </div>
 
 <%= simple_form_for @trip do |f| %>
            <!-- Planning 1 -->
  <div class="criteria-slider">
- <div class="form-container-criteria-slider">
-      <h1 class="mb-4 text-center form-header">Add your trip</h1>
+ <div class="form-container-criteria-slider" style="margin-bottom: 3vh; important!">
+      <h1 class="mb-2 text-center form-header">Create your trip</h1>
       <div class="d-flex justify-content-center">
-        <div class="col-md-6 mt-8">
+        <div class="col-md-6 mt-3">
     <!-- Planning 1 -->
     <!-- <div class="d-flex justify-content-center"> -->
       <!-- <div class="col-md-6 mt-8"> -->
@@ -22,17 +24,19 @@
           <%= f.input :start_date, as: :date %>
           <%= f.input :end_date, as: :date %>
           <%= hidden_field_tag :criteria %>
+          <div class="pt-2 mb-6 d-flex justify-content-end">
           <span class="btn-next green-btn">
             Next
           </span>
+          </div>
        </div>
     </div>
  </div>
         <!-- Planning 2 -->
     <div class="form-container-criteria-slider">
-     <h1 class="mb-4 text-center form-header">Choose preferences</h1>
-    <div class="d-flex justify-content-center">
-      <div class="col-md-6 mt-8">
+     <h1 class="mb-2 text-center form-header">Choose preferences</h1>
+    <div class="d-flex justify-content-center pb-4">
+      <div class="col-md-6 mt-3">
         <!-- <form action="/trips/<%= @trip.id %>" method="post"> -->
         <!-- <form action="/trips" method="post"> -->
 <!--           <input name="_method" type="hidden" value="create" />
@@ -58,8 +62,8 @@
         <!--</form>  -->
       </div>
     </div>
-      <div class=" btn-next d-flex justify-content-center mb-4">
-        <%= f.button :submit, value: "Next",class: "green-btn" %>
+      <div class=" btn-next d-flex justify-content-start col-md-6 ">
+          <%= f.button :submit, value: "Next",class: "green-btn" %>
       </div>
     </div>
 
@@ -69,26 +73,9 @@
     <h1 class="mb-4 text-center">Select activities</h1>
     <div class="d-flex justify-content-center">
       <div class="col-md-6 mt-8">
-        <form action="/trips/<%= @trip.id %>" method="post">
-          <input name="_method" type="hidden" value="create" />
-          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-          <!-- <div class="form-group">
-            <label for="beach">Beach</label>
-            <input type="text" class="form-control" id="beach" name="trip[criteria][beach]" placeholder="20%">
-          </div>
-          <div class="form-group">
-            <label for="sport">Sport</label>
-            <input type="text" class="form-control" id="sport" name="trip[criteria][sport]"placeholder="20%">
-          </div>
-          <div class="form-group">
-            <label for="culture">Culture</label>
-            <input type="text" class="form-control" id="culture" name="trip[criteria][culture]"placeholder="20%">
-          </div>
-          <div class="form-group">
-            <label for="visit">Visit</label>
-            <input type="text" class="form-control" id="visit" name="trip[criteria][visit]"placeholder="20%">
-          </div> -->
-        </form>
+      <div class="form-post">
+        <!-- Inject categories here -->
+      </div>
       </div>
     </div>
 

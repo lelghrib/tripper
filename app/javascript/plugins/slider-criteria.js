@@ -9,7 +9,8 @@ $('.criteria-slider').slick({
   dots: true,
   infinite: false,
   centerMode: true,
-  cssEase: 'linear'
+  cssEase: 'linear',
+  dotted: false
 });
 
 const btns = document.querySelectorAll(".btn-next");
