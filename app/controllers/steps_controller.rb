@@ -227,12 +227,16 @@ class StepsController < ApplicationController
   def create
     # find trip
     @trip = Trip.find(params[:trip_id])
+    activities_choosen = []
     # clean params activities ids from ''
-    activities_choosen = params[:activities_ids].reject do |activity_id|
-      activity_id == ''
+    if params[:activities_ids].present?
+      activities_choosen = params[:activities_ids].reject do |activity_id|
+        activity_id == ''
+      end
     end
+
     # array of fixed activities in string
-    unless params[:activities_fixed_ids] == [""]
+    if params[:activities_fixed_ids].present?
       activities_fixed = params[:activities_fixed_ids].join.gsub("[", "").gsub("]", "").split(", ")
       # pushing fixed activities to choosen
       activities_fixed.each do |activity_id|
