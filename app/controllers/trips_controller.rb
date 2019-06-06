@@ -82,13 +82,14 @@ class TripsController < ApplicationController
 
   def ratio_duration(trip)
     # calculates ratio of duration of each criteria vs total duration of trip activity
-    total_trip_duration = ((trip.end_date - trip.start_date) / 86400) * 8 * 60 # -> nb days * 8h * 60min
-    beach_ratio = (total_trip_duration * trip.criteria["beach"].to_f) / 100
-    visit_ratio = (total_trip_duration * trip.criteria["visit"].to_f) / 100
-    culture_ratio = (total_trip_duration * trip.criteria["culture"].to_f) / 100
-    sport_ratio = (total_trip_duration * trip.criteria["sport"].to_f) / 100
+    total_trip_duration = ((trip.end_date - trip.start_date) / 86_400) * 8 * 60 # -> nb days * 8h * 60min
+    criteria_sum = trip.criteria["beach"].to_f + trip.criteria["visit"].to_f + trip.criteria["culture"].to_f + trip.criteria["sport"].to_f
+    beach_ratio = (total_trip_duration * trip.criteria["beach"].to_f) / criteria_sum
+    visit_ratio = (total_trip_duration * trip.criteria["visit"].to_f) / criteria_sum
+    culture_ratio = (total_trip_duration * trip.criteria["culture"].to_f) / criteria_sum
+    sport_ratio = (total_trip_duration * trip.criteria["sport"].to_f) / criteria_sum
 
-    ratio_duration = { "beach" => beach_ratio, "visit" => visit_ratio, "culture" => culture_ratio, "sport" => sport_ratio}
+    ratio_duration = { "beach" => beach_ratio, "visit" => visit_ratio, "culture" => culture_ratio, "sport" => sport_ratio }
     @total_trip_duration = total_trip_duration
     return ratio_duration
   end
