@@ -1,18 +1,17 @@
-<div class="container mt-4 container-fullscreen">
-<% @trips.each do |trip| %>
-<p>trip id:<%= trip.id %></p>
-<p>trip depar : <%= trip.departure_city.name %></p>
-<p>criteria:<%= trip.criteria %></p>
-  
-<div class="card-trip">
-  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg">
-  <div class="card-trip-infos">
-    <div>
-      <h2><%= trip.user.username %></h2>
-      <div><%= trip.arrival_city.name %> to <%= trip.departure_city.name %></div>
-    </div>
-   <%= image_tag current_user.photo, class: "card-trip-user avatar-bordered"%>
-<p> Starting <%= trip.start_date.to_formatted_s(:short) %></p>
-  </div>
+
+<div class="container" style = "margin: auto; margin-top: 150px;">
+  <h5 class="mb-5">My trips ( <%= @trips.count %> )</h5>
+  <% @trips.each do |trip| %>
+    <%= link_to details_trip_path (trip) do%>
+      <div class="card-trip my-3" style = "width: 80%; margin: auto;">
+        <%= image_tag(trip.steps.first.activities.first.photo)%>
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= trip.arrival_city.name %> to <%= trip.departure_city.name %></h2>
+          </div>
+          <p> Starting <%= trip.start_date.to_formatted_s(:short) %></p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 </div>
-<% end %></div>
