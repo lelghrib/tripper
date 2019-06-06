@@ -1,4 +1,6 @@
 class TripsController < ApplicationController
+require 'json'
+require 'open-uri'
   def index
     @trips = Trip.where(user: current_user)
   end
@@ -15,32 +17,32 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
-    @activities = activities_in_zone(@trip)
-    @ratio_type_activities = ratio_duration(@trip)
-    @list_acti_beach = filter_activities_by_time("beach")
-    @total_beach = total_duration(@list_acti_beach)
-    @list_acti_culture = filter_activities_by_time("culture")
-    @total_culture = total_duration(@list_acti_culture)
-    @list_acti_sport = filter_activities_by_time("sport")
-    @total_sport = total_duration(@list_acti_sport)
-    @list_acti_visit = filter_activities_by_time("visit")
-    @total_visit = total_duration(@list_acti_visit)
-    @total_activities = @total_beach + @total_sport + @total_visit + @total_culture
-    #@order_culture = order_by_ranking(@activities, 'culture')
-    #@total_culture = total_duration(@order_culture)
-    #@order_sport = order_by_ranking(@activities, 'sport')
-    #@total_sport = total_duration(@order_sport)
-    #@order_visit = order_by_ranking(@activities, 'visit')
-    #@total_visit = total_duration(@order_visit)
-    @list_all_acti = @list_acti_beach + @list_acti_culture + @list_acti_visit
-    # + @list_acti_culture + @list_acti_sport + @list_acti_visit
-    # @list_all_acti.flatten!
     @list_acti_map = []
     @trip.steps.each do |step|
         @list_acti_map << step.activities
     end
     @list_acti_map.flatten!
-    activities_to_map(@list_acti_map)
+    steps_coord = ""
+    @trip.steps.each do |step|
+      steps_coord += step.city.longitude.to_s + ',' + step.city.latitude.to_s + ';'
+    end
+    steps_call = steps_coord.delete_suffix(";")
+    url = "https://api.mapbox.com/optimized-trips/v1/mapbox/driving/#{steps_call}?source=first&destination=last&steps=true&access_token=#{ENV['MAPBOX_API_KEY']}"
+    response_serialized = open(url).read
+    response = JSON.parse(response_serialized)
+    steps_ordered = []
+    response['waypoints'].sort_by! { |waypoint| waypoint['waypoint_index'] }
+    steps_to_map(response['waypoints'])
+    # activities_to_map(@list_acti_map)
+  end
+  def steps_to_map(steps)
+    # .select {|item| !(item[:lat].nil? || item[:long].nil?)}.
+    steps.each do |step|
+      @markers =      {
+        lat: step['location'][0],
+        lng: step['location'][1]
+      }
+    end
   end
 
   def activities_to_map(activities)

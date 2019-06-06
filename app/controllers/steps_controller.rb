@@ -261,9 +261,9 @@ class StepsController < ApplicationController
       step.city = City.find(key)
       step.trip = @trip
       step.duration = 5
-      step.order = 5
-      step.time_next_step = 5
-      step.distance_next_step = 5
+      # step.order = 5
+      # step.time_next_step = 5
+      # step.distance_next_step = 5
       step.save
       # creating step_activities for each value=array of activities
       value.each do |activity_id|
