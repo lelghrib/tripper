@@ -14,12 +14,13 @@
   <div class="d-flex mt-5">
     <div>
       <% @trip.steps.each do |step| %>
-        <%= step.city.name %>
+        <p> STEP - <%= step.city.name %></p>
         <% step.activities.each do |activity| %>
           <p><%= activity.name %> - <%= activity.duration %></p>
         <% end %>
      <% end %>
      </div>
+     <%= link_to "Go", details_trip_path(@trip) %>
     <div
         id="map"
         style="width: 50%;
@@ -29,7 +30,6 @@
       ></div>
   </div>
 </div>
-
 
 
 

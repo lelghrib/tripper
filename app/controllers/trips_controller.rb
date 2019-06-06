@@ -11,7 +11,6 @@ class TripsController < ApplicationController
 
   def create
     @trip = Trip.new(trip_params)
-    @trip.user = current_user if current_user.present?
     redirect_to new_trip_step_path(@trip) if @trip.save!
   end
 
@@ -120,6 +119,19 @@ class TripsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def details
+    @trip = Trip.find(params[:id])
+  end
+
+
+
+  def save
+    @trip = Trip.find(params[:id])
+    raise
+    @trip.user = current_user if current_user.present?
+    redirect_to details_trip_path(@trip) if @trip.save!
   end
 
   private
