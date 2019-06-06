@@ -141,7 +141,7 @@ require 'open-uri'
   def save
     @trip = Trip.find(params[:id])
     @trip.user = current_user if current_user.present?
-    redirect_to details_trip_path(@trip) if @trip.save!
+    @trip.save!
   end
 
   private
