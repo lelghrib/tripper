@@ -11,7 +11,7 @@
    <div class="form-container-criteria-slider ">
       <h1 class="mb-4 text-center form-header">Choose two activities</h1>
       <div class="d-flex justify-content-center">
-          <div class="col-md-6 mt-8">
+          <div class="mt-8">
               <div class="form-post">
               <!-- Inject categories here -->
               <p>all acti <%= @activities.count %></p>
@@ -75,10 +75,18 @@
                   <div class="activity-choices">
                     <% @list_acti_culture_choose.each do |acti_culture| %>
                       <input type="checkbox"class="hidden check-culture" value="<%= acti_culture.id %>" name="activities_ids[]" id="step_activity_activity_ids_<%= acti_culture.id %>">
-                      <label for="step_activity_activity_ids_<%= acti_culture.id %>" class="activity-choice acti-cuture">
-                        <%= acti_culture.name %>
-                        <i class="fa fa-check"></i>
-                      </label>
+
+                      <div class="card" style="width: 18rem;">
+
+                        <%= image_tag acti_culture.photo, class: "card-img-top" %>
+                        <div class="card-body">
+                          <label for="step_activity_activity_ids_<%= acti_culture.id %>" class="activity-choice acti-cuture card-title">
+                            <%= acti_culture.name %>
+                          </label>
+                        </div>
+                      </div>
+
+
                     <% end %>
                    </div>
                 </div>
