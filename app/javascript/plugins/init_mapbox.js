@@ -59,8 +59,8 @@ const initMapbox = () => {
     markers.forEach ((marker) => {
       let coordinate = [];
       console.log(marker.lat);
-      coordinate.push(marker.lat);
       coordinate.push(marker.lng);
+      coordinate.push(marker.lat);
       coordinates.push(coordinate);
     });
     // console.log(coordinates);
@@ -70,8 +70,8 @@ const initMapbox = () => {
     // [
     //   [12.4834874,41.900796], [12.4785194843013,41.9112542]
     // ]
-
     map.on('load', function () {
+
       map.addLayer({
         "id": "route",
         "type": "line",
@@ -97,7 +97,7 @@ const initMapbox = () => {
       });
     });
 
-    calculateRoute(map, [48.8587741,2.2069771], [43.2803051,5.2404128])
+    //calculateRoute(map, [48.8587741,2.2069771], [43.2803051,5.2404128])
   }
 };
 export { initMapbox };
