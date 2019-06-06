@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :trips do
     member do
       get :details
+      patch :save
     end
     resources :steps, only: ['create', 'new']
   end
