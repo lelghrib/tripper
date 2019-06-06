@@ -14,16 +14,27 @@ h2{
 }
 
 .preferences{
-  width:600px;
-  height:90px;
-  background-color:black;
+  width:700px;
+  height:60px;
+  align-items: center;
+  padding-left: 85px;
 }
 
 .filter{
   background-color:white;
-  height:50px;
-  width:100px;
-  margin:10px;
+  height:30px;
+  width:105px;
+  margin:5px;
+  text-align:center;
+  border: solid .5px;
+  border-radius: 2px;
+  border-color: #D9D9D9;
+  color: #535353;
+}
+
+.filter:hover{
+  background-color: red;
+  color: white;
 }
 
 .map{
@@ -32,7 +43,10 @@ h2{
   border-radius:8px;
   background-color: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
 
+.sticky-top{
+  top:20px;
 }
 
 .list-activity{
