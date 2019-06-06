@@ -6,13 +6,12 @@ class TripsController < ApplicationController
 
   def new
     @trip = Trip.new
+    @step = Step.new
   end
 
   def create
     @trip = Trip.new(trip_params)
-    @trip.user = current_user if current_user.present?
-    @trip.save!
-    redirect_to new_trip_step_path(@trip)
+    redirect_to new_trip_step_path(@trip) if @trip.save!
   end
 
   def show
@@ -37,7 +36,12 @@ class TripsController < ApplicationController
     @list_all_acti = @list_acti_beach + @list_acti_culture + @list_acti_visit
     # + @list_acti_culture + @list_acti_sport + @list_acti_visit
     # @list_all_acti.flatten!
-    activities_to_map(@list_acti_culture)
+    @list_acti_map = []
+    @trip.steps.each do |step|
+        @list_acti_map << step.activities
+    end
+    @list_acti_map.flatten!
+    activities_to_map(@list_acti_map)
   end
 
   def activities_to_map(activities)
@@ -77,13 +81,14 @@ class TripsController < ApplicationController
 
   def ratio_duration(trip)
     # calculates ratio of duration of each criteria vs total duration of trip activity
-    total_trip_duration = ((trip.end_date - trip.start_date) / 86400) * 8 * 60 # -> nb days * 8h * 60min
-    beach_ratio = (total_trip_duration * trip.criteria["beach"].to_f) / 100
-    visit_ratio = (total_trip_duration * trip.criteria["visit"].to_f) / 100
-    culture_ratio = (total_trip_duration * trip.criteria["culture"].to_f) / 100
-    sport_ratio = (total_trip_duration * trip.criteria["sport"].to_f) / 100
+    total_trip_duration = ((trip.end_date - trip.start_date) / 86_400) * 8 * 60 # -> nb days * 8h * 60min
+    criteria_sum = trip.criteria["beach"].to_f + trip.criteria["visit"].to_f + trip.criteria["culture"].to_f + trip.criteria["sport"].to_f
+    beach_ratio = (total_trip_duration * trip.criteria["beach"].to_f) / criteria_sum
+    visit_ratio = (total_trip_duration * trip.criteria["visit"].to_f) / criteria_sum
+    culture_ratio = (total_trip_duration * trip.criteria["culture"].to_f) / criteria_sum
+    sport_ratio = (total_trip_duration * trip.criteria["sport"].to_f) / criteria_sum
 
-    ratio_duration = { "beach" => beach_ratio, "visit" => visit_ratio, "culture" => culture_ratio, "sport" => sport_ratio}
+    ratio_duration = { "beach" => beach_ratio, "visit" => visit_ratio, "culture" => culture_ratio, "sport" => sport_ratio }
     @total_trip_duration = total_trip_duration
     return ratio_duration
   end
@@ -119,7 +124,15 @@ class TripsController < ApplicationController
 
   def details
     @trip = Trip.find(params[:id])
+  end
 
+
+
+  def save
+    @trip = Trip.find(params[:id])
+    raise
+    @trip.user = current_user if current_user.present?
+    redirect_to details_trip_path(@trip) if @trip.save!
   end
 
   private

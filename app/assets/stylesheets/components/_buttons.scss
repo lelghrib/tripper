@@ -3,8 +3,8 @@
   border-radius: 37px;
   color : white;
   font-family: 'Montserrat', sans-serif;
-  font-size : 18px;
-  padding : 15px;
+  font-size: 17px;
+  padding: 10px 15px;
   font-weight: bold;
   margin-top: 7vh;
   margin-bottom: 7vh;
@@ -30,3 +30,28 @@ a:hover {
   transition: all 0.4s ease;
 }
 
+.form-shared-links a {
+    font-family: Montserrat;
+    text-decoration: none;
+    color: #57B894;
+    font-size: 20px;
+    // border: 1px solid #57B894;
+    padding: 8px;
+    border-radius: 20px;
+    // text-align: center;
+    margin: 0% 15%;
+    font-size: 16px;
+    transition: all 0.5s ease;
+    line-height: 3em;
+}
+
+.form-shared-links a:hover {
+    background-color: #57B894;
+    color: white;
+    transition: all 0.5s ease;
+    padding: 1%;
+}
+
+.btn-next{
+  margin: auto;
+}

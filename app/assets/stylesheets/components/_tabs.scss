@@ -2,17 +2,23 @@
   display: flex;
   justify-content: space-between;
   align-items:center;
-  padding: 80px 50px 0px 50px;
+  padding: 6% 20% 0% 20%;
   background-color: rgba(142, 187, 239, 0.04);
 }
 .tab-button{
-  padding: 12px 22px;
+  // padding: 12px 22px;
+  padding: 0.5em 1em;
   border-radius: 50%;
   background-color: rgba(87, 184, 148, 0.16);
+  // border: 1px solid rgba(87, 184, 148, 0.16);
   border: 1px solid #57B894;
   color: #86228E;
+  // color: #454D66;
   font-weight: bold;
   font-size: 24px;
+}
+#go-button{
+  padding: 1em;
 }
 .tab-active{
   background-color: #57B894;

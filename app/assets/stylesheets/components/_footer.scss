@@ -3,8 +3,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 100px;
-  padding: 0px 50px;
+  height: 70px;
+  padding:15px 50px;
   color: rgba(0,0,0,0.3);
 }
 
@@ -28,6 +28,6 @@
 
 
 .container-fullscreen {
-  min-height: calc(100vh - 100px);
+  min-height: calc(100vh - 70px);
 
 }
