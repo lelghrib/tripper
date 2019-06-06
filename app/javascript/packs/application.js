@@ -16,7 +16,7 @@ import {topFunction} from '../components/topbutton';
 // scrollFunction();
 // topFunction();
 
-// active class on choose activities
+// add active class on choosen activities
 import { checkboxclick } from './form';
 checkboxclick();
 

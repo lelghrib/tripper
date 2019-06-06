@@ -123,13 +123,21 @@ class TripsController < ApplicationController
 
   def details
     @trip = Trip.find(params[:id])
+    list = activities(@trip)
+    activities_to_map(list)
   end
 
-
+  def activities(trip)
+    trip_activities = []
+    trip.steps.each do |step|
+      trip_activities << step.activities
+    end
+    trip_activities.flatten!
+    return trip_activities
+  end
 
   def save
     @trip = Trip.find(params[:id])
-    raise
     @trip.user = current_user if current_user.present?
     redirect_to details_trip_path(@trip) if @trip.save!
   end
@@ -139,4 +147,6 @@ class TripsController < ApplicationController
   def trip_params
     params.require(:trip).permit(:departure_city_id, :arrival_city_id, :start_date, :end_date, criteria: {})
   end
+
+
 end
