@@ -74,7 +74,7 @@
                   <input type="hidden" name="activities_ids[]" value="">
                   <div class="activity-choices">
                     <% @list_acti_culture_choose.each do |acti_culture| %>
-                      <input type="checkbox"class="hidden" value="<%= acti_culture.id %>" name="activities_ids[]" id="step_activity_activity_ids_<%= acti_culture.id %>">
+                      <input type="checkbox"class="hidden check-culture activity" value="<%= acti_culture.id %>" name="activities_ids[]" id="step_activity_activity_ids_<%= acti_culture.id %>">
                       <label for="step_activity_activity_ids_<%= acti_culture.id %>" class="activity-choice">
                         <%= acti_culture.name %>
                         <i class="fa fa-check"></i>
