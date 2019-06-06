@@ -1,66 +1,53 @@
 <div class="container "></div>
 <div class="preferences d-flex">
-<div class="filter">beach :<%= @trip.criteria["beach"] %>%</div>
-<div class="filter">sport :<%= @trip.criteria["sport"] %>%</div>
-<div class="filter">culture : <%= @trip.criteria["culture"] %>%</div>
-<div class="filter">visit: <%= @trip.criteria["visit"] %>%</div>
+  <div class="filter">beach :<%= @trip.criteria["beach"] %>%</div>
+  <div class="filter">sport :<%= @trip.criteria["sport"] %>%</div>
+  <div class="filter">culture : <%= @trip.criteria["culture"] %>%</div>
+  <div class="filter">visit: <%= @trip.criteria["visit"] %>%</div>
 </div>
-
 <div class="container d-flex">
-
-<div class="map sticky-top">
- <%= link_to "Save", save_trip_path(@trip), method: :patch, class:'green-btn', data:{confirm:"Trip saved"} %>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="SaveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">SAVE</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  <div class="map sticky-top">
+    <%= link_to "Save", save_trip_path(@trip), method: :patch, class:'green-btn', data:{confirm:"Trip saved"} %>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="SaveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">SAVE</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Your trip is sound and safe ;)
-      </div>
-      <div class="modal-footer"style="height: 50px">
-        <button type="button" class="green-btn" data-dismiss="modal">Close</button>
+          </button>
+        </div>
+        <div class="modal-body">
+          Your trip is sound and safe ;)
+        </div>
+        <div class="modal-footer"style="height: 50px">
+          <button type="button" class="green-btn" data-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+  <div class="list-activity">
+    <h3>Your activities</h3>
 
+    <div class="steps">
 
-<div class="list-activity">
-  <h3>Your activities</h3>
+      <% @trip.steps.each do |step|%>
 
-<div class="steps">
-  <%= @trip.steps.each do |step|%>
-  <div class="step-details d-flex">
-    <p><%= step.city.name %></p>
+      <div class="step-details d-flex">
+        <p><%= step.city.name %></p>
 
-  <%# step.activities.each do |activity|  %>
-  <%#= activity.name %>
-  <%# end %>
-<% end %>
+        <% step.activities do |activity|%>
+        <div class="step-details d-flex">
+          <p><%= activity.description %></p>
+          <% end %>
+
+        </div>
+        <% end %>
+
+      </div>
+    </div>
+
   </div>
 </div>
-</div></div>
-
-<!--   <div class="step-details d-flex">
-    <p>Step 1</p>
-  </div>
- -->
-<!--
-<div class="card">vos steps
-  steps.each do
-<div class="step">ville de la step
-  step.activities.all
-  <div class="activity"></div>
-</div>
-
-
-</div>
- -->
