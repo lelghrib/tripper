@@ -23,34 +23,114 @@
               </div>
             </div> -->
               <!-- Inject categories here -->
+              <p>all acti <%= @activities.count %></p>
+              <ul>
+              <% @activities.each do |activity| %>
+                 <li><%= activity.name %> - <%= activity.activity_types %></li>
+              <% end %>
+              </ul>
               <p>all acti cult <%= @activities_culture.count %></p>
+              <p>all acti sport <%= @activities_sport.count %></p>
+              <p>all acti visit <%= @activities_visit.count %></p>
+              <p>all acti beach <%= @activities_beach.count %></p>
 
-              <p>acti real <%= @list_acti_culture_real.count %></p>
+              <p>acti real cult <%= @list_acti_culture_real.count %></p>
               <% @list_acti_culture_real.each do |acti| %>
                 <%= acti.name %>
               <% end %>
-              <p>acti double <%= @list_acti_culture_double.count %></p>
+              <p>acti double cult <%= @list_acti_culture_double.count %></p>
               <% @list_acti_culture_double.each do |acti| %>
                 <%= acti.name %>
               <% end %>
+              <p>acti real sport <%= @list_acti_sport_real.count %></p>
+              <p>acti double sport <%= @list_acti_sport_double.count %></p>
+              <p>acti real beach <%= @list_acti_beach_real.count %></p>
+              <p>acti double beach <%= @list_acti_beach_double.count %></p>
+              <p>acti real visit <%= @list_acti_visit_real.count %></p>
+              <p>acti double visit <%= @list_acti_visit_double.count %></p>
+              <p>ratio <%= @ratio_type_activities %></p>
+              <p>ratio dubl <%= @ratio_type_activities_double %></p>
+              <p>acti fix cul<%= @list_acti_culture_fixed.count %></p>
+              <p>acti chose cul<%= @list_acti_culture_choose.count %></p>
+              <p>acti fix sport<%= @list_acti_sport_fixed.count %></p>
+              <p>acti chose sport<%= @list_acti_sport_choose.count %></p>
+              <p>acti fix visit<%= @list_acti_visit_fixed.count %></p>
+              <p>acti chose visit<%= @list_acti_visit_choose.count %></p>
+              <p>acti fix beach<%= @list_acti_beach_fixed.count %></p>
+              <p>acti chose beach <%= @list_acti_beach_choose.count %></p>
+
+
+
 
 
               <%= simple_form_for([@trip, @step]) do |f| %>
+              <!-- Inject fixed activities -->
               <div class="form-group">
-                <input type="hidden" name="activities_ids[]" value="">
-                <% unless @list_acti_culture_fixed == [] %>
-                  <input type="hidden" name="activities_fixed_ids[]" value="<%= @list_acti_culture_fixed %>">
-                <% end %>
-                <div class="category-choices">
-                  <% @list_acti_culture_choose.each do |acti_culture| %>
-                    <input type="checkbox"class="hidden" value="<%= acti_culture.id %>" name="activities_ids[]" id="step_activity_activity_ids_<%= acti_culture.id %>">
-                    <label for="step_activity_activity_ids_<%= acti_culture.id %>" class="category-choice">
-                      <%= acti_culture.name %>
-                      <i class="fa fa-check"></i>
-                    </label>
-                  <% end %>
-                 </div>
+                <% unless @fixed_activities_ids == [] %>
+                  <input type="hidden" name="activities_fixed_ids[]" value="<%= @fixed_activities_ids %>">
+                 <% end %>
               </div>
+
+              <!-- culture to choose -->
+              <% unless @list_acti_culture_choose == [] %>
+                <div class="form-group">
+                  <input type="hidden" name="activities_ids[]" value="">
+                  <div class="category-choices">
+                    <% @list_acti_culture_choose.each do |acti_culture| %>
+                      <input type="checkbox"class="hidden" value="<%= acti_culture.id %>" name="activities_ids[]" id="step_activity_activity_ids_<%= acti_culture.id %>">
+                      <label for="step_activity_activity_ids_<%= acti_culture.id %>" class="category-choice">
+                        <%= acti_culture.name %>
+                        <i class="fa fa-check"></i>
+                      </label>
+                    <% end %>
+                   </div>
+                </div>
+              <% end %>
+              <!-- Sport to choose -->
+              <% unless @list_acti_sport_choose == [] %>
+                <div class="form-group">
+                  <input type="hidden" name="activities_ids[]" value="">
+                  <div class="category-choices">
+                    <% @list_acti_sport_choose.each do |acti_sport| %>
+                      <input type="checkbox"class="hidden" value="<%= acti_sport.id %>" name="activities_ids[]" id="step_activity_activity_ids_<%= acti_sport.id %>">
+                      <label for="step_activity_activity_ids_<%= acti_sport.id %>" class="category-choice">
+                        <%= acti_sport.name %>
+                        <i class="fa fa-check"></i>
+                      </label>
+                    <% end %>
+                   </div>
+                </div>
+              <% end %>
+              <!-- visit to choose -->
+              <% unless @list_acti_visit_choose == [] %>
+                <div class="form-group">
+                  <input type="hidden" name="activities_ids[]" value="">
+                  <div class="category-choices">
+                    <% @list_acti_visit_choose.each do |acti_visit| %>
+                      <input type="checkbox"class="hidden" value="<%= acti_visit.id %>" name="activities_ids[]" id="step_activity_activity_ids_<%= acti_visit.id %>">
+                      <label for="step_activity_activity_ids_<%= acti_visit.id %>" class="category-choice">
+                        <%= acti_visit.name %>
+                        <i class="fa fa-check"></i>
+                      </label>
+                    <% end %>
+                   </div>
+                </div>
+              <% end %>
+              <!-- beach to choose -->
+              <% unless @list_acti_beach_choose == [] %>
+                <div class="form-group">
+                  <input type="hidden" name="activities_ids[]" value="">
+                  <div class="category-choices">
+                    <% @list_acti_beach_choose.each do |acti_beach| %>
+                      <input type="checkbox"class="hidden" value="<%= acti_beach.id %>" name="activities_ids[]" id="step_activity_activity_ids_<%= acti_beach.id %>">
+                      <label for="step_activity_activity_ids_<%= acti_beach.id %>" class="category-choice">
+                        <%= acti_beach.name %>
+                        <i class="fa fa-check"></i>
+                      </label>
+                    <% end %>
+                   </div>
+                </div>
+              <% end %>
 
               <%#= f.input :content, placeholder: "In this tutorial..." %>
               <%= f.submit "Save", class: "green-btn"  %>
