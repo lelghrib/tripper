@@ -11,11 +11,11 @@
 
 <%= simple_form_for @trip do |f| %>
            <!-- Planning 1 -->
- <div class="criteria-slider">
- <div class="form-container-criteria-slider">
-      <h1 class="mb-8 text-center form-header">Create your trip</h1>
+ <div class="criteria-slider" style="height: 68vh;" >
+ <div class="form-container-criteria-slider" style="margin-bottom: 3vh; important!">
+      <h1 class="mb-2 text-center form-header">Create your trip</h1>
       <div class="d-flex justify-content-center">
-        <div class="col-md-6 mt-8">
+        <div class="col-md-6 mt-3">
     <!-- Planning 1 -->
     <!-- <div class="d-flex justify-content-center"> -->
       <!-- <div class="col-md-6 mt-8"> -->
@@ -24,7 +24,7 @@
           <%= f.input :start_date, as: :date %>
           <%= f.input :end_date, as: :date %>
           <%= hidden_field_tag :criteria %>
-          <div class="pt-6 mb-6 d-flex justify-content-center">
+          <div class="pt-2 mb-6 d-flex justify-content-end">
           <span class="btn-next green-btn">
             Next
           </span>
@@ -34,9 +34,9 @@
  </div>
         <!-- Planning 2 -->
     <div class="form-container-criteria-slider">
-     <h1 class="mb-8 text-center form-header">Choose preferences</h1>
+     <h1 class="mb-2 text-center form-header">Choose preferences</h1>
     <div class="d-flex justify-content-center pb-4">
-      <div class="col-md-6 mt-8">
+      <div class="col-md-6 mt-3">
         <!-- <form action="/trips/<%= @trip.id %>" method="post"> -->
         <!-- <form action="/trips" method="post"> -->
 <!--           <input name="_method" type="hidden" value="create" />
@@ -60,8 +60,8 @@
         <!--</form>  -->
       </div>
     </div>
-      <div class=" btn-next d-flex justify-content-center ml-2 pt-6 mb-6">
-        <%= f.button :submit, value: "Next",class: "green-btn" %>
+      <div class=" btn-next d-flex justify-content-start col-md-6 ">
+          <%= f.button :submit, value: "Next",class: "green-btn" %>
       </div>
     </div>
 
