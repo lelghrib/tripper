@@ -15,6 +15,3 @@ import {scrollFunction} from '../components/topbutton';
 import {topFunction} from '../components/topbutton';
 // scrollFunction();
 // topFunction();
-
-import {updateTextInput} from '../components/range-sliders'
-// updateTextInput;
