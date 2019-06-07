@@ -24,9 +24,26 @@ require 'open-uri'
     @trip.steps.each do |step|
         @list_acti_map << step.activities
     end
+    ordonated_list = ordonated_steps(@trip)
+    steps_to_map(ordonated_list)
     @list_acti_map.flatten!
+    # activities_to_map(@list_acti_map)
+  end
+
+  def ordonated_steps(trip)
+    order_steps = []
+    trip.steps.each do |step|
+      if step.city_id == trip.departure_city_id
+        order_steps.prepend(step)
+      elsif step.city_id == trip.arrival_city_id
+        next
+      else
+        order_steps << step
+      end
+    end
+    order_steps << trip.steps.find{|step| step.city_id == trip.arrival_city_id }
     steps_coord = ""
-    @trip.steps.each do |step|
+    order_steps.each do |step|
       steps_coord += step.city.longitude.to_s + ',' + step.city.latitude.to_s + ';'
     end
     steps_call = steps_coord.delete_suffix(";")
@@ -35,16 +52,19 @@ require 'open-uri'
     response = JSON.parse(response_serialized)
     steps_ordered = []
     response['waypoints'].sort_by! { |waypoint| waypoint['waypoint_index'] }
-    steps_to_map(response['waypoints'])
-    # activities_to_map(@list_acti_map)
   end
+
   def steps_to_map(steps)
     # .select {|item| !(item[:lat].nil? || item[:long].nil?)}.
+# @day_tasks = DayTask.find { |x| x.task.goal.user == @user && x.target_date == Date.today }
 
       @markers = steps.map do |step|
-       {
-        lat: step['location'][1],
-        lng: step['location'][0]
+        this_step = Step.find{ |st| step['location'][0] == st.city.longitude }
+raise
+        {
+          infoWindow: render_to_string(partial: "infowindow", locals: { step: this_step}),
+          lat: step['location'][1],
+          lng: step['location'][0]
         }
     end
   end
@@ -130,7 +150,8 @@ require 'open-uri'
   def details
     @trip = Trip.find(params[:id])
     list = activities(@trip)
-    activities_to_map(list)
+    ordonated_list = ordonated_steps(@trip)
+    steps_to_map(ordonated_list)
   end
 
   def activities(trip)
@@ -153,6 +174,4 @@ require 'open-uri'
   def trip_params
     params.require(:trip).permit(:departure_city_id, :arrival_city_id, :start_date, :end_date, criteria: {})
   end
-
-
 end
