@@ -60,7 +60,6 @@ require 'open-uri'
 
       @markers = steps.map do |step|
         this_step = Step.find{ |st| step['location'][0] == st.city.longitude }
-raise
         {
           infoWindow: render_to_string(partial: "infowindow", locals: { step: this_step}),
           lat: step['location'][1],
