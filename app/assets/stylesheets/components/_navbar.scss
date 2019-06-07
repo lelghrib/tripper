@@ -8,20 +8,33 @@
   background: white;
   box-shadow: 0 3 15px rgba(25,108,221,0.2);
 }
-
 .navbar-lewagon p {
   margin-bottom: 0;
   margin-top: 0;
 }
-
+.no-border > a{
+  margin-top: 0 !important;
+  transition: all 0.5s ease;
+}
+#tripper_navbar > a:hover{
+  border-radius: 5em;
+}
 .nav-link{
   color: #333333;
 }
-
+.navbar-nav{
+  padding-right: 3em;
+}
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
-
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 45px;
+  transition: all 0.5s ease;
 }
+.no-border img:hover, .no-border a:hover{
+  border: none;
+  width: 3.5em;
+  transition: all 0.5s ease;
+}
+
