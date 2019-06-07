@@ -1,5 +1,4 @@
 class StepsController < ApplicationController
-
   def index
     @steps = Step.all
   end
@@ -36,34 +35,74 @@ class StepsController < ApplicationController
     @activities = @activities.reject do |activity|
       activity == departure_city_activities.first
     end
-    # 3.step - calculate time per categorie for user preferences - time for fixed activities
-    # time for activities by tipe
-    @ratio_type_activities = ratio_duration(@trip, @fixed_activities)
-    # double time for activities for choices
-    @ratio_type_activities_double = ratio_duration_double(@trip, @fixed_activities)
-    # 4.step - filter activities by category, by ranking, by time
-    # culture
-    @list_acti_culture_real = filter_activities_by_time(@activities, @ratio_type_activities, "culture")
-    @list_acti_culture_double = filter_activities_by_time(@activities, @ratio_type_activities_double, "culture")
-    # sport
-    @list_acti_sport_real = filter_activities_by_time(@activities, @ratio_type_activities, "sport")
-    @list_acti_sport_double = filter_activities_by_time(@activities, @ratio_type_activities_double, "sport")
-    # visit
-    @list_acti_visit_real = filter_activities_by_time(@activities, @ratio_type_activities, "visit")
-    @list_acti_visit_double = filter_activities_by_time(@activities, @ratio_type_activities_double, "visit")
-    # beach
-    @list_acti_beach_real = filter_activities_by_time(@activities, @ratio_type_activities, "beach")
-    @list_acti_beach_double = filter_activities_by_time(@activities, @ratio_type_activities_double, "beach")
-    # 5.step - fix activities by categorie
+    # 3.step -  calculate total time of user for activities
+    @user_time_activities_total = ((@trip.end_date - @trip.start_date) / 86400) * 2 * 60 # -> nb days * 2h * 60min
+    # 4.step - total user time minus time of fixed activitites
+    total_fixed_trip_duration = total_duration(@fixed_activities)
+    @user_time_activities_total -= total_fixed_trip_duration
+    # 5.step - define real time of filtered activities by category, by ranking
+    @list_acti_all_real = []
+    @time_activities_real = 0
+    # 6. step define arrays of real and double time activities
+    @list_acti_culture_real = []
+    @list_acti_sport_real = []
+    @list_acti_visit_real = []
+    @list_acti_beach_real = []
+    @list_acti_culture_double = []
+    @list_acti_sport_double = []
+    @list_acti_visit_double = []
+    @list_acti_beach_double = []
+
+    # loop steps 7-12 to fill all user time for activities => 6h=360min of flexibility
+    #until (@user_time_activities_total - 360) > @time_activities_real || @activities.count == @list_acti_all_real.count do
+      # 7.step - calculate time per categorie for user preferences - time for fixed activities
+      # time for activities by type
+      @ratio_type_activities = ratio_duration(@trip, @user_time_activities_total)
+      # double time for activities for choices
+      @ratio_type_activities_double = ratio_duration_double(@trip, @user_time_activities_total)
+      # 8.step - filter activities by category, by ranking, by time
+      # culture
+      @list_acti_culture_r = filter_activities_by_time(@activities, @ratio_type_activities, "culture")
+      @list_acti_culture_d = filter_activities_by_time(@activities, @ratio_type_activities_double, "culture")
+      # sport
+      @list_acti_sport_r = filter_activities_by_time(@activities, @ratio_type_activities, "sport")
+      @list_acti_sport_d = filter_activities_by_time(@activities, @ratio_type_activities_double, "sport")
+      # visit
+      @list_acti_visit_r = filter_activities_by_time(@activities, @ratio_type_activities, "visit")
+      @list_acti_visit_d = filter_activities_by_time(@activities, @ratio_type_activities_double, "visit")
+      # beach
+      @list_acti_beach_r = filter_activities_by_time(@activities, @ratio_type_activities, "beach")
+      @list_acti_beach_d = filter_activities_by_time(@activities, @ratio_type_activities_double, "beach")
+      # 9.step - push real and double elements to their array
+      @list_acti_culture_real = push_elements_to_all_array(@list_acti_culture_r, @list_acti_culture_real)
+      @list_acti_sport_real = push_elements_to_all_array(@list_acti_sport_r, @list_acti_sport_real)
+      @list_acti_visit_real = push_elements_to_all_array(@list_acti_visit_r, @list_acti_visit_real)
+      @list_acti_beach_real = push_elements_to_all_array(@list_acti_beach_r, @list_acti_beach_real)
+      @list_acti_culture_double = push_elements_to_all_array(@list_acti_culture_d, @list_acti_culture_double)
+      @list_acti_sport_double = push_elements_to_all_array(@list_acti_sport_d, @list_acti_sport_double)
+      @list_acti_visit_double = push_elements_to_all_array(@list_acti_visit_d, @list_acti_visit_double)
+      @list_acti_beach_double = push_elements_to_all_array(@list_acti_beach_d, @list_acti_beach_double)
+      # 10.step - creating array of real activities
+      @list_acti_all_real = push_elements_to_all_array(@list_acti_culture_real, @list_acti_all_real)
+      @list_acti_all_real = push_elements_to_all_array(@list_acti_sport_real, @list_acti_all_real)
+      @list_acti_all_real = push_elements_to_all_array(@list_acti_visit_real, @list_acti_all_real)
+      @list_acti_all_real = push_elements_to_all_array(@list_acti_beach_real, @list_acti_all_real)
+      # 11.step - recalculate real time of filtered activities by category, by ranking
+      @time_activities_real = total_duration(@list_acti_all_real)
+      # 12. step - recalculate total user time for activities
+      #@user_time_activities_total -= @time_activities_real
+    #end
+
+    # 13.step - fix activities by categorie
     @list_acti_culture_fixed = activities_fixed(@list_acti_culture_real, @list_acti_culture_double)
     @list_acti_sport_fixed = activities_fixed(@list_acti_sport_real, @list_acti_sport_double)
     @list_acti_visit_fixed = activities_fixed(@list_acti_visit_real, @list_acti_visit_double)
     @list_acti_beach_fixed = activities_fixed(@list_acti_beach_real, @list_acti_beach_double)
-    # 6.step - push fixed activities to all fixed activities ids
-    @fixed_activities_ids = push_fixed_to_all_fixed(@list_acti_culture_fixed, @fixed_activities_ids)
-    @fixed_activities_ids = push_fixed_to_all_fixed(@list_acti_sport_fixed, @fixed_activities_ids)
-    @fixed_activities_ids = push_fixed_to_all_fixed(@list_acti_visit_fixed, @fixed_activities_ids)
-    @fixed_activities_ids = push_fixed_to_all_fixed(@list_acti_beach_fixed, @fixed_activities_ids)
+    # 14.step - push fixed activities to all fixed activities ids
+    @fixed_activities_ids = push_elements_to_all_array(@list_acti_culture_fixed, @fixed_activities_ids)
+    @fixed_activities_ids = push_elements_to_all_array(@list_acti_sport_fixed, @fixed_activities_ids)
+    @fixed_activities_ids = push_elements_to_all_array(@list_acti_visit_fixed, @fixed_activities_ids)
+    @fixed_activities_ids = push_elements_to_all_array(@list_acti_beach_fixed, @fixed_activities_ids)
 
     @list_acti_sport_fixed.each do |activity|
       @fixed_activities_ids << activity
@@ -74,7 +113,7 @@ class StepsController < ApplicationController
     @list_acti_beach_fixed.each do |activity|
       @fixed_activities_ids << activity
     end
-    # 7.step - activities to choose for user
+    # 15.step - activities to choose for user
     @list_acti_culture_choose = activities_to_choose(@list_acti_culture_real, @list_acti_culture_double)
     @list_acti_sport_choose = activities_to_choose(@list_acti_sport_real, @list_acti_sport_double)
     @list_acti_visit_choose = activities_to_choose(@list_acti_visit_real, @list_acti_visit_double)
@@ -98,16 +137,16 @@ class StepsController < ApplicationController
     end
   end
 
-  # method to push fixed activities by category to array of fixed
-  def push_fixed_to_all_fixed(list_fixed, list_all_fixed_ids)
-    if list_fixed.size == 1
-      list_all_fixed_ids << list_fixed.first
-    elsif list_fixed.size > 1
-      list_fixed.each do |activity|
-        list_all_fixed_ids << activity
+  # method to push activities by category to array
+  def push_elements_to_all_array(list, list_all)
+    if list.size == 1
+      list_all << list.first
+    elsif list.size > 1
+      list.each do |activity|
+        list_all << activity
       end
     end
-    return list_all_fixed_ids
+    return list_all
   end
 
   # method to fix activities by category
@@ -180,31 +219,24 @@ class StepsController < ApplicationController
     return activities
   end
 
-  def ratio_duration(trip, fixed_list)
+  def ratio_duration(trip, total_trip_duration)
     # calculates ratio of duration of each criteria vs total duration of trip activity
-    total_trip_duration = ((trip.end_date - trip.start_date) / 86400) * 2 * 60 # -> nb days * 8h * 60min
-    total_fixed_trip_duration = total_duration(fixed_list)
-    total_trip_duration -= total_fixed_trip_duration
     beach_ratio = (total_trip_duration * trip.criteria["beach"].to_i) / 100
     visit_ratio = (total_trip_duration * trip.criteria["visit"].to_i) / 100
     culture_ratio = (total_trip_duration * trip.criteria["culture"].to_i) / 100
     sport_ratio = (total_trip_duration * trip.criteria["sport"].to_i) / 100
     ratio_duration = { "beach" => beach_ratio, "visit" => visit_ratio, "culture" => culture_ratio, "sport" => sport_ratio}
-    @total_trip_duration = total_trip_duration
     return ratio_duration
   end
 
-  def ratio_duration_double(trip, fixed_list)
+  def ratio_duration_double(trip, total_trip_duration)
     # calculates double ratio of duration of each criteria vs total duration of trip activity
-    total_trip_duration_double = ((trip.end_date - trip.start_date) / 86400) * 2 * 60 * 2 # -> nb days * 8h * 60min
-    total_fixed_trip_duration = total_duration(fixed_list)
-    total_trip_duration_double -= total_fixed_trip_duration
+    total_trip_duration_double = total_trip_duration * 2
     beach_ratio = (total_trip_duration_double * trip.criteria["beach"].to_i) / 100
     visit_ratio = (total_trip_duration_double * trip.criteria["visit"].to_i) / 100
     culture_ratio = (total_trip_duration_double * trip.criteria["culture"].to_i) / 100
     sport_ratio = (total_trip_duration_double * trip.criteria["sport"].to_i) / 100
     ratio_duration_double = { "beach" => beach_ratio, "visit" => visit_ratio, "culture" => culture_ratio, "sport" => sport_ratio}
-    # @total_trip_duration = total_trip_duration
     return ratio_duration_double
   end
 
