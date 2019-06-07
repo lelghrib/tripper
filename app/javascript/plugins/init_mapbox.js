@@ -31,12 +31,13 @@ const buildMap = () => {
 };
 
 const addMarkersToMap = (map, markers) => {
+  console.log('toto');
+  console.log(markers);
   markers.forEach((marker) => {
     const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
     new mapboxgl.Marker()
       .setLngLat([ marker.lng, marker.lat ])
       .setPopup(popup)
-
       .addTo(map);
   });
 };
@@ -91,8 +92,9 @@ const initMapbox = () => {
           "line-cap": "round"
         },
         "paint": {
-          "line-color": "#888",
-          "line-width": 8
+          "line-color": "#57b894",
+          "line-width": 5,
+          'line-opacity': .7
         }
       });
     });
