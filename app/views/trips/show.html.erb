@@ -12,7 +12,7 @@
 
 <div class="container" style = "margin: auto; height: 75vh;">
   <div class="d-flex mt-4 justify-content-around">
-    <div>
+    <div class="steps">
       <% @trip.steps.each do |step| %>
         <p> STEP - <%= step.city.name %></p>
      <% end %>
@@ -27,6 +27,8 @@
       <%= link_to "Go", details_trip_path(@trip) , class: "green-btn"%>
   </div>
 </div>
+
+<div class="test">  </div>
 
 
 
