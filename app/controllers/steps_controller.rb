@@ -54,7 +54,7 @@ class StepsController < ApplicationController
     @list_acti_beach_double = []
 
     # loop steps 7-12 to fill all user time for activities => 6h=360min of flexibility
-    #until (@user_time_activities_total - 360) > @time_activities_real || @activities.count == @list_acti_all_real.count do
+    #until (@user_time_activities_total - 360) >= @time_activities_real || @activities.size == @list_acti_all_real.size do
       # 7.step - calculate time per categorie for user preferences - time for fixed activities
       # time for activities by type
       @ratio_type_activities = ratio_duration(@trip, @user_time_activities_total)
@@ -90,7 +90,7 @@ class StepsController < ApplicationController
       # 11.step - recalculate real time of filtered activities by category, by ranking
       @time_activities_real = total_duration(@list_acti_all_real)
       # 12. step - recalculate total user time for activities
-      #@user_time_activities_total -= @time_activities_real
+      @user_time_activities_total -= @time_activities_real
     #end
 
     # 13.step - fix activities by categorie
@@ -220,22 +220,36 @@ class StepsController < ApplicationController
   end
 
   def ratio_duration(trip, total_trip_duration)
+    # total criteria user choice
+    total_criteria_choice = trip.criteria["beach"].to_i + trip.criteria["culture"].to_i + trip.criteria["visit"].to_i + trip.criteria["sport"].to_i
+    # calculate choices to 100%
+    beach_choice = trip.criteria["beach"].to_i * 100 / total_criteria_choice
+    culture_choice = trip.criteria["culture"].to_i * 100 / total_criteria_choice
+    sport_choice = trip.criteria["sport"].to_i * 100 / total_criteria_choice
+    visit_choice = trip.criteria["visit"].to_i * 100 / total_criteria_choice
     # calculates ratio of duration of each criteria vs total duration of trip activity
-    beach_ratio = (total_trip_duration * trip.criteria["beach"].to_i) / 100
-    visit_ratio = (total_trip_duration * trip.criteria["visit"].to_i) / 100
-    culture_ratio = (total_trip_duration * trip.criteria["culture"].to_i) / 100
-    sport_ratio = (total_trip_duration * trip.criteria["sport"].to_i) / 100
+    beach_ratio = (total_trip_duration * beach_choice) / 100
+    visit_ratio = (total_trip_duration * visit_choice) / 100
+    culture_ratio = (total_trip_duration * culture_choice) / 100
+    sport_ratio = (total_trip_duration * sport_choice) / 100
     ratio_duration = { "beach" => beach_ratio, "visit" => visit_ratio, "culture" => culture_ratio, "sport" => sport_ratio}
     return ratio_duration
   end
 
   def ratio_duration_double(trip, total_trip_duration)
+    # total criteria user choice
+    total_criteria_choice = trip.criteria["beach"].to_i + trip.criteria["culture"].to_i + trip.criteria["visit"].to_i + trip.criteria["sport"].to_i
+    # calculate choices to 100%
+    beach_choice = trip.criteria["beach"].to_i * 100 / total_criteria_choice
+    culture_choice = trip.criteria["culture"].to_i * 100 / total_criteria_choice
+    sport_choice = trip.criteria["sport"].to_i * 100 / total_criteria_choice
+    visit_choice = trip.criteria["visit"].to_i * 100 / total_criteria_choice
     # calculates double ratio of duration of each criteria vs total duration of trip activity
     total_trip_duration_double = total_trip_duration * 2
-    beach_ratio = (total_trip_duration_double * trip.criteria["beach"].to_i) / 100
-    visit_ratio = (total_trip_duration_double * trip.criteria["visit"].to_i) / 100
-    culture_ratio = (total_trip_duration_double * trip.criteria["culture"].to_i) / 100
-    sport_ratio = (total_trip_duration_double * trip.criteria["sport"].to_i) / 100
+    beach_ratio = (total_trip_duration_double * beach_choice) / 100
+    visit_ratio = (total_trip_duration_double * visit_choice) / 100
+    culture_ratio = (total_trip_duration_double * culture_choice) / 100
+    sport_ratio = (total_trip_duration_double * sport_choice) / 100
     ratio_duration_double = { "beach" => beach_ratio, "visit" => visit_ratio, "culture" => culture_ratio, "sport" => sport_ratio}
     return ratio_duration_double
   end
