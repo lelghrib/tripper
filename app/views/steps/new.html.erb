@@ -1,10 +1,10 @@
 
 <div class="tabs-container mt-3">
-     <div class="tab-button">1</div>
+     <div class="tab-button tab-active">1</div>
      <hr>
-     <div class="tab-button">2</div>
+     <div class="tab-button tab-active">2</div>
      <hr>
-     <div class="tab-button tab-active">3</div>
+     <div class="tab-button">3</div>
      <hr>
      <div class="tab-button">Go</div>
    </div>
@@ -77,13 +77,10 @@
                       <input type="checkbox"class="hidden check-culture" value="<%= acti_culture.id %>" name="activities_ids[]" id="step_activity_activity_ids_<%= acti_culture.id %>">
 
                       <div class="card" style="width: 18rem;">
-
-                        <%= image_tag acti_culture.photo, class: "card-img-top" %>
-                        <div class="card-body">
-                          <label for="step_activity_activity_ids_<%= acti_culture.id %>" class="activity-choice acti-cuture card-title">
-                            <%= acti_culture.name %>
-                          </label>
-                        </div>
+                        <label for="step_activity_activity_ids_<%= acti_culture.id %>" class="activity-choice acti-cuture card-title margin-none pb-2">
+                          <%= image_tag acti_culture.photo, class: "card-img-top" %>
+                          <div class="mt-2"> <%= acti_culture.name %>  </div>
+                        </label>
                       </div>
 
 
