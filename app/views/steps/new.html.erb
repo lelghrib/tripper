@@ -1,15 +1,22 @@
 
-<div class="tabs-container mt-3">
-     <div class="tab-button tab-active">1</div>
-     <hr>
-     <div class="tab-button tab-active">2</div>
-     <hr>
-     <div class="tab-button">3</div>
-     <hr>
-     <div class="tab-button">Go</div>
-   </div>
+  <div class="tabs-container mt-3">
+    <div class="tab-button tab-active">1</div>
+    <hr>
+    <div class="tab-button tab-active">2</div>
+    <hr>
+    <div class="tab-button">3</div>
+    <hr>
+    <div class="tab-button">Go</div>
+  </div>
+
+
    <div class="form-container-criteria-slider ">
-      <h1 class="mb-4 text-center form-header">Choose two activities</h1>
+     <% if @list_acti_culture_choose == [] && @list_acti_sport_choose == [] && @list_acti_visit_choose == [] && @list_acti_beach_choose == [] %>
+       <h1 class="mb-4 text-center form-header">Your preferences</h1>
+     <% else %>
+       <h1 class="mb-4 text-center form-header">Choose two activities</h1>
+     <% end %>
+
       <div class="d-flex justify-content-center">
           <div class="">
               <div class="form-post">
@@ -23,6 +30,25 @@
                   <input type="hidden" name="activities_fixed_ids[]" value="<%= @fixed_activities_ids %>">
                  <% end %>
               </div>
+              <!-- slider if no activities to choose -->
+              <% if @list_acti_culture_choose == [] && @list_acti_sport_choose == [] && @list_acti_visit_choose == [] && @list_acti_beach_choose == [] %>
+               <div class="d-flex">
+                 <div class="trip-info">
+                   <h3>From</h3>
+                   <p><%= @trip.arrival_city.name %></p>
+                   <p><%= @trip.start_date.strftime("%Y-%d-%m") %></p>
+                   <h3>To</h3>
+                   <p><%= @trip.departure_city.name %></p>
+                   <p><%= @trip.end_date.strftime("%Y-%d-%m") %></p>
+                 </div>
+                 <div class="user-preferences">
+                  <p>Culture: <%= @trip.criteria["culture"] %>%</p>
+                  <p>Sport: <%= @trip.criteria['sport'] %>%</p>
+                  <p>Visit: <%= @trip.criteria['visit'] %>%</p>
+                  <p>Beach: <%= @trip.criteria['beach'] %>%</p>
+                 </div>
+               </div>
+              <% end %>
 
               <!-- culture to choose -->
               <% unless @list_acti_culture_choose == [] %>
