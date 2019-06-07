@@ -7,6 +7,7 @@
     <p class="filter">Visit : <%= @trip.criteria["visit"] %>%</p>
   </div>
   <!-- <h3 class="form-header text-center">Timeline</h3> -->
+
   <div class=" timeline-container d-flex justify-content-around align-items-center mb-8">
     <% @trip.steps.each do |step| %>
       <p class="timeline"><%= step.city.name %></p>
@@ -42,7 +43,7 @@
 
     <div class="map sticky-top ">
     <div class="d-flex justify-content-end btn-save">
-      <%= link_to "Save", save_trip_path(@trip), method: :patch, class:'green-btn', data:{confirm:"Trip saved"} %>
+      <%= link_to "Save", save_trip_path(@trip), method: :patch, class:'green-btn' %>
     </div>
     <div
       id="map"
