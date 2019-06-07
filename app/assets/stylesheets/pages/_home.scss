@@ -6,6 +6,7 @@ body{
   background-size: cover;
   background-position: center;
   background-image: asset-url("homepage/Frame.png");
+  background-color: rgba(0,0,255,0.3);
   padding: 150px 0;
   height: 540px;
   margin-bottom: 79px;
@@ -23,11 +24,30 @@ body{
   color:white;
 }
 
-.banner a{
-  background-color:green;
-  color: white;
-  border-radius: 8px;
+.banner a {
+  background: #57B894;
+  border-radius: 7px;
+  color : white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 17px;
+  padding: 10px 15px;
+  font-weight: 600;
+  margin-top: 7vh;
+  margin-bottom: 7vh;
+  transition: all 0.4s ease;
+  text-align: center;
 }
+
+.banner a:hover{
+  text-decoration: none;
+  color:  #57B894;
+  background-color: inherit;
+  font-size: 20px;
+  border: 1px solid #57B894;
+  transition: all 0.4s ease;
+}
+
+
 
 .explications{
   height:auto;
@@ -104,3 +124,63 @@ body{
   color:white;
 
 }
+
+// // Paralax
+// html {
+//     overflow: hidden;
+// }
+// body {
+//     margin: 0;
+//     background-color:white;
+//     font-size: 26px;
+//     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+//     color: #ffffff;
+//     height: 100vh;
+//     perspective: 1px;
+//     transform-style: preserve-3d;
+//     overflow-x:hidden;
+//     overflow-y:auto;
+// }
+// .parallax-wrapper {
+//     width: 400vw;
+//     height: 100%;
+//     padding-top:20vh;
+//     box-sizing: border-box;
+//     transform-style: preserve-3d;
+// }
+
+// .parallax-wrapper::before {
+//     content:"";
+//     width: 100vw;
+//     height: 200vh;
+//     top:0;
+//     left:0;
+//     background-image: url("Wave.jpg");
+//     position: absolute;
+//     z-index: -1;
+//     transform:translateZ(-1px) scale(2);
+// }
+// .regular-wrapper {
+//     width: 100vw;
+//     height:100vh;
+//     padding-top:20vh;
+//     background-color: blue;
+//     // background-image: url("akab.jpg");
+//     z-index: 2;
+//     position: relative;
+// }
+// .content-a {
+//     margin: 0 auto;
+//     padding: 50px;
+//     width: 60%;
+//     background: #57b894;
+// }
+
+// .content-b {
+//     margin: 0 auto;
+//     padding: 50px;
+//     width: 50%;
+//     background: #aaa;
+// }
+
+
