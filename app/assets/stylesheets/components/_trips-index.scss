@@ -1,0 +1,26 @@
+.trip-index-container h5{
+  margin: 4em 0 5em 0;
+}
+.trip-index-container h2{
+  font-weight: 500;
+  color: #454D66;
+  font-family: 'Raleway', ‘Montserrat’, sans-serif;
+  font-size: 20px;
+}
+.trip-index-container {
+  margin: auto;
+  width:60vw;
+  margin-bottom: 8vh;
+}
+.trip-index-container a:hover {
+  text-decoration: inherit;
+  color:inherit;
+  background-color: inherit;
+  font-size: inherit;
+  transition: inherit;
+  border: inherit;
+}
+
+.trip-index-container a{
+  color: inherit;
+}
