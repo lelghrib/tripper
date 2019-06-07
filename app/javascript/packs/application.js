@@ -17,6 +17,14 @@ import {topFunction} from '../components/topbutton';
 // topFunction();
 
 // add active class on choosen activities
-import { checkboxclick } from './form';
-checkboxclick();
+import { checkboxclickculture, checkboxclickbeach, checkboxclickvisit, checkboxclicksport, checktwoculture, checktwosport, checktwovisit, checktwobeach } from './form';
+checkboxclickculture();
+checkboxclickbeach();
+checkboxclickvisit();
+checkboxclicksport();
+checktwoculture();
+checktwosport();
+checktwovisit();
+checktwobeach();
+
 
