@@ -1,5 +1,5 @@
 .card-product {
-  overflow: hidden;
+  overflow: scroll;
   height: 120px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
@@ -26,10 +26,8 @@
   opacity: .7;
   margin: 8px 5px 5px 5px;
   text-align: justify;
-
 }
 
 .card-product .card-product-infos {
   padding: 16px;
 }
-
