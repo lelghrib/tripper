@@ -8,11 +8,14 @@
   </div>
   <!-- <h3 class="form-header text-center">Timeline</h3> -->
   <div class=" timeline-container d-flex justify-content-around align-items-center mb-8">
-    <p class="timeline"><%= Step.last.city.name %></p>
-    <hr>
-    <p class="timeline"><%= Step.last.city.name %></p>
-    <hr>
-    <p class="timeline"><%= Step.first.city.name %></p>
+    <% @trip.steps.each do |step| %>
+      <p class="timeline"><%= step.city.name %></p>
+      <% if step.city != @trip.steps.last.city %>
+          <hr>
+      <% end %>
+    <% end %>
+
+
   </div>
   <!-- Modal -->
   <!--   <div class="modal fade" id="SaveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -49,52 +52,19 @@
     </div>
     <div class="list-activity">
       <h2 class="mb-8 trip-header text-center mt-4">Trip details</h3>
-      <div class="card-product">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"><!--<%= Activity.last.description %> -->
-        <div class="card-product-infos">
-          <h2><%= Trip.last.steps.last.city.name %></h2>
-          <p><%= Activity.last.description %></p>
-        </div>
-      </div>
 
-
-
-      <div class="card-product">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"><!--<%= Activity.last.description %> -->
-        <div class="card-product-infos">
-          <h2><%= Trip.last.steps.last.city.name %></h2>
-          <p><%= Activity.first.description %></p>
-        </div>
-      </div>
-
-
- <div class="card-product">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"><!--<%= Activity.last.description %> -->
-        <div class="card-product-infos">
-          <h2><%= Trip.last.steps.last.city.name %></h2>
-          <p><%= Activity.last.description %></p>
-        </div>
-      </div>
-
-
-<div class="card-product">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"><!--<%= Activity.last.description %> -->
-        <div class="card-product-infos">
-          <h2><%= Trip.last.steps.last.city.name %></h2>
-          <p><%= Activity.first.description %></p>
-        </div>
-      </div>
-
-
- <div class="card-product">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg"><!--<%= Activity.last.description %> -->
-        <div class="card-product-infos">
-          <h2><%= Trip.last.steps.last.city.name %></h2>
-          <p><%= Activity.last.description %></p>
-        </div>
-      </div>
-
-
+        <% @trip.steps.each do |step| %>
+          <p><%= step.city.name %></p>
+          <% step.activities.each do |activity| %>
+              <div class="card-product">
+              <%=image_tag(activity.photo) %>
+              <div class="card-product-infos">
+                <h2><%= activity.name %> (<%= activity.duration/60 %> h)</h2>
+                <p><%= activity.description %></p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
 
     </div>
   </div>
