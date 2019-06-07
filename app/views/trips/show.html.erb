@@ -13,18 +13,32 @@
 <div class="container" style = "margin: auto; height: 75vh;">
   <div class="d-flex mt-4 justify-content-around">
     <div class="steps">
-      <% @trip.steps.each do |step| %>
-        <p> STEP - <%= step.city.name %></p>
-     <% end %>
+      <h5 style="color:#86218e;"><i class="fas fa-map-marked-alt"></i> Your Trip</h5>
+        <br>
+      <p> <i class="fas fa-hourglass-half"></i>   <%= @trip.start_date.strftime("%Y-%d-%m")%> <strong>until</strong> <%= @trip.end_date.strftime("%Y-%d-%m") %></p>
+      <p> <i class="fas fa-suitcase-rolling"></i>   <%= @trip.arrival_city.name %> <i class="fas fa-arrow-right"></i>  <%= @trip.departure_city.name %></p>
      </div>
+
+     <div class="steps">
+      <h5 style ='color:#57b894;'><i class="fas fa-clipboard-check"></i> Your choices</h5>
+      <br>
+      <p><i class="fas fa-umbrella-beach"></i> Beach <i class="fas fa-arrow-right"></i> <%= @trip.criteria["beach"] %></p>
+      <p><i class="fas fa-walking"></i> Visit <i class="fas fa-arrow-right"></i> <%= @trip.criteria["visit"] %></p>
+      <p><i class="fas fa-chess-queen"></i> Culture <i class="fas fa-arrow-right"></i> <%= @trip.criteria["culture"] %></p>
+      <p><i class="fas fa-volleyball-ball"></i> Sport <i class="fas fa-arrow-right"></i <%= @trip.criteria["sport"] %></p>
+     </div>
+     <div class = "steps step-map">
+        <h5><i class="fab fa-leanpub"></i> Your itinerary</h5>
       <div
         id="map"
-        style="width: 50%;
+        style="width: 100%;
         height: 400px;"
         data-markers="<%= @markers.to_json %>"
         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
       ></div>
       <%= link_to "Go", details_trip_path(@trip) , class: "green-bouton"%>
+     </div>
+
   </div>
 </div>
 

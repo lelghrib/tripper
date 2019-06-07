@@ -1,8 +1,15 @@
 .steps{
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  height: 180px;
-  padding: 15px;
+  height: 250px;
+  padding: 20px;
+  min-width: 240px;
+}
+
+.step-map{
+  width: 400px;
+  position: relative;
+  height: auto;
 }
 
 #map{
@@ -11,10 +18,22 @@
 }
 
 .green-bouton{
-  height:50px;
-  width: 50px;
-  text-align: center;
-  position: relative;
-  left: -107px;
-  bottom: -283px;
+    background: #57B894;
+    border-radius: 37px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+    padding: 10px 15px;
+    font-weight: bold;
+    margin-top: 7vh;
+    margin-bottom: 7vh;
+    transition: all 0.4s ease;
+    text-align: center;
+    height: 37px;
+    width: 85px;
+    left: 295px;
+    bottom: -18px;
+    z-index: 2;
+    position: absolute;
+    line-height: 1em;
 }
