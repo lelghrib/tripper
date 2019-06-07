@@ -1,9 +1,12 @@
 
-<div class="container" style = "margin: auto; margin-top: 150px;">
-  <h5 class="mb-5">My trips ( <%= @trips.count %> )</h5>
+  <h3 class="trip-header text-center mt-15">List of your trips</h3>
+
+<div class="trip-index-container">
+<h5>My trips ( <%= @trips.count %> )</h5>
+
   <% @trips.reverse().each do |trip| %>
     <%= link_to details_trip_path (trip) do%>
-      <div class="card-trip my-3" style = "width: 80%; margin: auto;">
+      <div class="card-trip mb-6">
         <%= image_tag(trip.steps.first.activities.first.photo)%>
         <div class="card-trip-infos">
           <div>
