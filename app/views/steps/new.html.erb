@@ -15,6 +15,9 @@
               <div class="form-post">
               <!-- Inject categories here -->
               <p>all acti <%= @activities.count %></p>
+              <p>user time <%= @user_time_activities_total %></p>
+               <p>ratio <%= @ratio_type_activities %></p>
+              <p>ratio dubl <%= @ratio_type_activities_double %></p>
               <ul>
               <% @activities.each do |activity| %>
                  <li><%= activity.name %> - <%= activity.activity_types %></li>
@@ -26,7 +29,6 @@
               <p>all acti beach <%= @activities_beach.count %></p>
 
               <p>acti real cult <%= @list_acti_culture_real.count %></p>
-              <p>acti real <%= @list_acti_culture_real.count %></p>
 
               <% @list_acti_culture_real.each do |acti| %>
                 <%= acti.name %>
@@ -42,8 +44,6 @@
               <p>acti double beach <%= @list_acti_beach_double.count %></p>
               <p>acti real visit <%= @list_acti_visit_real.count %></p>
               <p>acti double visit <%= @list_acti_visit_double.count %></p>
-              <p>ratio <%= @ratio_type_activities %></p>
-              <p>ratio dubl <%= @ratio_type_activities_double %></p>
               <p>acti fix cul<%= @list_acti_culture_fixed.count %></p>
               <p>acti chose cul<%= @list_acti_culture_choose.count %></p>
               <p>acti fix sport<%= @list_acti_sport_fixed.count %></p>
