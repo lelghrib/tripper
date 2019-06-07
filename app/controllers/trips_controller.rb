@@ -143,7 +143,7 @@ require 'open-uri'
   def save
     @trip = Trip.find(params[:id])
     @trip.user = current_user if current_user.present?
-    @trip.save!
+    redirect_to tirps_path if @trip.save!
   end
 
   private
