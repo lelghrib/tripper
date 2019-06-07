@@ -14,7 +14,7 @@
      <% if @list_acti_culture_choose == [] && @list_acti_sport_choose == [] && @list_acti_visit_choose == [] && @list_acti_beach_choose == [] %>
        <h1 class="mb-4 text-center form-header">Your preferences</h1>
      <% else %>
-       <h1 class="mb-4 text-center form-header">Choose two activities</h1>
+       <h1 class="mb-4 text-center form-header">Choose two activities/ category</h1>
      <% end %>
 
       <div class="d-flex justify-content-center">
@@ -52,6 +52,7 @@
 
               <!-- culture to choose -->
               <% unless @list_acti_culture_choose == [] %>
+                <h5>CULTURE</h5>
                 <div class="form-group">
                   <input type="hidden" name="activities_ids[]" value="">
                   <div class="activity-choices">
@@ -73,6 +74,7 @@
               <% end %>
               <!-- Sport to choose -->
               <% unless @list_acti_sport_choose == [] %>
+              <h5>SPORT</h5>
                 <div class="form-group">
                   <input type="hidden" name="activities_ids[]" value="">
                   <div class="activity-choices">
@@ -94,6 +96,7 @@
               <% end %>
               <!-- visit to choose -->
               <% unless @list_acti_visit_choose == [] %>
+                <h5>VISIT</h5>
                 <div class="form-group">
                   <input type="hidden" name="activities_ids[]" value="">
                   <div class="activity-choices">
@@ -115,6 +118,7 @@
               <% end %>
               <!-- beach to choose -->
               <% unless @list_acti_beach_choose == [] %>
+                <h5>BEACH</h5>
                 <div class="form-group">
                   <input type="hidden" name="activities_ids[]" value="">
                   <div class="activity-choices">

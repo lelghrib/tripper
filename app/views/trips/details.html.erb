@@ -39,19 +39,19 @@
   <div class="d-flex justify-content-around ml-6 mr-6">
 
     <div class="map sticky-top">
-    <div class="d-flex justify-content-end ">
+    <div class="d-flex justify-content-end btn-save">
       <%= link_to "Save", save_trip_path(@trip), method: :patch, class:'green-btn', data:{confirm:"Trip saved"} %>
     </div>
     <div
       id="map"
       style="width: auto;
-      height: 85vh;"
+      height: 100%;"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     ></div>
     </div>
     <div class="list-activity">
-      <h2 class="mb-8 trip-header text-center mt-4">Trip details</h3>
+      <h2 class="trip-header text-center">Trip details</h3>
 
         <% @trip.steps.each do |step| %>
           <p><%= step.city.name %></p>
