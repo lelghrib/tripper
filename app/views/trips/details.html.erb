@@ -1,4 +1,4 @@
-<div class="mt-10 mb-4 bg">
+<div class="mt-6 mb-4 bg">
   <h3 class="trip-header text-center mb-4 ">Discover your Trip</h3>
   <div class="preferences d-flex justify-content-center mb-6">
     <p class="filter">Beach : <%= @trip.criteria["beach"] %>%</p>
@@ -14,9 +14,7 @@
       <% end %>
   </div>
 
-
   <div class=" timeline-container d-flex justify-content-around align-items-center mb-8">
-
     <% counter = 0 %>
     <% @trip.steps.each do |step| %>
       <p class="timeline"><%= counter += 1 %></p>
@@ -24,8 +22,6 @@
           <hr>
       <% end %>
     <% end %>
-
-
   </div>
   <!-- Modal -->
   <!--   <div class="modal fade" id="SaveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
