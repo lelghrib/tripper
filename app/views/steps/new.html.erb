@@ -1,63 +1,19 @@
 
 <div class="tabs-container mt-3">
-     <div class="tab-button">1</div>
+     <div class="tab-button tab-active">1</div>
      <hr>
-     <div class="tab-button">2</div>
+     <div class="tab-button tab-active">2</div>
      <hr>
-     <div class="tab-button tab-active">3</div>
+     <div class="tab-button">3</div>
      <hr>
      <div class="tab-button">Go</div>
    </div>
    <div class="form-container-criteria-slider ">
       <h1 class="mb-4 text-center form-header">Choose two activities</h1>
       <div class="d-flex justify-content-center">
-          <div class="mt-8">
+          <div class="">
               <div class="form-post">
-              <!-- Inject categories here -->
-              <p>all acti <%= @activities.count %></p>
-              <p>user time <%= @user_time_activities_total %></p>
-               <p>ratio <%= @ratio_type_activities %></p>
-              <p>ratio dubl <%= @ratio_type_activities_double %></p>
-              <ul>
-              <% @activities.each do |activity| %>
-                 <li><%= activity.name %> - <%= activity.activity_types %></li>
-              <% end %>
-              </ul>
-              <p>all acti cult <%= @activities_culture.count %></p>
-              <p>all acti sport <%= @activities_sport.count %></p>
-              <p>all acti visit <%= @activities_visit.count %></p>
-              <p>all acti beach <%= @activities_beach.count %></p>
-
-              <p>acti real cult <%= @list_acti_culture_real.count %></p>
-
-              <% @list_acti_culture_real.each do |acti| %>
-                <%= acti.name %>
-              <% end %>
-              <p>acti double cult <%= @list_acti_culture_double.count %></p>
-              <% @list_acti_culture_double.each do |acti| %>
-                <%= acti.name %>
-              <% end %>
-
-              <p>acti real sport <%= @list_acti_sport_real.count %></p>
-              <p>acti double sport <%= @list_acti_sport_double.count %></p>
-              <p>acti real beach <%= @list_acti_beach_real.count %></p>
-              <p>acti double beach <%= @list_acti_beach_double.count %></p>
-              <p>acti real visit <%= @list_acti_visit_real.count %></p>
-              <p>acti double visit <%= @list_acti_visit_double.count %></p>
-              <p>acti fix cul<%= @list_acti_culture_fixed.count %></p>
-              <p>acti chose cul<%= @list_acti_culture_choose.count %></p>
-              <p>acti fix sport<%= @list_acti_sport_fixed.count %></p>
-              <p>acti chose sport<%= @list_acti_sport_choose.count %></p>
-              <p>acti fix visit<%= @list_acti_visit_fixed.count %></p>
-              <p>acti chose visit<%= @list_acti_visit_choose.count %></p>
-              <p>acti fix beach<%= @list_acti_beach_fixed.count %></p>
-              <p>acti chose beach <%= @list_acti_beach_choose.count %></p>
-
-
-
-
-
-
+              <div class="row">
 
 
               <%= simple_form_for([@trip, @step]) do |f| %>
@@ -74,16 +30,14 @@
                   <input type="hidden" name="activities_ids[]" value="">
                   <div class="activity-choices">
                     <% @list_acti_culture_choose.each do |acti_culture| %>
-                      <input type="checkbox"class="hidden check-culture" value="<%= acti_culture.id %>" name="activities_ids[]" id="step_activity_activity_ids_<%= acti_culture.id %>">
 
-                      <div class="card" style="width: 18rem;">
 
-                        <%= image_tag acti_culture.photo, class: "card-img-top" %>
-                        <div class="card-body">
-                          <label for="step_activity_activity_ids_<%= acti_culture.id %>" class="activity-choice acti-cuture card-title">
-                            <%= acti_culture.name %>
-                          </label>
-                        </div>
+                      <div class="card col-sm-5 mb-5" style="width: 18rem;">
+                        <input type="checkbox"class="hidden check-culture" value="<%= acti_culture.id %>" name="activities_ids[]" id="step_activity_activity_ids_<%= acti_culture.id %>">
+                        <label for="step_activity_activity_ids_<%= acti_culture.id %>" class="activity-choice acti-cuture card-title margin-none pb-2">
+                          <%= image_tag acti_culture.photo, class: "card-img-top" %>
+                          <div class="mt-2"> <%= acti_culture.name %>  </div>
+                        </label>
                       </div>
 
 
@@ -96,12 +50,18 @@
                 <div class="form-group">
                   <input type="hidden" name="activities_ids[]" value="">
                   <div class="activity-choices">
-                    <% @list_acti_sport_choose.each do |acti_sport| %>
-                      <input type="checkbox"class="hidden check-sport" value="<%= acti_sport.id %>" name="activities_ids[]" id="step_activity_activity_ids_<%= acti_sport.id %>">
-                      <label for="step_activity_activity_ids_<%= acti_sport.id %>" class="activity-choice acti-sport">
-                        <%= acti_sport.name %>
-                        <i class="fa fa-check"></i>
-                      </label>
+                    <% @list_acti_culture_choose.each do |acti_sport| %>
+
+
+                      <div class="card col-sm-5 mb-5" style="width: 18rem;">
+                        <input type="checkbox"class="hidden check-sport" value="<%= acti_sport.id %>" name="activities_ids[]" id="step_activity_activity_ids_<%= acti_sport.id %>">
+                        <label for="step_activity_activity_ids_<%= acti_sport.id %>" class="activity-choice acti-sport card-title margin-none pb-2">
+                          <%= image_tag acti_sport.photo, class: "card-img-top" %>
+                          <div class="mt-2"> <%= acti_sport.name %>  </div>
+                        </label>
+                      </div>
+
+
                     <% end %>
                    </div>
                 </div>
@@ -112,11 +72,17 @@
                   <input type="hidden" name="activities_ids[]" value="">
                   <div class="activity-choices">
                     <% @list_acti_visit_choose.each do |acti_visit| %>
-                      <input type="checkbox"class="hidden check-visit" value="<%= acti_visit.id %>" name="activities_ids[]" id="step_activity_activity_ids_<%= acti_visit.id %>">
-                      <label for="step_activity_activity_ids_<%= acti_visit.id %>" class="activity-choice acti-visit">
-                        <%= acti_visit.name %>
-                        <i class="fa fa-check"></i>
-                      </label>
+
+
+                      <div class="card col-sm-5 mb-5" style="width: 18rem;">
+                        <input type="checkbox"class="hidden check-visit" value="<%= acti_visit.id %>" name="activities_ids[]" id="step_activity_activity_ids_<%= acti_visit.id %>">
+                        <label for="step_activity_activity_ids_<%= acti_visit.id %>" class="activity-choice acti-visit card-title margin-none pb-2">
+                          <%= image_tag acti_visit.photo, class: "card-img-top" %>
+                          <div class="mt-2"> <%= acti_visit.name %>  </div>
+                        </label>
+                      </div>
+
+
                     <% end %>
                    </div>
                 </div>
@@ -127,11 +93,17 @@
                   <input type="hidden" name="activities_ids[]" value="">
                   <div class="activity-choices">
                     <% @list_acti_beach_choose.each do |acti_beach| %>
-                      <input type="checkbox"class="hidden check-beach" value="<%= acti_beach.id %>" name="activities_ids[]" id="step_activity_activity_ids_<%= acti_beach.id %>">
-                      <label for="step_activity_activity_ids_<%= acti_beach.id %>" class="activity-choice acti-beach">
-                        <%= acti_beach.name %>
-                        <i class="fa fa-check"></i>
-                      </label>
+
+
+                      <div class="card col-sm-5 mb-5" style="width: 18rem;">
+                        <input type="checkbox"class="hidden check-beach" value="<%= acti_beach.id %>" name="activities_ids[]" id="step_activity_activity_ids_<%= acti_beach.id %>">
+                        <label for="step_activity_activity_ids_<%= acti_beach.id %>" class="activity-choice acti-beach card-title margin-none pb-2">
+                          <%= image_tag acti_beach.photo, class: "card-img-top" %>
+                          <div class="mt-2"> <%= acti_beach.name %>  </div>
+                        </label>
+                      </div>
+
+
                     <% end %>
                    </div>
                 </div>
@@ -140,6 +112,8 @@
               <%#= f.input :content, placeholder: "In this tutorial..." %>
               <%= f.submit "Go", class: "green-btn"  %>
             <% end %>
+            </div>
+
             </div>
          </div>
     </div>

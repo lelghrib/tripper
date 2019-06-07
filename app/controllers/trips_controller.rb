@@ -5,6 +5,7 @@ require 'open-uri'
 
   def index
     @trips = Trip.where(user: current_user)
+
   end
 
   def new
@@ -39,11 +40,12 @@ require 'open-uri'
   end
   def steps_to_map(steps)
     # .select {|item| !(item[:lat].nil? || item[:long].nil?)}.
-    steps.each do |step|
-      @markers =      {
-        lat: step['location'][0],
-        lng: step['location'][1]
-      }
+
+      @markers = steps.map do |step|
+       {
+        lat: step['location'][1],
+        lng: step['location'][0]
+        }
     end
   end
 
