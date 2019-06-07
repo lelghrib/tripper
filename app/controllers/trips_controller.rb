@@ -5,6 +5,7 @@ require 'open-uri'
 
   def index
     @trips = Trip.where(user: current_user)
+
   end
 
   def new
@@ -143,7 +144,7 @@ require 'open-uri'
   def save
     @trip = Trip.find(params[:id])
     @trip.user = current_user if current_user.present?
-    redirect_to tirps_path if @trip.save!
+    redirect_to trips_path if @trip.save!
   end
 
   private
