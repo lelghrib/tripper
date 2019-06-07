@@ -1,6 +1,8 @@
 class TripsController < ApplicationController
 require 'json'
 require 'open-uri'
+
+
   def index
     @trips = Trip.where(user: current_user)
   end
