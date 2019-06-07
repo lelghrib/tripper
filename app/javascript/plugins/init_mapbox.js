@@ -92,8 +92,9 @@ const initMapbox = () => {
           "line-cap": "round"
         },
         "paint": {
-          "line-color": "#888",
-          "line-width": 8
+          "line-color": "#57b894",
+          "line-width": 5,
+          'line-opacity': .7
         }
       });
     });
