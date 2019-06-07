@@ -70,7 +70,7 @@
 }
 
 .sticky-top{
-  top:-1px;
+  top: 0px;
 }
 .sticky-top a {
   margin: 3vh 3vh 0 0;
@@ -87,6 +87,7 @@
   border-radius: 15px;
   padding: 0px 25px 25px 25px;
 }
+
 // .list-activity h2{
 //   font-weight: 600;
 //   color: rgba(69, 77, 102, 0.8);;
