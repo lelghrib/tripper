@@ -1,26 +1,24 @@
-<div class="mt-6 mb-4 bg">
-  <h3 class="trip-header text-center mb-4 ">Discover your Trip</h3>
-  <div class="preferences d-flex justify-content-center mb-6">
+<div class="pt-6 mb-4 bg">
+  <h3 class="trip-header text-center mb-2 ">Discover your Trip</h3>
+  <div class="preferences d-flex justify-content-center">
     <p class="filter">Beach : <%= @trip.criteria["beach"] %>%</p>
     <p class="filter">Sport : <%= @trip.criteria["sport"] %>%</p>
     <p class="filter">Culture : <%= @trip.criteria["culture"] %>%</p>
     <p class="filter">Visit : <%= @trip.criteria["visit"] %>%</p>
   </div>
   <!-- <h3 class="form-header text-center">Timeline</h3> -->
-
-<div class="timeline-cities d-flex justify-content-between align-items-center">
-   <% @trip.steps.each do |step| %>
-      <h2><%= step.city.name %></h2>
-      <% end %>
+  <div class="timeline-cities d-flex justify-content-between align-items-center">
+    <% @trip.steps.each do |step| %>
+    <h2><%= step.city.name %></h2>
+    <% end %>
   </div>
-
-  <div class=" timeline-container d-flex justify-content-around align-items-center mb-8">
+  <div class=" timeline-container d-flex justify-content-around align-items-center mb-5">
     <% counter = 0 %>
     <% @trip.steps.each do |step| %>
-      <p class="timeline"><%= counter += 1 %></p>
-      <% if step.city != @trip.steps.last.city %>
-          <hr>
-      <% end %>
+    <p class="timeline"><%= counter += 1 %></p>
+    <% if step.city != @trip.steps.last.city %>
+    <hr>
+    <% end %>
     <% end %>
   </div>
   <!-- Modal -->
@@ -42,44 +40,37 @@
       </div>
     </div>
   </div> -->
-
   <div class="d-flex justify-content-around ml-6 mr-6 sticky-map-trip">
-
-
     <div class="map sticky-top ">
-    <div class="d-flex justify-content-end btn-save">
-      <%= link_to "Save", save_trip_path(@trip), method: :patch, class:'green-btn' %>
-    </div>
-    <div
-      id="map"
-      style="width: auto;
-      height: 100%;"
-      data-markers="<%= @markers.to_json %>"
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-    ></div>
+      <div class="d-flex justify-content-end btn-save">
+        <%= link_to "Save", save_trip_path(@trip), method: :patch, class:'green-btn' %>
+      </div>
+      <div
+        id="map"
+        style="width: auto;
+        height: 100%;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+      ></div>
     </div>
     <div class="list-activity">
       <h2 class="trip-header text-center">Trip details</h3>
-
-        <% @trip.steps.each do |step| %>
-          <p><%= step.city.name %></p>
-          <% step.activities.each do |activity| %>
-              <div class="card-product">
-              <%=image_tag(activity.photo) %>
-              <div class="card-product-infos">
-                <h2><%= activity.name %> (<%= activity.duration/60 %> h)</h2>
-                <p>View details ...</p>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-
+      <% @trip.steps.each do |step| %>
+      <p><%= step.city.name %></p>
+      <% step.activities.each do |activity| %>
+      <div class="card-product">
+        <%=image_tag(activity.photo) %>
+        <div class="card-product-infos">
+          <h2><%= activity.name %> (<%= activity.duration/60 %> h)</h2>
+          <p>View details ...</p>
+        </div>
+      </div>
+      <% end %>
+      <% end %>
     </div>
   </div>
-
 </div>
 <!--   <div class="step-details d-flex">
   <p>Step 1</p>
 </div>
 -->
-
