@@ -49,8 +49,8 @@ a:hover {
   color:  #57B894;
   background-color: inherit;
   font-size: 16px;
-  border: 1px solid #57B894;
-  border-radius: 5em;
+  border-bottom: 2px solid #57B894;
+  // border-radius: 5em;
   transition: all 0.4s ease;
 }
 
@@ -70,8 +70,8 @@ a:hover {
 }
 
 .form-shared-links a:hover {
-    background-color: #57B894;
-    color: white;
+    border: 1px solid #57B894;
+    color: #57B894;
     transition: all 0.5s ease;
     padding: 1%;
 }
@@ -79,3 +79,9 @@ a:hover {
 .btn-next{
   margin: auto;
 }
+
+i.far.fa-arrow-alt-circle-up {
+    color: #5AB894;
+    font-size: 1em;
+}
+

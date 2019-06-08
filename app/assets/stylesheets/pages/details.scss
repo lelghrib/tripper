@@ -8,7 +8,9 @@
   // background-color: #FAFCFE;
   background-color: rgba(231, 229, 229, 0.05);
 }
-
+// .preferences{
+//   width: 70vh;
+// }
 .trip-header{
   font-weight: 600;
   color: rgba(69, 77, 102, 0.9);;
@@ -23,17 +25,13 @@
   left: 520px;
 }
 
-.preferences{
-  padding-left: 85px;
-}
-
 .filter {
   width: 8em;
   margin: 46px 12px;
   padding: 7px;
   text-align: center;
   border-radius: 25px;
-  border: 1px solid rgba(69,77,102,0.7);
+  border: 0.5px solid rgba(69,77,102,0.2);
   color: #454D66;
   transition: all 0.5s ease;
 }
@@ -44,7 +42,7 @@
   font-size: 20px;
 }
 .timeline-cities{
-    margin: 3vw 9vw 0 9vw;
+    margin: 0vw 9vw 0 9vw;
 }
 
 // .filter:hover{
@@ -54,7 +52,7 @@
 //   transition: all 0.5s ease;
 // }
 .timeline-container{
-  margin: 3vw 10vw 7vw 10vw;
+  margin: 1vw 10vw 7vw 10vw;
 }
 .timeline {
   background-color: rgba(69, 77, 102, 0.9);
@@ -69,33 +67,31 @@
 }
 .map{
   height: 90vh;
-  width: 600px;
+  width: 70vh;
   border-radius:8px;
   background-color: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin-top: 5vh;
 }
 .sticky-map-trip{
   position: sticky;
-  top: 0;
+  top: 10px;
 }
 
-.sticky-top{
-  top: 0px;
-}
 .sticky-top a {
   margin: 3vh 3vh 0 0;
 }
 
 .list-activity{
-  width: 40%;
+  width: 45%;
   height: 90vh;
   background-color: white;
   margin-left: 10px;
   overflow: scroll;
-  // box-shadow: 0 0 2px rgba(0,0,0,0.1);
+  // box-shadow: 0 0 5px rgba(0,0,0,0.05);
   // border: 1px solid rgba(69, 77, 102, 0.1);
   border-radius: 15px;
-  padding: 0px 25px 25px 25px;
+  padding: 25px 25px 25px 25px;
 }
 
 // .list-activity h2{
