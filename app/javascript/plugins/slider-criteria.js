@@ -8,7 +8,7 @@ $('.criteria-slider').slick({
   slidesToShow:1,
   dots: true,
   infinite: false,
-  centerMode: true,
+  centerMode: false,
   cssEase: 'linear',
   dotted: false
 });

@@ -1,6 +1,6 @@
 
-
-<div class="tabs-container mt-3">
+<h2 class="trip-header text-center">Our proposition</h2>
+<div class="tabs-container">
     <div class="tab-button">1</div>
     <hr>
     <div class="tab-button">2</div>
@@ -36,7 +36,7 @@
         data-markers="<%= @markers.to_json %>"
         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
       ></div>
-      <%= link_to "Go", details_trip_path(@trip) , class: "green-bouton"%>
+      <%= link_to "Go to Trip Details", details_trip_path(@trip) , class: "green-btn"%>
      </div>
 
   </div>
