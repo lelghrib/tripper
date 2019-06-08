@@ -8,9 +8,7 @@
 }
 
 .form-container-criteria-slider{
-  // margin: auto;
   margin-bottom: 3vh;
-  // padding-top: 2vh;
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -19,14 +17,13 @@
   background-color: #FEFEFE;
 }
 .trip-header-new{
-  font-weight: 600;
-  color: rgba(69, 77, 102, 0.9);
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  color: white;
+  background-color: rgba(69, 77, 102, 0.9);
   font-family: 'Montserrat', sans-serif;
   font-size: 30px;
-  // border-top: 0.5px solid rgba(69, 77, 102, 0.5);
-  // border-bottom: 0.5px solid rgba(69, 77, 102, 0.5);
-  margin: 0 37vw;
-  padding: 0.5em;
+  padding: 1.5em;
   // border-radius: 10px;
 }
 .form-header{
@@ -48,8 +45,8 @@
 }
 .form-control {
   border: inherit;
-  border-bottom: 1px solid #ced4da;
-  color: #454D66;
+  border-bottom: 1px solid rgba(87, 95, 117, 0.3);
+  color: rgba(87, 95, 117, 0.8);
 }
 
 .form-inputs{

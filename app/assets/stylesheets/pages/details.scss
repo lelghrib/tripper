@@ -11,18 +11,30 @@
 // .preferences{
 //   width: 70vh;
 // }
-.trip-header{
-  font-weight: 600;
-  color: rgba(69, 77, 102, 0.9);;
+h2.trip-header{
+  font-weight: 400;
+  color: white;
+  background-color: rgba(69, 77, 102, 0.9);;
   font-family: 'Raleway', ‘Montserrat’, sans-serif;
   font-size: 32px;
+  padding: 1.5em;
+  letter-spacing: 0.2em;
+  margin-bottom: 0;
 }
-
+h3.trip-header{
+  font-weight: 400;
+  color: white;
+  background-color: rgba(69, 77, 102, 0.9);;
+  font-family: 'Raleway', ‘Montserrat’, sans-serif;
+  font-size: 28px;
+  padding: 0.5em;
+  letter-spacing: 0.2em;
+  border-radius: 5px;
+}
 .btn{
   color:white;
   margin: 8px;
   position: relative;
-  left: 520px;
 }
 
 .filter {
@@ -30,7 +42,7 @@
   margin: 46px 12px;
   padding: 7px;
   text-align: center;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 0.5px solid rgba(69,77,102,0.2);
   color: #454D66;
   transition: all 0.5s ease;

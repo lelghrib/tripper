@@ -1,5 +1,5 @@
-<div class="pt-6 mb-4 bg">
-  <h3 class="trip-header text-center mb-2 ">Discover your Trip</h3>
+<div class="mb-4">
+  <h2 class="trip-header text-center mb-2 ">Discover your Trip</h2>
   <div class="preferences d-flex justify-content-center">
     <p class="filter">Beach : <%= @trip.criteria["beach"] %>%</p>
     <p class="filter">Sport : <%= @trip.criteria["sport"] %>%</p>
@@ -54,7 +54,7 @@
       ></div>
     </div>
     <div class="list-activity">
-      <h2 class="trip-header text-center">Trip details</h3>
+      <h3 class="trip-header text-center">Trip's details</h3>
       <% @trip.steps.each do |step| %>
       <p><%= step.city.name %></p>
       <% step.activities.each do |activity| %>
