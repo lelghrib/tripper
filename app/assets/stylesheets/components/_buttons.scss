@@ -1,45 +1,45 @@
 .green-btn {
-  background: #57B894;
-  border-radius: 37px;
+  background: rgba(90, 184, 148, 1);
+  border-radius: 8px;
   color : white;
   font-family: 'Montserrat', sans-serif;
-  font-size: 17px;
-  padding: 10px 15px;
+  font-size: 16px;
+  padding: 0.5em 1.5em;
   font-weight: bold;
   margin-top: 7vh;
   margin-bottom: 7vh;
   transition: all 0.4s ease;
   text-align: center;
+  letter-spacing: 0.1em;
 }
 
 .green-btn:hover{
   text-decoration: none;
   color:  #57B894;
   background-color: inherit;
-  font-size: 20px;
+  font-size: 17px;
   border: 1px solid #57B894;
   transition: all 0.4s ease;
 }
 
 .green-btn-criteria {
-  background: #57B894;
-  border-radius: 37px;
-  color : white;
+  letter-spacing: 0.1em;
+  background: rgba(90, 184, 148, 1);
+  border-radius: 8px;
+  color: white;
   font-family: 'Montserrat', sans-serif;
-  font-size: 17px;
-  padding: 10px 25px;
+  font-size: 16px;
+  padding: 0.5em 1.5em;
   font-weight: bold;
-  margin-top: 7vh;
-  margin-bottom: 7vh;
+  margin: 1em 0em 0em 1em;
   transition: all 0.4s ease;
-  text-align: center;
 }
 
 .green-btn-criteria:hover{
   text-decoration: none;
   color:  #57B894;
   background-color: inherit;
-  font-size: 20px;
+  font-size: 17px;
   border: 1px solid #57B894;
   transition: all 0.4s ease;
 }
@@ -76,8 +76,5 @@ a:hover {
     padding: 1%;
 }
 
-.btn-next{
-  margin: auto;
-}
 
 
