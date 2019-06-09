@@ -21,7 +21,7 @@ h2.trip-header{
   letter-spacing: 0.2em;
   margin-bottom: 0;
 }
-h3.trip-header{
+h3.trip-header, h3.trip-header-green{
   font-weight: 400;
   color: white;
   background-color: rgba(69, 77, 102, 0.9);;
@@ -30,6 +30,10 @@ h3.trip-header{
   padding: 0.5em;
   letter-spacing: 0.2em;
   border-radius: 5px;
+}
+h3.trip-header-green{
+  background-color: #5AB794;
+
 }
 .btn{
   color:white;
