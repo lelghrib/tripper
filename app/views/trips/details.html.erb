@@ -56,7 +56,7 @@
     <div class="list-activity">
       <h3 class="trip-header text-center">Trip's details</h3>
       <% @trip.steps.each do |step| %>
-      <p><%= step.city.name %></p>
+      <p id="<%= step.city.name %>"><%= step.city.name %></p>
       <% step.activities.each do |activity| %>
       <div class="card-product">
         <%=image_tag(activity.photo) %>
