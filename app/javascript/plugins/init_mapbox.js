@@ -53,7 +53,8 @@ const initMapbox = () => {
     addMarkersToMap(map, markers);
     fitMapToMarkers(map, markers);
 
-    // console.log(markers);
+//--------------------------- START ------------------------------
+//-------------- Drawing routes between markers ----------------
     let coordinates = [];
     markers.forEach ((marker) => {
       let coordinate = [];
@@ -61,13 +62,7 @@ const initMapbox = () => {
       coordinate.push(marker.lat);
       coordinates.push(coordinate);
     });
-    // console.log(coordinates);
-    // {lat: 41.900796, lng: 12.4834874},
-    // {lat: 41.9112542, lng: 12.4785194843013}
-    // =>
-    // [
-    //   [12.4834874,41.900796], [12.4785194843013,41.9112542]
-    // ]
+
     map.on('load', function () {
 
       map.addLayer({
@@ -95,8 +90,9 @@ const initMapbox = () => {
         }
       });
     });
+//-------------- Drawing routes between markers ----------------
+//--------------------------- END ------------------------------
 
-    //calculateRoute(map, [48.8587741,2.2069771], [43.2803051,5.2404128])
   }
 };
 export { initMapbox };
