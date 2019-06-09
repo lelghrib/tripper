@@ -29,7 +29,7 @@ h3.trip-header, h3.trip-header-green{
   font-size: 20px;
   padding: 0.5em;
   letter-spacing: 0.2em;
-  border-radius: 5px;
+  border-radius: 5px 5px 0 0;
 }
 h3.trip-header-green{
   background-color: #5AB794;
@@ -40,18 +40,23 @@ h3.trip-header-green{
   margin: 8px;
   position: relative;
 }
-
-.filter {
-  width: 8em;
-  margin: 1.5em 0.5em;
-  padding: 4px;
+.preferences{
+  width: 70vw;
+  margin: auto;
+}
+.filter, {
+  width: 15vw;
+  margin: 2em 0em;
+  padding: 0.5em;
   text-align: center;
   border-radius: 5px;
-  border: 0.5px solid rgba(69, 77, 102, 0.2);
-  color: #454D66;
-  transition: all 0.5s ease;
+  border: 1px solid rgba(90, 183, 148, 0.3);
+  color: rgb(90, 183, 148);
   font-size: 16px;
 }
+ .filter > i {
+  margin-right: 0.5em;
+ }
 .timeline-cities h2{
   font-weight: 500;
   color: #454D66;
@@ -83,7 +88,7 @@ p.timeline {
   background-color: rgba(69, 77, 102, 0.9);
   color: white;
   border-radius: 50%;
-  padding: 0.3em 0.8em;
+  padding: 0.5em 1em;
   width: fit-content;
 }
 .car-icon{
