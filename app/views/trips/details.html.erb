@@ -71,11 +71,15 @@
        <% counter = 0 %>
       <% @trip.steps.each do |step| %>
 
+
         <div style="display: flex; align-items: center; justify-content: center;">
           <p class="timeline-details"><%= counter += 1 %></p>
  </div>
       <p class="city-name text-center pb-3"><%= step.city.name %></p>
  <%= link_to details_trip_path (@trip), class:'details-links' do%>
+
+=======
+      <p id="<%= step.city.name %>"><%= step.city.name %></p>
 
       <% step.activities.each do |activity| %>
        <div class="card-product">

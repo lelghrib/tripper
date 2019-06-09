@@ -1,5 +1,11 @@
-  <div class="activity-title d-flex justify-content-between align-items-center pl-3 pr-3" style="height: 60px;">
-    <h4 style="min-width: 50px; ">Great city</h4>
 
+<div class="card" >
+  <div class="card-body">
+    <h5 class="card-title"><%= step.city.name %></h5>
+    <h6 class="card-subtitle mb-2 text-muted">duration : <%= step.duration %></h6>
+    <p class="card-text">distance to next step <%= api_step['distance'] %> <%=%>m</p>
+
+    <a href="#" class="card-link"> <a href="#<%= step.city.name %>">Details</a></a>
+
+  </div>
 </div>
-
