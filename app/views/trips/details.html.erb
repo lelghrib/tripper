@@ -7,20 +7,29 @@
     <p class="filter">Visit : <%= @trip.criteria["visit"] %>%</p>
   </div>
   <!-- <h3 class="form-header text-center">Timeline</h3> -->
+
+
   <div class="mb-6 timeline-cities d-flex justify-content-between align-items-center">
     <% @trip.steps.each do |step| %>
     <h2><%= step.city.name %></h2>
     <% end %>
   </div>
-  <div class=" timeline-container d-flex justify-content-around align-items-center mb-5">
+  <div class="timeline-container d-flex justify-content-around align-items-center mb-5">
     <% counter = 0 %>
     <% @trip.steps.each do |step| %>
     <p class="timeline"><%= counter += 1 %></p>
     <% if step.city != @trip.steps.last.city %>
+      <!-- <div class="d-flex justify-content-center align-items-center">
+
+        <h2 class="car-icon"><i class="fas fa-car"></i></h2>
+      </div> -->
+
     <hr>
     <% end %>
     <% end %>
   </div>
+
+
   <!-- Modal -->
   <!--   <div class="modal fade" id="SaveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -58,22 +67,42 @@
       ></div>
     </div>
     <div class="list-activity">
-      <h3 class="trip-header text-center">Trip's details</h3>
+      <h3 class="trip-header text-center mb-4">Trip's details</h3>
+       <% counter = 0 %>
       <% @trip.steps.each do |step| %>
+
+
+        <div style="display: flex; align-items: center; justify-content: center;">
+          <p class="timeline-details"><%= counter += 1 %></p>
+ </div>
+      <p class="city-name text-center pb-3"><%= step.city.name %></p>
+ <%= link_to details_trip_path (@trip), class:'details-links' do%>
+
+=======
       <p id="<%= step.city.name %>"><%= step.city.name %></p>
+
       <% step.activities.each do |activity| %>
-      <div class="card-product">
+       <div class="card-product">
         <%=image_tag(activity.photo) %>
         <div class="card-product-infos">
-          <h2><%= activity.name %> (<%= activity.duration/60 %> h)</h2>
-          <p>View details ...</p>
+          <h2><%= activity.name %></h2>
+          <p><i class="far fa-clock"></i>About :
+<%= activity.duration/60 %>h</p>
+          <p class="green">View details ...</p>
         </div>
       </div>
+            <% end %>
+
       <% end %>
       <% end %>
+
     </div>
+
   </div>
+
+
 </div>
+   </a>
 <!--   <div class="step-details d-flex">
   <p>Step 1</p>
 </div>
