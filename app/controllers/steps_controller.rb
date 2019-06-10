@@ -1,4 +1,9 @@
+require 'pry-byebug'
+
 class StepsController < ApplicationController
+
+  DUR_ACTIVITY_PER_DAY = 2 * 60
+
   def index
     @steps = Step.all
   end
@@ -36,7 +41,7 @@ class StepsController < ApplicationController
       activity == departure_city_activities.first
     end
     # 3.step -  calculate total time of user for activities
-    @user_time_activities_total = ((@trip.end_date - @trip.start_date) / 86400) * 2 * 60 # -> nb days * 2h * 60min
+    @user_time_activities_total = ((@trip.end_date - @trip.start_date) / 86400) * DUR_ACTIVITY_PER_DAY  # -> nb days * activity duration per day (en heures)
     # 4.step - total user time minus time of fixed activitites
     total_fixed_trip_duration = total_duration(@fixed_activities)
     @user_time_activities_total -= total_fixed_trip_duration
@@ -306,18 +311,21 @@ class StepsController < ApplicationController
       step = Step.new
       step.city = City.find(key)
       step.trip = @trip
-      step.duration = 5
       # step.order = 5
       # step.time_next_step = 5
       # step.distance_next_step = 5
       step.save
       # creating step_activities for each value=array of activities
+      step_duration = 0
       value.each do |activity_id|
         step_activity = StepActivity.new
         step_activity.step = step
         step_activity.activity = Activity.find(activity_id)
+        step_duration += step_activity.activity.duration
         step_activity.save
       end
+      step.duration = (step_duration / DUR_ACTIVITY_PER_DAY).round(1)
+      step.save
     end
     redirect_to trip_path(@trip)
   end
