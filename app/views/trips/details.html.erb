@@ -92,7 +92,7 @@
         <div class="form-container-criteria-slider" id="preferences" >
           <div class="d-flex justify-content-center pb-4">
             <div class="col-md-7 mt-6">
-              <%= simple_form_for @trip, url: preferences_trip_path(@trip), method: :patch do |f| %>
+              <%= simple_form_for@trip do |f| %>
               <div class="d-flex justify-content-around mb-8">
                 <div class="form-group pr-4 form-control-label">
                   <label for="beach" class="d-flex justify-content-around">Beach</label>

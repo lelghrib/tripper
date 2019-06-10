@@ -158,6 +158,7 @@ class TripsController < ApplicationController
 
   def details
     @trip = Trip.find(params[:id])
+    @step = Step.new
     list = activities(@trip)
     response = ordonated_steps(@trip)
     steps_to_map(response, true)
