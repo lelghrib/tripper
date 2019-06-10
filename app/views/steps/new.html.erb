@@ -1,10 +1,11 @@
 
-  <div class="form-container-criteria-slider ">
-     <% if @list_acti_culture_choose == [] && @list_acti_sport_choose == [] && @list_acti_visit_choose == [] && @list_acti_beach_choose == [] %>
-       <h2 class="mb-4 text-center trip-header">Your preferences</h2>
-     <% else %>
-       <h2 class="mb-4 text-center trip-header">Choose 2 activities by category</h2>
-     <% end %>
+<div class="form-container-criteria-slider ">
+  <% if @list_acti_culture_choose == [] && @list_acti_sport_choose == [] && @list_acti_visit_choose == [] && @list_acti_beach_choose == [] %>
+    <h2 class="mb-4 text-center trip-header">Your preferences</h2>
+  <% else %>
+   <!-- <h3 class="text-center trip-header-new ">Choose 2 activities per category</h3> -->
+    <h2 class="mb-4 text-center trip-header">Choose 2 activities by category</h2>
+  <% end %>
 
   <div class="tabs-container mt-3">
     <div class="tab-button">1</div>
@@ -16,139 +17,164 @@
     <div class="tab-button" id="go-button">Go</div>
   </div>
 
-
-
-
-      <div class="d-flex justify-content-center">
-          <div class="">
-              <div class="form-post">
-              <div class="row">
-
-
-              <%= simple_form_for([@trip, @step]) do |f| %>
-              <!-- Inject fixed activities -->
-              <div class="form-group">
-                <% unless @fixed_activities_ids == [] %>
-                  <input type="hidden" name="activities_fixed_ids[]" value="<%= @fixed_activities_ids %>">
-                 <% end %>
-              </div>
-              <!-- slider if no activities to choose -->
-              <% if @list_acti_culture_choose == [] && @list_acti_sport_choose == [] && @list_acti_visit_choose == [] && @list_acti_beach_choose == [] %>
-               <div class="d-flex">
-                 <div class="trip-info">
-                   <h3>From</h3>
-                   <p><%= @trip.arrival_city.name %></p>
-                   <p><%= @trip.start_date.strftime("%Y-%d-%m") %></p>
-                   <h3>To</h3>
-                   <p><%= @trip.departure_city.name %></p>
-                   <p><%= @trip.end_date.strftime("%Y-%d-%m") %></p>
-                 </div>
-                 <div class="user-preferences">
-                  <p>Culture: <%= @trip.criteria["culture"] %>%</p>
-                  <p>Sport: <%= @trip.criteria['sport'] %>%</p>
-                  <p>Visit: <%= @trip.criteria['visit'] %>%</p>
-                  <p>Beach: <%= @trip.criteria['beach'] %>%</p>
-                 </div>
-               </div>
-              <% end %>
-
-              <!-- culture to choose -->
-              <% unless @list_acti_culture_choose == [] %>
-                <h5>CULTURE</h5>
-                <div class="form-group">
-                  <input type="hidden" name="activities_ids[]" value="">
-                  <div class="activity-choices">
-                    <% @list_acti_culture_choose.each do |acti_culture| %>
-
-
-                      <div class="card col-sm-5 mb-5" style="width: 18rem;">
-                        <input type="checkbox"class="hidden check-culture" value="<%= acti_culture.id %>" name="activities_ids[]" id="step_activity_activity_ids_<%= acti_culture.id %>">
-                        <label for="step_activity_activity_ids_<%= acti_culture.id %>" class="activity-choice acti-cuture card-title margin-none pb-2">
-                          <%= image_tag acti_culture.photo, class: "card-img-top" %>
-                          <div class="mt-2"> <%= acti_culture.name %>  </div>
-                        </label>
-                      </div>
-
-
-                    <% end %>
-                   </div>
-                </div>
-              <% end %>
-              <!-- Sport to choose -->
-              <% unless @list_acti_sport_choose == [] %>
-              <h5>SPORT</h5>
-                <div class="form-group">
-                  <input type="hidden" name="activities_ids[]" value="">
-                  <div class="activity-choices">
-                    <% @list_acti_culture_choose.each do |acti_sport| %>
-
-
-                      <div class="card col-sm-5 mb-5" style="width: 18rem;">
-                        <input type="checkbox"class="hidden check-sport" value="<%= acti_sport.id %>" name="activities_ids[]" id="step_activity_activity_ids_<%= acti_sport.id %>">
-                        <label for="step_activity_activity_ids_<%= acti_sport.id %>" class="activity-choice acti-sport card-title margin-none pb-2">
-                          <%= image_tag acti_sport.photo, class: "card-img-top" %>
-                          <div class="mt-2"> <%= acti_sport.name %>  </div>
-                        </label>
-                      </div>
-
-
-                    <% end %>
-                   </div>
-                </div>
-              <% end %>
-              <!-- visit to choose -->
-              <% unless @list_acti_visit_choose == [] %>
-                <h5>VISIT</h5>
-                <div class="form-group">
-                  <input type="hidden" name="activities_ids[]" value="">
-                  <div class="activity-choices">
-                    <% @list_acti_visit_choose.each do |acti_visit| %>
-
-
-                      <div class="card col-sm-5 mb-5" style="width: 18rem;">
-                        <input type="checkbox"class="hidden check-visit" value="<%= acti_visit.id %>" name="activities_ids[]" id="step_activity_activity_ids_<%= acti_visit.id %>">
-                        <label for="step_activity_activity_ids_<%= acti_visit.id %>" class="activity-choice acti-visit card-title margin-none pb-2">
-                          <%= image_tag acti_visit.photo, class: "card-img-top" %>
-                          <div class="mt-2"> <%= acti_visit.name %>  </div>
-                        </label>
-                      </div>
-
-
-                    <% end %>
-                   </div>
-                </div>
-              <% end %>
-              <!-- beach to choose -->
-              <% unless @list_acti_beach_choose == [] %>
-                <h5>BEACH</h5>
-                <div class="form-group">
-                  <input type="hidden" name="activities_ids[]" value="">
-                  <div class="activity-choices">
-                    <% @list_acti_beach_choose.each do |acti_beach| %>
-
-
-                      <div class="card col-sm-5 mb-5" style="width: 18rem;">
-                        <input type="checkbox"class="hidden check-beach" value="<%= acti_beach.id %>" name="activities_ids[]" id="step_activity_activity_ids_<%= acti_beach.id %>">
-                        <label for="step_activity_activity_ids_<%= acti_beach.id %>" class="activity-choice acti-beach card-title margin-none pb-2">
-                          <%= image_tag acti_beach.photo, class: "card-img-top" %>
-                          <div class="mt-2"> <%= acti_beach.name %>  </div>
-                        </label>
-                      </div>
-
-
-                    <% end %>
-                   </div>
-                </div>
-              <% end %>
-
-              <%#= f.input :content, placeholder: "In this tutorial..." %>
-              <%= f.submit "Go", class: "btn green-btn"  %>
-            <% end %>
-            </div>
-
-            </div>
-         </div>
+  <%= simple_form_for([@trip, @step]) do |f| %>
+  <!-- Inject fixed activities -->
+    <div class="form-group">
+      <% unless @fixed_activities_ids == [] %>
+        <input type="hidden" name="activities_fixed_ids[]" value="<%= @fixed_activities_ids %>">
+      <% end %>
     </div>
-</div>
+
+
+    <% unless @list_acti_culture_choose == [] %>
+    <div class="criteria-slider">
+          <div class="form-container-criteria-slider">
+            <div class="d-flex justify-content-center">
+              <div class="col-md-8 mt-3">
+                <!-- culture to choose -->
+                  <h5>CULTURE</h5>
+                  <div class="form-group">
+                    <input type="hidden" name="activities_ids[]" value="">
+                    <div class="activity-choices">
+                      <% @list_acti_culture_choose.each do |acti_culture| %>
+                        <div class="card col-sm-5 mb-5" style="width: 18rem;">
+                          <input type="checkbox"class="hidden check-culture" value="<%= acti_culture.id %>" name="activities_ids[]" id="step_activity_activity_ids_<%= acti_culture.id %>">
+                          <label for="step_activity_activity_ids_<%= acti_culture.id %>" class="activity-choice acti-cuture card-title margin-none pb-2">
+                            <%= image_tag acti_culture.photo, class: "card-img-top" %>
+                            <div class="mt-2"> <%= acti_culture.name %>  </div>
+                          </label>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                  <% if @list_acti_sport_choose == [] &&  @list_acti_visit_choose == [] && @list_acti_beach_choose == []%>
+                    <div class="pt-2 mb-4 btn-next d-flex justify-content-center col-md-6 ">
+                    <%= f.button :submit, value: "Next",class: "btn green-btn-criteria" %>
+                    </div>
+                  <% else %>
+                      <div class="mb-4 d-flex justify-content-start">
+                      <span class="btn-next green-btn-criteria">
+                        Next
+                      </span>
+                    </div>
+                  <% end %>
+              </div>
+            </div>
+          </div>
+          <% end %>
+
+
+          <% unless @list_acti_sport_choose == [] %>
+          <div class="form-container-criteria-slider">
+          <div class="d-flex justify-content-center">
+            <div class="col-md-8 mt-3">
+                               <!-- SPORT -->
+                    <h5>SPORT</h5>
+                      <div class="form-group">
+                        <input type="hidden" name="activities_ids[]" value="">
+                        <div class="activity-choices">
+                          <% @list_acti_sport_choose.each do |acti_sport| %>
+                            <div class="card col-sm-5 mb-5" style="width: 18rem;">
+                              <input type="checkbox"class="hidden check-sport" value="<%= acti_sport.id %>" name="activities_ids[]" id="step_activity_activity_ids_<%= acti_sport.id %>">
+                              <label for="step_activity_activity_ids_<%= acti_sport.id %>" class="activity-choice acti-sport card-title margin-none pb-2">
+                                <%= image_tag acti_sport.photo, class: "card-img-top" %>
+                                <div class="mt-2"> <%= acti_sport.name %>  </div>
+                              </label>
+                            </div>
+                          <% end %>
+                         </div>
+                      </div>
+                    <% if @list_acti_visit_choose == [] && @list_acti_beach_choose == []%>
+                     <div class="pt-2 mb-4 btn-next d-flex justify-content-center col-md-6 ">
+                    <%= f.button :submit, value: "Next",class: "btn green-btn-criteria" %>
+                    </div>
+                  <% else %>
+                    <div class="mb-4 d-flex justify-content-start">
+                        <span class="btn-next green-btn-criteria">
+                          Next
+                        </span>
+                    </div>
+                  <% end %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+
+        <% unless @list_acti_visit_choose == [] %>
+        <div class="form-container-criteria-slider">
+         <div class="d-flex justify-content-center">
+          <div class="col-md-8 mt-3">
+                             <!-- VISIT -->
+                    <h5>VISIT</h5>
+                    <div class="form-group">
+                      <input type="hidden" name="activities_ids[]" value="">
+                      <div class="activity-choices">
+                        <% @list_acti_visit_choose.each do |acti_visit| %>
+
+
+                          <div class="card col-sm-5 mb-5" style="width: 18rem;">
+                            <input type="checkbox"class="hidden check-visit" value="<%= acti_visit.id %>" name="activities_ids[]" id="step_activity_activity_ids_<%= acti_visit.id %>">
+                            <label for="step_activity_activity_ids_<%= acti_visit.id %>" class="activity-choice acti-visit card-title margin-none pb-2">
+                              <%= image_tag acti_visit.photo, class: "card-img-top" %>
+                              <div class="mt-2"> <%= acti_visit.name %>  </div>
+                            </label>
+                          </div>
+
+
+                        <% end %>
+                       </div>
+                    </div>
+                    <% if @list_acti_beach_choose == []%>
+                    <div class="pt-2 mb-4 btn-next d-flex justify-content-center col-md-6 ">
+                    <%= f.button :submit, value: "Discover your trip",class: "btn green-btn-criteria" %>
+                    </div>
+                  <% else %>
+                  <div class="mb-4 d-flex justify-content-start">
+                      <span class="btn-next green-btn-criteria">
+                        Next
+                      </span>
+                    </div>
+                  <% end %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+
+        <% unless @list_acti_beach_choose == [] %>
+       <div class="form-container-criteria-slider">
+       <div class="d-flex justify-content-center">
+        <div class="col-md-8 mt-3">
+                           <!-- BEACH -->
+                  <h5>BEACH</h5>
+                  <div class="form-group">
+                    <input type="hidden" name="activities_ids[]" value="">
+                    <div class="activity-choices">
+                      <% @list_acti_beach_choose.each do |acti_beach| %>
+                        <div class="card col-sm-5 mb-5" style="width: 18rem;">
+                          <input type="checkbox"class="hidden check-beach" value="<%= acti_beach.id %>" name="activities_ids[]" id="step_activity_activity_ids_<%= acti_beach.id %>">
+                          <label for="step_activity_activity_ids_<%= acti_beach.id %>" class="activity-choice acti-beach card-title margin-none pb-2">
+                            <%= image_tag acti_beach.photo, class: "card-img-top" %>
+                            <div class="mt-2"> <%= acti_beach.name %>  </div>
+                          </label>
+                        </div>
+                      <% end %>
+                     </div>
+                  </div>
+               <div class="pt-2 mb-4 btn-next d-flex justify-content-center col-md-6 ">
+                    <%= f.button :submit, value: "Next",class: "btn green-btn-criteria" %>
+                    </div>
+
+        </div>
+      </div>
+    </div>
+    <% end %>
+
+
+  <% end %>  <!-- Fin formulaire -->
+
+</div>  <!-- Fin de la page -->
+
+
+
 
 
