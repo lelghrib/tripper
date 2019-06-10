@@ -324,7 +324,7 @@ class StepsController < ApplicationController
         step_duration += step_activity.activity.duration
         step_activity.save
       end
-      step.duration = (step_duration / DUR_ACTIVITY_PER_DAY).round(1)
+      step.duration = (step_duration / DUR_ACTIVITY_PER_DAY).round()
       step.save
     end
     redirect_to trip_path(@trip)

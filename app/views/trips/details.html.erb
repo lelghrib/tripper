@@ -54,7 +54,7 @@
         <div style="display: flex; align-items: center; justify-content: center;">
           <p class="timeline-details"><%= counter += 1 %></p>
  </div>
- <p class="city-name text-center"><%= step.city.name %> - <%= pluralize(step.duration, 'day') %></p>
+ <p class="city-name text-center" id= "<%= step.city.name %>" ><%= step.city.name %> - <% if step.duration > 0 %><%= pluralize(step.duration, 'day') %> <% else %> <%= '< 1 day' %> <% end %></p>
       </div>
  <%= link_to details_trip_path (@trip), class:'details-links' do%>
       <% step.activities.each do |activity| %>
