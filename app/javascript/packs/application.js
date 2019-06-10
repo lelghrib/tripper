@@ -27,4 +27,8 @@ checktwoculture();
 checktwosport();
 checktwovisit();
 checktwobeach();
+import { checkboxclickmistery, checkonemistery } from './mistery';
+checkboxclickmistery();
+checkonemistery();
+
 
