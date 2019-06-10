@@ -15,20 +15,18 @@
   <div class="timeline-container d-flex justify-content-around align-items-center mb-5">
     <% counter = 0 %>
     <% @trip.steps.each do |step| %>
-      <p class="timeline"><%= counter += 1 %></p>
-      <% if step.city != @trip.steps.last.city %>
-        <hr>
+    <p class="timeline"><%= counter += 1 %></p>
+    <% if step.city != @trip.steps.last.city %>
+    <hr>
     <!-- <div class="d-flex justify-content-center align-items-center"> -->
-        <i class="fas fa-car car-icon"></i>
-   <!--  </div> -->
-
-        <hr>
-      <% end %>
+    <i class="fas fa-car car-icon"></i>
+    <!--  </div> -->
+    <hr>
+    <% end %>
     <% end %>
   </div>
   <div class="d-flex justify-content-around ml-6 mr-6 sticky-map-trip">
     <div class="map sticky-top ">
-
       <div class="d-flex justify-content-end btn-save">
         <%= link_to "Save", save_trip_path(@trip), method: :patch, class:'green-btn' %>
       </div>
@@ -48,20 +46,18 @@
     <div class="list-activity">
       <h3 class="trip-header text-center mb-4">Trip's details</h3>
       <% counter = 0 %>
-
       <% @trip.steps.order(:order).reverse().each do |step| %>
-      <div class="d-flex justify-content-center align-items-center">
+      <div class="d-flex justify-content-center align-items-center mb-4">
         <div style="display: flex; align-items: center; justify-content: center;">
           <p class="timeline-details"><%= counter += 1 %></p>
         </div>
-
         <p class="city-name text-center"><%= step.city.name %> - <% if step.duration > 0 %><%= pluralize(step.duration, 'day') %> <% else %> <%= '< 1 day' %> <% end %></p>
       </div>
       <%= link_to step_path(step), class:'details-links' do%>
       <% step.step_activities.each do |step_activity| %>
       <% if step_activity.mistery %>
       <div class="card-product">
-        <%=image_tag 'locked.png' %>
+        <%=image_tag 'locked3.png' %>
         <div class="card-product-infos">
           <h2>Locked</h2>
           <p>You will discover this activity the day before</p>
@@ -76,15 +72,12 @@
           <p class="green">View details ...</p>
         </div>
       </div>
-
       <% end %>
       <% end %>
       <% end %>
       <% end %>
     </div>
-    </div>
-
-</a>
+  </div>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -138,21 +131,20 @@
 -->
 <!-- Modal -->
 <!--   <div class="modal fade" id="SaveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">SAVE</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Your trip is sound and safe ;)
-      </div>
-      <div class="modal-footer"style="height: 50px">
-        <button type="button" class="green-btn" data-dismiss="modal">Close</button>
-      </div>
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">SAVE</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      Your trip is sound and safe ;)
+    </div>
+    <div class="modal-footer"style="height: 50px">
+      <button type="button" class="green-btn" data-dismiss="modal">Close</button>
     </div>
   </div>
+</div>
 </div> -->
