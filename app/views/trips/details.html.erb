@@ -54,7 +54,7 @@
         <div style="display: flex; align-items: center; justify-content: center;">
           <p class="timeline-details"><%= counter += 1 %></p>
  </div>
-      <p class="city-name text-center"><%= step.city.name %> - </p>
+      <p class="city-name text-center"><%= step.city.name %> - <%= pluralize(step.duration, 'day') %></p>
       </div>
  <%= link_to details_trip_path (@trip), class:'details-links' do%>
       <% step.activities.each do |activity| %>
@@ -74,8 +74,6 @@
     </div>
 
   </div>
-
-
 </div>
    </a>
 <!--   <div class="step-details d-flex">
