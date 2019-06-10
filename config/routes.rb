@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     member do
       get :details
       patch :save
+      get :mistery
+      patch :change_mistery
     end
     resources :steps, only: ['create', 'new']
   end
