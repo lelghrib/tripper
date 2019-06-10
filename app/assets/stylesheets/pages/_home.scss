@@ -124,17 +124,20 @@ body{
   height:250px;
   position:relative;
   top:-95px;
+  padding: 10px;
 }
 
 .slide{
   height: 200px;
   width: 200px;
   margin: 10px;
+  padding: 10px;
 }
 
 .photo-b{
   height:200px;
   width: 200px;
+    border-radius: 10px;
   // box-shadow: 10px 5px 5px black;
   // box-shadow: inset 0 0 3em white, 0 0 3em white;
 }
