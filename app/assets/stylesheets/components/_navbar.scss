@@ -41,6 +41,8 @@ a.nav-link{
 .navbar-lewagon .navbar-brand img {
   width: 45px;
   transition: all 0.5s ease;
+  position: relative;
+  top: 6px;
 }
 .no-border img:hover, .no-border a:hover{
   border: none;
@@ -48,7 +50,3 @@ a.nav-link{
   transition: all 0.5s ease;
 }
 
-img{
-  position: relative;
-  top: 6px;
-}
