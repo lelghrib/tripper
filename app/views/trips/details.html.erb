@@ -57,7 +57,7 @@
 
         <p class="city-name text-center"><%= step.city.name %> - <% if step.duration > 0 %><%= pluralize(step.duration, 'day') %> <% else %> <%= '< 1 day' %> <% end %></p>
       </div>
-      <%= link_to details_trip_path (@trip), class:'details-links' do%>
+      <%= link_to step_path(step), class:'details-links' do%>
       <% step.step_activities.each do |step_activity| %>
       <% if step_activity.mistery %>
       <div class="card-product">
