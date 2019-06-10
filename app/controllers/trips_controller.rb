@@ -1,11 +1,10 @@
-class TripsController < ApplicationController
 require 'json'
 require 'open-uri'
 
+class TripsController < ApplicationController
 
   def index
     @trips = Trip.where(user: current_user)
-
   end
 
   def new
@@ -21,9 +20,8 @@ require 'open-uri'
   def show
     @trip = Trip.find(params[:id])
     @list_acti_map = []
-
     @trip.steps.each do |step|
-        @list_acti_map << step.activities
+      @list_acti_map << step.activities
     end
     response = ordonated_steps(@trip)
     steps_to_map(response, false)
@@ -50,26 +48,24 @@ require 'open-uri'
     url = "https://api.mapbox.com/optimized-trips/v1/mapbox/driving/#{steps_call}?source=first&destination=last&steps=true&access_token=#{ENV['MAPBOX_API_KEY']}"
     response_serialized = open(url).read
     return response = JSON.parse(response_serialized)
-
-
   end
 
   def steps_to_map(response, details)
-
-      steps = response['waypoints'].sort_by! { |waypoint| waypoint['waypoint_index'] }
-      i = -1
-      @markers = steps.map do |step|
-
-        leg = response["trips"][0]["legs"][i]
-        this_step = Step.find{ |st| step['location'][0].round(2) == st.city.longitude.round(2) }
-          i += 1
-
-
-        {
-          infoWindow: render_to_string(partial: "infowindow", locals: { step: this_step, api_step: leg, trip: Trip.find(params[:id]), infos: details }),
-          lat: step['location'][1],
-          lng: step['location'][0]
-        }
+    steps = response['waypoints'].sort_by! { |waypoint| waypoint['waypoint_index'] }
+    i = -1
+    @markers = steps.map do |step|
+      leg = response["trips"][0]["legs"][i]
+      this_step = @trip.steps.find{ |st| step['location'][0].round(2) == st.city.longitude.round(2) }
+      i += 1
+      # define the order of the trip steps
+      step_to_order = @trip.steps.where(id: this_step.id).first
+      step_to_order.order = i
+      step_to_order.save!
+      {
+        infoWindow: render_to_string(partial: "infowindow", locals: { step: this_step, api_step: leg, trip: Trip.find(params[:id]), infos: details }),
+        lat: step['location'][1],
+        lng: step['location'][0]
+      }
     end
   end
 

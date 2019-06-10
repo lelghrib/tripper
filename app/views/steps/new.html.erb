@@ -2,10 +2,12 @@
 <div class="form-container-criteria-slider ">
   <% if @list_acti_culture_choose == [] && @list_acti_sport_choose == [] && @list_acti_visit_choose == [] && @list_acti_beach_choose == [] %>
     <h2 class="mb-4 text-center trip-header">Your preferences</h2>
+    <p> Are you sure about your trip? </p>
+    <%= link_to "New trip", new_trip_path, class: "green-btn" %>
+
   <% else %>
    <!-- <h3 class="text-center trip-header-new ">Choose 2 activities per category</h3> -->
     <h2 class="mb-4 text-center trip-header">Choose 2 activities by category</h2>
-  <% end %>
 
   <div class="tabs-container mt-3">
     <div class="tab-button">1</div>
@@ -171,5 +173,5 @@
 
 
   <% end %>  <!-- Fin formulaire -->
-
+  <% end %>  <!-- Fin condition if list activities not empty -->
 </div>  <!-- Fin de la page -->
