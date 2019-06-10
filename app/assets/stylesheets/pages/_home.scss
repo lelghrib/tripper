@@ -63,7 +63,29 @@ body{
   margin:20px;
 }
 
-.photo{
+.photo1{
+  border-radius:2px;
+  box-shadow:0 0 15px rgba(0,0,0,0.2);
+  height:250px;
+  width: 350px;
+  background-color: blue;
+  margin: 20px;
+  background-image: asset-url('journey.jpg');
+  background-size:cover;
+}
+
+.photo2{
+  border-radius:2px;
+  box-shadow:0 0 15px rgba(0,0,0,0.2);
+  height:250px;
+  width: 350px;
+  background-color: blue;
+  margin: 20px;
+  background-image: asset-url('adventure.jpg');
+  background-size:cover;
+}
+
+.photo3{
   border-radius:2px;
   box-shadow:0 0 15px rgba(0,0,0,0.2);
   height:250px;
