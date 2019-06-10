@@ -3,9 +3,12 @@
   <div class="card-body">
     <h5 class="card-title"><%= step.city.name %></h5>
     <h6 class="card-subtitle mb-2 text-muted">duration : <%= step.duration %></h6>
-    <p class="card-text">distance to next step <%= api_step['distance'] %> <%=%>m</p>
-
-    <a href="#" class="card-link"> <a href="#<%= step.city.name %>">Details</a></a>
-
+    <% if trip.departure_city != step.city %>
+    <p class="card-text">distance to next step <%= (api_step['distance']/1_000).round(2) %> <%=%> km</p>
+    <% end %>
+    <% if infos == true %>
+    <a class="card-link" href="#<%= step.city.name %>">Details</a>
+<% end %>
   </div>
 </div>
+
