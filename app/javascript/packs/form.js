@@ -12,7 +12,7 @@ const checkboxclickculture = () => {
       if ($(this).parent().hasClass('active')) {
         $(this).parent().removeClass("active");
       } else {
-        if($('.acti-cuture.active').length < 2) {
+        if($('.parent-class-culture.active').length < 2) {
          $(this).parent().addClass("active");
         }
       }
@@ -26,7 +26,7 @@ const checkboxclicksport = () => {
       if ($(this).parent().hasClass('active')) {
         $(this).parent().removeClass("active");
       } else {
-        if($('.acti-sport.active').length < 2) {
+        if($('.parent-class-sport.active').length < 2) {
          $(this).parent().addClass("active");
         }
       }
@@ -40,7 +40,7 @@ const checkboxclickvisit = () => {
       if ($(this).parent().hasClass('active')) {
         $(this).parent().removeClass("active");
       } else {
-        if($('.acti-visit.active').length < 2) {
+        if($('.parent-class-visit.active').length < 2) {
          $(this).parent().addClass("active");
         }
       }
@@ -54,7 +54,7 @@ const checkboxclickbeach = () => {
       if ($(this).parent().hasClass('active')) {
         $(this).parent().removeClass("active");
       } else {
-        if($('.acti-beach.active').length < 2) {
+        if($('.parent-class-beach.active').length < 2) {
          $(this).parent().addClass("active");
         }
       }
