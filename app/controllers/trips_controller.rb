@@ -142,6 +142,15 @@ require 'open-uri'
     @trip = Trip.find(params[:id])
   end
 
+  def preferences
+    @trip = Trip.find(params[:id])
+    if @trip.update(trip_params)
+      redirect_to details_trip_path(@trip)
+    else
+      render :edit
+    end
+  end
+
   def update
     @trip = Trip.find(params[:id])
     if @trip.update(trip_params)

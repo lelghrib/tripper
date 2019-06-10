@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :trips do
     member do
+      patch :preferences
       get :details
       patch :save
     end
