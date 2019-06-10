@@ -322,4 +322,9 @@ class StepsController < ApplicationController
     end
     redirect_to mistery_trip_path(@trip)
   end
+
+  def show
+    @step = Step.find(params[:id])
+  end
+
 end

@@ -15,17 +15,20 @@
   <div class="timeline-container d-flex justify-content-around align-items-center mb-5">
     <% counter = 0 %>
     <% @trip.steps.each do |step| %>
-    <p class="timeline"><%= counter += 1 %></p>
-    <% if step.city != @trip.steps.last.city %>
-    <!-- <div class="d-flex justify-content-center align-items-center">
-      <h2 class="car-icon"><i class="fas fa-car"></i></h2>
-    </div> -->
-    <hr>
-    <% end %>
+      <p class="timeline"><%= counter += 1 %></p>
+      <% if step.city != @trip.steps.last.city %>
+        <hr>
+    <!-- <div class="d-flex justify-content-center align-items-center"> -->
+        <i class="fas fa-car car-icon"></i>
+   <!--  </div> -->
+
+        <hr>
+      <% end %>
     <% end %>
   </div>
   <div class="d-flex justify-content-around ml-6 mr-6 sticky-map-trip">
-    <div class="map">
+    <div class="map sticky-top ">
+
       <div class="d-flex justify-content-end btn-save">
         <%= link_to "Save", save_trip_path(@trip), method: :patch, class:'green-btn' %>
       </div>
@@ -45,12 +48,14 @@
     <div class="list-activity">
       <h3 class="trip-header text-center mb-4">Trip's details</h3>
       <% counter = 0 %>
+
       <% @trip.steps.order(:order).reverse().each do |step| %>
       <div class="d-flex justify-content-center align-items-center">
         <div style="display: flex; align-items: center; justify-content: center;">
           <p class="timeline-details"><%= counter += 1 %></p>
         </div>
-        <p class="city-name text-center" id= "<%= step.city.name %>" ><%= step.city.name %> - <% if step.duration > 0 %><%= pluralize(step.duration, 'day') %> <% else %> <%= '< 1 day' %> <% end %></p>
+
+        <p class="city-name text-center"><%= step.city.name %> - <% if step.duration > 0 %><%= pluralize(step.duration, 'day') %> <% else %> <%= '< 1 day' %> <% end %></p>
       </div>
       <%= link_to details_trip_path (@trip), class:'details-links' do%>
       <% step.step_activities.each do |step_activity| %>
@@ -71,14 +76,14 @@
           <p class="green">View details ...</p>
         </div>
       </div>
-      <% end %>
 
+      <% end %>
       <% end %>
       <% end %>
       <% end %>
     </div>
+    </div>
 
-  </div>
 </a>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -128,11 +133,12 @@
 </div>
 </div>
 <!--   <div class="step-details d-flex">
-  <p>Step 1</p>
+<p>Step 1</p>
 </div>
 -->
 <!-- Modal -->
 <!--   <div class="modal fade" id="SaveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
