@@ -9,11 +9,11 @@ document.querySelectorAll(".activity-choice").forEach((element) =>{
 const checkboxclickculture = () => {
   $(document).ready(function(){
     $(".acti-cuture").click(function(){
-      if ($(this).hasClass('active')) {
-        $(this).removeClass("active");
+      if ($(this).parent().hasClass('active')) {
+        $(this).parent().removeClass("active");
       } else {
         if($('.acti-cuture.active').length < 2) {
-         $(this).addClass("active");
+         $(this).parent().addClass("active");
         }
       }
 
@@ -23,11 +23,11 @@ const checkboxclickculture = () => {
 const checkboxclicksport = () => {
   $(document).ready(function(){
     $(".acti-sport").click(function(){
-      if ($(this).hasClass('active')) {
-        $(this).removeClass("active");
+      if ($(this).parent().hasClass('active')) {
+        $(this).parent().removeClass("active");
       } else {
         if($('.acti-sport.active').length < 2) {
-         $(this).addClass("active");
+         $(this).parent().addClass("active");
         }
       }
 
@@ -37,11 +37,11 @@ const checkboxclicksport = () => {
 const checkboxclickvisit = () => {
   $(document).ready(function(){
     $(".acti-visit").click(function(){
-      if ($(this).hasClass('active')) {
-        $(this).removeClass("active");
+      if ($(this).parent().hasClass('active')) {
+        $(this).parent().removeClass("active");
       } else {
         if($('.acti-visit.active').length < 2) {
-         $(this).addClass("active");
+         $(this).parent().addClass("active");
         }
       }
 
@@ -51,11 +51,11 @@ const checkboxclickvisit = () => {
 const checkboxclickbeach = () => {
   $(document).ready(function(){
     $(".acti-beach").click(function(){
-      if ($(this).hasClass('active')) {
-        $(this).removeClass("active");
+      if ($(this).parent().hasClass('active')) {
+        $(this).parent().removeClass("active");
       } else {
         if($('.acti-beach.active').length < 2) {
-         $(this).addClass("active");
+         $(this).parent().addClass("active");
         }
       }
 
