@@ -198,7 +198,7 @@ class TripsController < ApplicationController
 
       @trip.steps.each do |step|
         #make visible if step has only one activity
-        if step.step_activities.count == 1
+        if step.step_activities.count == 1 && @trip.percentage_of_mistery != 100
           step.step_activities.first.mistery = false
         else
           # create a list of step activities
