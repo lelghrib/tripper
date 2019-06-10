@@ -319,6 +319,6 @@ class StepsController < ApplicationController
         step_activity.save
       end
     end
-    redirect_to trip_path(@trip)
+    redirect_to mistery_trip_path(@trip)
   end
 end
