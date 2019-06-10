@@ -25,7 +25,7 @@
     <% end %>
   </div>
   <div class="d-flex justify-content-around ml-6 mr-6 sticky-map-trip">
-    <div class="map sticky-top ">
+    <div class="map">
       <div class="d-flex justify-content-end btn-save">
         <%= link_to "Save", save_trip_path(@trip), method: :patch, class:'green-btn' %>
       </div>
@@ -38,7 +38,7 @@
         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
         >
         <div class="d-flex justify-content-end btn-preferences">
-          <button class="green-btn" id="preferences-btn" data-toggle="modal" data-target="#exampleModal"> Preferences</button>
+          <div class="green-btn" id="preferences-btn" data-toggle="modal" data-target="#exampleModal"> Preferences</div>
         </div>
       </div>
     </div>
