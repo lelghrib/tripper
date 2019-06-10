@@ -108,16 +108,6 @@ class StepsController < ApplicationController
     @fixed_activities_ids = push_elements_to_all_array(@list_acti_sport_fixed, @fixed_activities_ids)
     @fixed_activities_ids = push_elements_to_all_array(@list_acti_visit_fixed, @fixed_activities_ids)
     @fixed_activities_ids = push_elements_to_all_array(@list_acti_beach_fixed, @fixed_activities_ids)
-
-    @list_acti_sport_fixed.each do |activity|
-      @fixed_activities_ids << activity
-    end
-    @list_acti_visit_fixed.each do |activity|
-      @fixed_activities_ids << activity
-    end
-    @list_acti_beach_fixed.each do |activity|
-      @fixed_activities_ids << activity
-    end
     # 15.step - activities to choose for user
     @list_acti_culture_choose = activities_to_choose(@list_acti_culture_real, @list_acti_culture_double)
     @list_acti_sport_choose = activities_to_choose(@list_acti_sport_real, @list_acti_sport_double)
