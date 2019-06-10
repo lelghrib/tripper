@@ -9,19 +9,19 @@
   <!-- <h3 class="form-header text-center">Timeline</h3> -->
   <div class="mb-6 timeline-cities d-flex justify-content-between align-items-center">
     <% @trip.steps.each do |step| %>
-      <h2><%= step.city.name %></h2>
+    <h2><%= step.city.name %></h2>
     <% end %>
   </div>
   <div class="timeline-container d-flex justify-content-around align-items-center mb-5">
     <% counter = 0 %>
     <% @trip.steps.each do |step| %>
-      <p class="timeline"><%= counter += 1 %></p>
-      <% if step.city != @trip.steps.last.city %>
-        <!-- <div class="d-flex justify-content-center align-items-center">
-          <h2 class="car-icon"><i class="fas fa-car"></i></h2>
-        </div> -->
-        <hr>
-      <% end %>
+    <p class="timeline"><%= counter += 1 %></p>
+    <% if step.city != @trip.steps.last.city %>
+    <!-- <div class="d-flex justify-content-center align-items-center">
+      <h2 class="car-icon"><i class="fas fa-car"></i></h2>
+    </div> -->
+    <hr>
+    <% end %>
     <% end %>
   </div>
   <div class="d-flex justify-content-around ml-6 mr-6 sticky-map-trip">
@@ -36,16 +36,16 @@
         zoom: 1.5;"
         data-markers="<%= @markers.to_json %>"
         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-      >
-      <div class="d-flex justify-content-end btn-preferences">
-        <button class="green-btn" id="preferences-btn" data-toggle="modal" data-target="#exampleModal"> Preferences</button>
+        >
+        <div class="d-flex justify-content-end btn-preferences">
+          <button class="green-btn" id="preferences-btn" data-toggle="modal" data-target="#exampleModal"> Preferences</button>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="list-activity">
-    <h3 class="trip-header text-center mb-4">Trip's details</h3>
-    <% counter = 0 %>
-    <% @trip.steps.order(:order).reverse().each do |step| %>
+    <div class="list-activity">
+      <h3 class="trip-header text-center mb-4">Trip's details</h3>
+      <% counter = 0 %>
+      <% @trip.steps.order(:order).reverse().each do |step| %>
       <div class="d-flex justify-content-center align-items-center">
         <div style="display: flex; align-items: center; justify-content: center;">
           <p class="timeline-details"><%= counter += 1 %></p>`
@@ -53,116 +53,100 @@
         <p class="city-name text-center" id= "<%= step.city.name %>" ><%= step.city.name %> - <% if step.duration > 0 %><%= pluralize(step.duration, 'day') %> <% else %> <%= '< 1 day' %> <% end %></p>
       </div>
       <%= link_to details_trip_path (@trip), class:'details-links' do%>
-        <% step.step_activities.each do |step_activity| %>
-          <% if step_activity.mistery %>
-            <div class="card-product">
-              <%=image_tag 'locked.png' %>
-              <div class="card-product-infos">
-                <h2>Locked</h2>
-                <p>You will discover this activity the day before</p>
-              </div>
-            </div>
-          <% else %>
-            <div class="card-product">
-              <%=image_tag(step_activity.activity.photo) %>
-              <div class="card-product-infos">
-                <h2><%= step_activity.activity.name %></h2>
-                <p><i class="far fa-clock"></i>About : <%= step_activity.activity.duration/60 %>h</p>
-                <p class="green">View details ...</p>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
+      <% step.step_activities.each do |step_activity| %>
+      <% if step_activity.mistery %>
+      <div class="card-product">
+        <%=image_tag 'locked.png' %>
+        <div class="card-product-infos">
+          <h2>Locked</h2>
+          <p>You will discover this activity the day before</p>
+        </div>
+      </div>
+      <% else %>
+      <div class="card-product">
+        <%=image_tag(step_activity.activity.photo) %>
+        <div class="card-product-infos">
+          <h2><%= step_activity.activity.name %></h2>
+          <p><i class="far fa-clock"></i>About : <%= step_activity.activity.duration/60 %>h</p>
+          <p class="green">View details ...</p>
+        </div>
+      </div>
       <% end %>
 
-
-            <% end %>
-
-     
-
+      <% end %>
+      <% end %>
+      <% end %>
     </div>
 
   </div>
-</div>
-
 </a>
-
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">
-          <div class="text-center trip-header-new">Update your preferences</div>
+        <div class="text-center trip-header-new">Update your preferences</div>
         </h5>
       </div>
-
       <div class="modal-body">
         <div class="form-container-criteria-slider" id="preferences" >
-    <div class="d-flex justify-content-center pb-4">
-      <div class="col-md-7 mt-6">
-        <%= simple_form_for @trip, url: preferences_trip_path(@trip), method: :patch do |f| %>
-
-
-
-
-           <div class="d-flex justify-content-around mb-8">
-        <div class="form-group pr-4 form-control-label">
-          <label for="beach" class="d-flex justify-content-around">Beach</label>
-          <input type="range" class="custom-range" name="trip[criteria][beach]" min="0" max="100" step="1" id="beach" >
-
-
+          <div class="d-flex justify-content-center pb-4">
+            <div class="col-md-7 mt-6">
+              <%= simple_form_for @trip, url: preferences_trip_path(@trip), method: :patch do |f| %>
+              <div class="d-flex justify-content-around mb-8">
+                <div class="form-group pr-4 form-control-label">
+                  <label for="beach" class="d-flex justify-content-around">Beach</label>
+                  <input type="range" class="custom-range" name="trip[criteria][beach]" min="0" max="100" step="1" id="beach" >
+                </div>
+                <div class="form-group pl-4 form-control-label">
+                  <label for="sport" class="d-flex justify-content-around">Sport</label>
+                  <input type="range" class="custom-range" name="trip[criteria][sport]" min="0" max="100" step="1" id="sport">
+                </div>
+              </div>
+              <div class="d-flex justify-content-around ">
+                <div class="form-group pr-4 form-control-label">
+                  <label for="culture" class="d-flex justify-content-around">Culture</label>
+                  <input type="range" class="custom-range" name="trip[criteria][culture]" min="0" max="100" step="1" id="culture">
+                </div>
+                <div class="form-group pl-4 form-control-label">
+                  <label for="visit" class="d-flex justify-content-around">Visit</label>
+                  <input type="range" class="custom-range" name="trip[criteria][visit]" min="0" max="100" step="1" id="visit">
+                </div>
+                <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="form-group pl-4 form-control-label">
-          <label for="sport" class="d-flex justify-content-around">Sport</label>
-          <input type="range" class="custom-range" name="trip[criteria][sport]" min="0" max="100" step="1" id="sport">
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <%= f.button :submit,class: "btn green-btn-criteria" %>
+          <% end %>
         </div>
-      </div>
-       <div class="d-flex justify-content-around ">
-        <div class="form-group pr-4 form-control-label">
-          <label for="culture" class="d-flex justify-content-around">Culture</label>
-          <input type="range" class="custom-range" name="trip[criteria][culture]" min="0" max="100" step="1" id="culture">
-        </div>
-        <div class="form-group pl-4 form-control-label">
-          <label for="visit" class="d-flex justify-content-around">Visit</label>
-          <input type="range" class="custom-range" name="trip[criteria][visit]" min="0" max="100" step="1" id="visit">
-        </div>
-         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-         </div>
-
-
-      </div>
-    </div>
-  </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <%= f.button :submit,class: "btn green-btn-criteria" %>
-           <% end %>
       </div>
     </div>
-           </div>
   </div>
 </div>
-
+</div>
 <!--   <div class="step-details d-flex">
-<p>Step 1</p>
+  <p>Step 1</p>
 </div>
 -->
 <!-- Modal -->
 <!--   <div class="modal fade" id="SaveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">SAVE</h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      Your trip is sound and safe ;)
-    </div>
-    <div class="modal-footer"style="height: 50px">
-      <button type="button" class="green-btn" data-dismiss="modal">Close</button>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">SAVE</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Your trip is sound and safe ;)
+      </div>
+      <div class="modal-footer"style="height: 50px">
+        <button type="button" class="green-btn" data-dismiss="modal">Close</button>
+      </div>
     </div>
   </div>
-</div>
 </div> -->
