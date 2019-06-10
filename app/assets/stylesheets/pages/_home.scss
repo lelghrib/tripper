@@ -8,7 +8,7 @@ body{
   background-image: asset-url("homepage/Frame.png");
   background-color: rgba(0,0,255,0.3);
   padding: 150px 0;
-  height: 540px;
+  height: 570px;
   margin-bottom: 79px;
 }
 
@@ -52,6 +52,7 @@ body{
 .explications{
   height:auto;
   padding: 20px;
+  margin-top:-60px;
 }
 
 .rea{
@@ -63,10 +64,10 @@ body{
 }
 
 .photo{
-  border-radius:8px;
+  border-radius:2px;
   box-shadow:0 0 15px rgba(0,0,0,0.2);
-  height:350px;
-  width: 450px;
+  height:250px;
+  width: 350px;
   background-color: blue;
   margin: 20px;
   background-image: asset-url('road.jpg');
@@ -74,26 +75,15 @@ body{
 }
 
 .explain{
-  padding:20px;
-  // border-radius: 8px;
-  height:350px;
+  height:300px;
   width: 350px;
   margin:20px;
-  // box-shadow:0 0 15px rgba(0,0,0,0.2);
-}
-
-.newlsetter-container{
-  height:300px;
+  padding-top: 40px;
 }
 
 .newsletter{
-  box-shadow:0 0 15px rgba(0,0,0,0.2);
-  border-radius:8px;
-  height: 250px;
-  width:50%;
-  background-image: asset-url('news.png');
-  margin-top: 20px;
-  margin-bottom: 20px;
+  padding-right: 300px;
+  padding-left: 300px;
 }
 
 .rea a{
@@ -109,20 +99,27 @@ body{
 }
 
 .slider{
-  height:200px;
+  height:150px;
   position:relative;
-  top:-80px;
-  background-color:black;
+  top:-95px;
 }
 
 .slide{
-  height: 70px;
-  width:auto;
-  background-color:red;
-  padding-left: 30px;
-  padding-right: 30px;
-  color:white;
+  height: 130px;
+  width: 196px;
+  margin: 10px;
+  border-radius: 8px;
+}
 
+.photo-b{
+  height:130px;
+  width: 196px;
+}
+
+.voyage{
+    position: relative;
+    bottom: 56px;
+    text-align: center;
 }
 
 // // Paralax
