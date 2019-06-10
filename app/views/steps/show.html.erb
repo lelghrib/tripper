@@ -1,0 +1,45 @@
+<!--
+<% @step.activities.each do |stepactivity| %>
+<p><%= stepactivity.city.name %></p>
+<p><%= stepactivity.name %></p>
+<p><%= stepactivity.address %></p>
+<p><%= stepactivity.activity_types %></p>
+<p>Ranking : <%= stepactivity.ranking_interest %>/5</p>
+<p>About<%= stepactivity.duration/60 %>h</p>
+<p><%= stepactivity.description %></p>
+<p><%= stepactivity.price %>€</p>
+<p><%=image_tag(stepactivity.photo) %></p>
+<% end %> -->
+<% counter = 0 %>
+<% @step.activities.each do |stepactivity| %>
+<h3 class="text-center trip-header-new"><%= stepactivity.city.name %></h3>
+<div class="trip-index-container col-md-8 px-0 mt-4">
+  <div class="card-trip">
+    <p class="absolute type-activity"><%= stepactivity.activity_types %></p>
+    <%=image_tag(stepactivity.photo) %>
+    <div class="card-trip-infos">
+      <div>
+        <div class="d-flex justify-content-between align-items-center">
+          <div style="display: flex; align-items: center; justify-content: start;">
+            <div>
+              <p class="timeline-details" style="color: white;"><%= counter += 1 %></p>
+            </div>
+            <h2 class="ml-2"><%= stepactivity.name %></h2>
+                    <p pl-3><%= stepactivity.address %></p>
+
+          </div>
+          <div>
+
+          </div>
+        </div>
+        <p class="description"><%= stepactivity.description %></p>
+      </div>
+      <h2 class="card-trip-pricing">
+        <p><i class="far fa-clock" style="font-weight: bold; text-align: right;"></i>About : <%= stepactivity.duration/60 %>h</p>
+            <p>Ranking : <%= stepactivity.ranking_interest %>/5</p>
+        <%= stepactivity.price %>€</h2>
+<!--       <img src='https://kitt.lewagon.com/placeholder/users/krokrob' class="card-trip-user avatar-bordered"/> -->
+    </div>
+    <% end %>
+  </div>
+</div>

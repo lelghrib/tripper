@@ -17,6 +17,21 @@
 .absolute{
   position: absolute;
 }
+p.type-activity {
+  background-color: rgba(90, 183, 148, 0.8);
+  color: white;
+  // width: 100%;
+  padding: 0.5em;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 12px;
+  border-radius: 4px 4px 0 0;
+}
+p.description{
+  color: #575F75;
+  text-align: justify;
+  opacity: 1;
+}
 // .green-bouton{
 //     background: #57B894;
 //     border-radius: 37px;

@@ -1,14 +1,12 @@
 <div class="mb-4">
   <h2 class="trip-header text-center ">Discover your Trip</h2>
-    <div class="preferences d-flex justify-content-around mt-2">
+  <div class="preferences d-flex justify-content-around mt-2">
     <p class="filter"><i class="fas fa-umbrella-beach"></i>Beach <%= @trip.criteria["beach"] %>%</p>
     <p class="filter"><i class="fas fa-volleyball-ball"></i>Sport <%= @trip.criteria["sport"] %>%</p>
     <p class="filter"><i class="fas fa-chess-queen"></i>Culture <%= @trip.criteria["culture"] %>%</p>
     <p class="filter"><i class="fas fa-walking"></i> Visit <%= @trip.criteria["visit"] %>%</p>
   </div>
   <!-- <h3 class="form-header text-center">Timeline</h3> -->
-
-
   <div class="mb-6 timeline-cities d-flex justify-content-between align-items-center">
     <% @trip.steps.each do |step| %>
     <h2><%= step.city.name %></h2>
@@ -17,26 +15,22 @@
   <div class="timeline-container d-flex justify-content-around align-items-center mb-5">
     <% counter = 0 %>
     <% @trip.steps.each do |step| %>
-    <p class="timeline"><%= counter += 1 %></p>
-    <% if step.city != @trip.steps.last.city %>
-      <!-- <div class="d-flex justify-content-center align-items-center">
-        <h2 class="car-icon"><i class="fas fa-car"></i></h2>
-      </div> -->
-    <hr>
-    <% end %>
+      <p class="timeline"><%= counter += 1 %></p>
+      <% if step.city != @trip.steps.last.city %>
+        <hr>
+    <!-- <div class="d-flex justify-content-center align-items-center"> -->
+        <i class="fas fa-car car-icon"></i>
+   <!--  </div> -->
+
+        <hr>
+      <% end %>
     <% end %>
   </div>
-
-
-
   <div class="d-flex justify-content-around ml-6 mr-6 sticky-map-trip">
-
     <div class="map sticky-top ">
-
       <div class="d-flex justify-content-end btn-save">
         <%= link_to "Save", save_trip_path(@trip), method: :patch, class:'green-btn' %>
       </div>
-
       <div
         id="map"
         style="width: 100%;
@@ -48,17 +42,17 @@
     </div>
     <div class="list-activity">
       <h3 class="trip-header text-center mb-4">Trip's details</h3>
-       <% counter = 0 %>
+      <% counter = 0 %>
       <% @trip.steps.each do |step| %>
       <div class="d-flex justify-content-center align-items-center">
         <div style="display: flex; align-items: center; justify-content: center;">
           <p class="timeline-details"><%= counter += 1 %></p>
- </div>
-      <p class="city-name text-center" id="<%= step.city.name %>"><%= step.city.name %> - </p>
+        </div>
+        <p class="city-name text-center"><%= step.city.name %> - </p>
       </div>
- <%= link_to details_trip_path (@trip), class:'details-links' do%>
+      <%= link_to trip_step_path (@trip), class:'details-links' do%>
       <% step.activities.each do |activity| %>
-       <div class="card-product">
+      <div class="card-product">
         <%=image_tag(activity.photo) %>
         <div class="card-product-infos">
           <h2><%= activity.name %></h2>
@@ -66,38 +60,33 @@
           <p class="green">View details ...</p>
         </div>
       </div>
-            <% end %>
-
       <% end %>
       <% end %>
-
+      <% end %>
     </div>
-
   </div>
-
-
 </div>
-   </a>
+</a>
 <!--   <div class="step-details d-flex">
-  <p>Step 1</p>
+<p>Step 1</p>
 </div>
 -->
-  <!-- Modal -->
-  <!--   <div class="modal fade" id="SaveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">SAVE</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          Your trip is sound and safe ;)
-        </div>
-        <div class="modal-footer"style="height: 50px">
-          <button type="button" class="green-btn" data-dismiss="modal">Close</button>
-        </div>
-      </div>
+<!-- Modal -->
+<!--   <div class="modal fade" id="SaveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">SAVE</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+      </button>
     </div>
-  </div> -->
+    <div class="modal-body">
+      Your trip is sound and safe ;)
+    </div>
+    <div class="modal-footer"style="height: 50px">
+      <button type="button" class="green-btn" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+</div> -->
