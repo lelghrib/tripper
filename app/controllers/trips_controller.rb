@@ -24,10 +24,8 @@ require 'open-uri'
     @trip.steps.each do |step|
         @list_acti_map << step.activities
     end
-    ordonated_list = ordonated_steps(@trip)
-    steps_to_map(ordonated_list)
-    @list_acti_map.flatten!
-    # activities_to_map(@list_acti_map)
+    response = ordonated_steps(@trip)
+    steps_to_map(response)
   end
 
   def ordonated_steps(trip)
@@ -41,6 +39,7 @@ require 'open-uri'
         order_steps << step
       end
     end
+    #first and last city need to be at begining and end for API optimize call
     order_steps << trip.steps.find{|step| step.city_id == trip.arrival_city_id }
     steps_coord = ""
     order_steps.each do |step|
@@ -49,19 +48,27 @@ require 'open-uri'
     steps_call = steps_coord.delete_suffix(";")
     url = "https://api.mapbox.com/optimized-trips/v1/mapbox/driving/#{steps_call}?source=first&destination=last&steps=true&access_token=#{ENV['MAPBOX_API_KEY']}"
     response_serialized = open(url).read
-    response = JSON.parse(response_serialized)
-    steps_ordered = []
-    response['waypoints'].sort_by! { |waypoint| waypoint['waypoint_index'] }
+    return response = JSON.parse(response_serialized)
+
+
   end
 
-  def steps_to_map(steps)
-    # .select {|item| !(item[:lat].nil? || item[:long].nil?)}.
-# @day_tasks = DayTask.find { |x| x.task.goal.user == @user && x.target_date == Date.today }
+  def steps_to_map(response)
 
+      steps = response['waypoints'].sort_by! { |waypoint| waypoint['waypoint_index'] }
+      i = 0
       @markers = steps.map do |step|
-        this_step = Step.find{ |st| step['location'][0] == st.city.longitude }
+        if i < (response["trips"][0]["legs"].count-1)
+          i += 1
+        else
+          i = 0
+        end
+        leg = response["trips"][0]["legs"][i]
+        this_step = Step.find{ |st| step['location'][0].round(2) == st.city.longitude.round(2) }
+
+
         {
-          infoWindow: render_to_string(partial: "infowindow", locals: { step: this_step}),
+          infoWindow: render_to_string(partial: "infowindow", locals: { step: this_step, api_step: leg }),
           lat: step['location'][1],
           lng: step['location'][0]
         }
@@ -149,8 +156,8 @@ require 'open-uri'
   def details
     @trip = Trip.find(params[:id])
     list = activities(@trip)
-    ordonated_list = ordonated_steps(@trip)
-    steps_to_map(ordonated_list)
+    response = ordonated_steps(@trip)
+    steps_to_map(response)
   end
 
   def activities(trip)

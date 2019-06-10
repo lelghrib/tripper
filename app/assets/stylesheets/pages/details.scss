@@ -21,7 +21,7 @@ h2.trip-header{
   letter-spacing: 0.2em;
   margin-bottom: 0;
 }
-h3.trip-header{
+h3.trip-header, h3.trip-header-green{
   font-weight: 400;
   color: white;
   background-color: rgba(69, 77, 102, 0.9);;
@@ -29,25 +29,34 @@ h3.trip-header{
   font-size: 20px;
   padding: 0.5em;
   letter-spacing: 0.2em;
-  border-radius: 5px;
+  border-radius: 5px 5px 0 0;
+}
+h3.trip-header-green{
+  background-color: #5AB794;
+
 }
 .btn{
   color:white;
   margin: 8px;
   position: relative;
 }
-
-.filter {
-  width: 8em;
-  margin: 1.5em 0.5em;
-  padding: 4px;
+.preferences{
+  width: 70vw;
+  margin: auto;
+}
+.filter, {
+  width: 15vw;
+  margin: 2em 0em;
+  padding: 0.5em;
   text-align: center;
   border-radius: 5px;
-  border: 0.5px solid rgba(69, 77, 102, 0.2);
-  color: #454D66;
-  transition: all 0.5s ease;
-  font-size: 20px;
+  border: 1px solid rgba(90, 183, 148, 0.3);
+  color: rgb(90, 183, 148);
+  font-size: 16px;
 }
+ .filter > i {
+  margin-right: 0.5em;
+ }
 .timeline-cities h2{
   font-weight: 500;
   color: #454D66;
@@ -60,6 +69,7 @@ h3.trip-header{
 
 .timeline-container{
   margin: 1vw 10vw 7vw 10vw;
+  position: relative;
 }
 .timeline {
   background-color: rgba(69, 77, 102, 0.9);
@@ -73,6 +83,48 @@ p.timeline {
 }
 .timeline-container > hr{
   width: 50%;
+}
+.timeline-details{
+  background-color: rgba(69, 77, 102, 0.9);
+  color: white;
+  border-radius: 50%;
+  padding: 0.5em 1em;
+  width: fit-content;
+}
+.car-icon{
+  font-size: 18px;
+}
+p.city-name {
+  font-weight: 500;
+  color: #454D66;
+  font-family: 'Raleway', ‘Montserrat’, sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.3em;
+  padding: 0 1em;
+  }
+p.city-title{
+  font-weight: 500;
+  color: #454D66;
+  font-family: 'Raleway', ‘Montserrat’, sans-serif;
+  font-size: 18px;
+  padding: 0 1em;
+}
+.card-product p{
+  font-weight: 500;
+  color: #575F75;
+  font-family: 'Raleway', ‘Montserrat’, sans-serif;
+  font-size: 16px;
+  opacity: 1;
+}
+.card-product i{
+   margin-right: 0.3em;
+  font-weight: 600;
+}
+i.fa-car{
+  color: #575F75;
+}
+p.green{
+  color: rgba(90, 184, 148, 0.9);
 }
 .map{
   height: 90vh;
@@ -101,6 +153,15 @@ p.timeline {
   // border: 1px solid rgba(69, 77, 102, 0.1);
   border-radius: 15px;
   padding: 25px 25px 25px 25px;
+}
+
+.list-activity > a{
+  color: #454D66;
+}
+.list-activity > a > .card-product:hover {
+  background-color: white;
+  opacity: inherit;
+  opacity: 0.6;
 }
 
 // .list-activity h2{

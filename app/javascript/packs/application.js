@@ -27,4 +27,3 @@ checktwosport();
 checktwovisit();
 checktwobeach();
 
-
