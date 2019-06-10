@@ -1,4 +1,9 @@
+# require 'pry-byebug'
+
 class StepsController < ApplicationController
+
+  DUR_ACTIVITY_PER_DAY = 2 * 60
+
   def index
     @steps = Step.all
   end
@@ -36,7 +41,7 @@ class StepsController < ApplicationController
       activity == departure_city_activities.first
     end
     # 3.step -  calculate total time of user for activities
-    @user_time_activities_total = ((@trip.end_date - @trip.start_date) / 86400) * 2 * 60 # -> nb days * 2h * 60min
+    @user_time_activities_total = ((@trip.end_date - @trip.start_date) / 86400) * DUR_ACTIVITY_PER_DAY  # -> nb days * activity duration per day (en heures)
     # 4.step - total user time minus time of fixed activitites
     total_fixed_trip_duration = total_duration(@fixed_activities)
     @user_time_activities_total -= total_fixed_trip_duration
@@ -103,16 +108,6 @@ class StepsController < ApplicationController
     @fixed_activities_ids = push_elements_to_all_array(@list_acti_sport_fixed, @fixed_activities_ids)
     @fixed_activities_ids = push_elements_to_all_array(@list_acti_visit_fixed, @fixed_activities_ids)
     @fixed_activities_ids = push_elements_to_all_array(@list_acti_beach_fixed, @fixed_activities_ids)
-
-    @list_acti_sport_fixed.each do |activity|
-      @fixed_activities_ids << activity
-    end
-    @list_acti_visit_fixed.each do |activity|
-      @fixed_activities_ids << activity
-    end
-    @list_acti_beach_fixed.each do |activity|
-      @fixed_activities_ids << activity
-    end
     # 15.step - activities to choose for user
     @list_acti_culture_choose = activities_to_choose(@list_acti_culture_real, @list_acti_culture_double)
     @list_acti_sport_choose = activities_to_choose(@list_acti_sport_real, @list_acti_sport_double)
@@ -273,6 +268,9 @@ class StepsController < ApplicationController
   def create
     # find trip
     @trip = Trip.find(params[:trip_id])
+    unless @trip.steps.empty?
+      @trip.steps.destroy_all
+    end
     activities_choosen = []
     # clean params activities ids from ''
     if params[:activities_ids].present?
@@ -306,20 +304,23 @@ class StepsController < ApplicationController
       step = Step.new
       step.city = City.find(key)
       step.trip = @trip
-      step.duration = 5
       # step.order = 5
       # step.time_next_step = 5
       # step.distance_next_step = 5
       step.save
       # creating step_activities for each value=array of activities
+      step_duration = 0
       value.each do |activity_id|
         step_activity = StepActivity.new
         step_activity.step = step
         step_activity.activity = Activity.find(activity_id)
+        step_duration += step_activity.activity.duration
         step_activity.save
       end
+      step.duration = (step_duration / DUR_ACTIVITY_PER_DAY).round()
+      step.save
     end
-    redirect_to trip_path(@trip)
+    redirect_to mistery_trip_path(@trip)
   end
 
   def show

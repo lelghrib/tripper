@@ -1,11 +1,10 @@
-class TripsController < ApplicationController
 require 'json'
 require 'open-uri'
 
+class TripsController < ApplicationController
 
   def index
     @trips = Trip.where(user: current_user)
-
   end
 
   def new
@@ -21,9 +20,8 @@ require 'open-uri'
   def show
     @trip = Trip.find(params[:id])
     @list_acti_map = []
-
     @trip.steps.each do |step|
-        @list_acti_map << step.activities
+      @list_acti_map << step.activities
     end
     response = ordonated_steps(@trip)
     steps_to_map(response, false)
@@ -50,26 +48,24 @@ require 'open-uri'
     url = "https://api.mapbox.com/optimized-trips/v1/mapbox/driving/#{steps_call}?source=first&destination=last&steps=true&access_token=#{ENV['MAPBOX_API_KEY']}"
     response_serialized = open(url).read
     return response = JSON.parse(response_serialized)
-
-
   end
 
   def steps_to_map(response, details)
-
-      steps = response['waypoints'].sort_by! { |waypoint| waypoint['waypoint_index'] }
-      i = -1
-      @markers = steps.map do |step|
-
-        leg = response["trips"][0]["legs"][i]
-        this_step = Step.find{ |st| step['location'][0].round(2) == st.city.longitude.round(2) }
-          i += 1
-
-
-        {
-          infoWindow: render_to_string(partial: "infowindow", locals: { step: this_step, api_step: leg, trip: Trip.find(params[:id]), infos: details }),
-          lat: step['location'][1],
-          lng: step['location'][0]
-        }
+    steps = response['waypoints'].sort_by! { |waypoint| waypoint['waypoint_index'] }
+    i = -1
+    @markers = steps.map do |step|
+      leg = response["trips"][0]["legs"][i]
+      this_step = @trip.steps.find{ |st| step['location'][0].round(2) == st.city.longitude.round(2) }
+      i += 1
+      # define the order of the trip steps
+      step_to_order = @trip.steps.where(id: this_step.id).first
+      step_to_order.order = i
+      step_to_order.save!
+      {
+        infoWindow: render_to_string(partial: "infowindow", locals: { step: this_step, api_step: leg, trip: Trip.find(params[:id]), infos: details }),
+        lat: step['location'][1],
+        lng: step['location'][0]
+      }
     end
   end
 
@@ -142,6 +138,15 @@ require 'open-uri'
     @trip = Trip.find(params[:id])
   end
 
+  def preferences
+    @trip = Trip.find(params[:id])
+    if @trip.update(trip_params)
+      redirect_to details_trip_path(@trip)
+    else
+      render :edit
+    end
+  end
+
   def update
     @trip = Trip.find(params[:id])
     if @trip.update(trip_params)
@@ -153,6 +158,7 @@ require 'open-uri'
 
   def details
     @trip = Trip.find(params[:id])
+    @step = Step.new
     list = activities(@trip)
     response = ordonated_steps(@trip)
     steps_to_map(response, true)
@@ -173,9 +179,62 @@ require 'open-uri'
     redirect_to(trips_path, alert: 'Trip was successfully saved') if @trip.save!
   end
 
+  def mistery
+    # display of mistery choice
+    @trip = Trip.find(params[:id])
+  end
+
+  def change_mistery
+    # 1 step -  update percentage of mistery in trip
+    @trip = Trip.find(params[:id])
+     @trip.update(trip_params)
+      # 2 step -  number of all activities in the trip
+      @nb_all_activities_trip = 0
+      @trip.steps.each do |step|
+        @nb_all_activities_trip += step.step_activities.count
+      end
+      # 3 step -  total number of activities to hide
+      @nb_all_activities_trip_hide = @nb_all_activities_trip * @trip.percentage_of_mistery / 100
+      # 4 step - hide activities in steps
+
+      @trip.steps.each do |step|
+        #make visible if step has only one activity
+        if step.step_activities.count == 1 && @trip.percentage_of_mistery != 100
+          step.step_activities.first.mistery = false
+        else
+          # create a list of step activities
+        activities_in_step_ids = []
+        step.step_activities.each do |step_activity|
+          activities_in_step_ids << step_activity.id
+        end
+        # number of activities in step
+        nb_all_activities_step = step.step_activities.count
+        # percentage of activities in step from total activities of trip
+        percentage_activities_in_step = nb_all_activities_step * 100 / @nb_all_activities_trip
+        # nb of activities to hide in step
+        nb_all_activities_step_hide = (@nb_all_activities_trip_hide * percentage_activities_in_step / 100.to_f).ceil
+
+        # nb of activities to hide times
+        nb_all_activities_step_hide.times do
+          # choose one activity from step random
+          activity_sample = activities_in_step_ids.sample
+          # find activity in step activities
+          step_activity = StepActivity.find(activity_sample)
+          # mistery is true
+          step_activity.mistery = true
+          step_activity.save
+          # delete this activity from the list of all activities in step
+          activities_in_step_ids.delete(activity_sample)
+        end
+      end
+        end
+
+      redirect_to trip_path(@trip)
+  end
+
   private
 
   def trip_params
-    params.require(:trip).permit(:departure_city_id, :arrival_city_id, :start_date, :end_date, criteria: {})
+    params.require(:trip).permit(:departure_city_id, :arrival_city_id, :start_date, :end_date, :percentage_of_mistery, criteria: {})
   end
 end

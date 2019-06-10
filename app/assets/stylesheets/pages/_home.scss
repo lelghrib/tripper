@@ -8,7 +8,7 @@ body{
   background-image: asset-url("homepage/Frame.png");
   background-color: rgba(0,0,255,0.3);
   padding: 150px 0;
-  height: 540px;
+  height: 570px;
   margin-bottom: 79px;
 }
 
@@ -52,6 +52,7 @@ body{
 .explications{
   height:auto;
   padding: 20px;
+  margin-top:-60px;
 }
 
 .rea{
@@ -62,11 +63,33 @@ body{
   margin:20px;
 }
 
-.photo{
-  border-radius:8px;
+.photo1{
+  border-radius:2px;
   box-shadow:0 0 15px rgba(0,0,0,0.2);
   height:350px;
-  width: 450px;
+  width: 600px;
+  background-color: blue;
+  margin: 20px;
+  background-image: asset-url('journey.jpg');
+  background-size:cover;
+}
+
+.photo2{
+  border-radius:2px;
+  box-shadow:0 0 15px rgba(0,0,0,0.2);
+  height:350px;
+  width: 600px;
+  background-color: blue;
+  margin: 20px;
+  background-image: asset-url('adventure.jpg');
+  background-size:cover;
+}
+
+.photo3{
+  border-radius:2px;
+  box-shadow:0 0 15px rgba(0,0,0,0.2);
+  height:350px;
+  width:600px;
   background-color: blue;
   margin: 20px;
   background-image: asset-url('road.jpg');
@@ -74,26 +97,16 @@ body{
 }
 
 .explain{
-  padding:20px;
-  // border-radius: 8px;
-  height:350px;
+  height:300px;
   width: 350px;
   margin:20px;
-  // box-shadow:0 0 15px rgba(0,0,0,0.2);
-}
-
-.newlsetter-container{
-  height:300px;
+  padding-top: 40px;
 }
 
 .newsletter{
-  box-shadow:0 0 15px rgba(0,0,0,0.2);
-  border-radius:8px;
-  height: 250px;
-  width:50%;
-  background-image: asset-url('news.png');
-  margin-top: 20px;
-  margin-bottom: 20px;
+  width:auto;
+  height: 300px;
+  background-color:#B5F0C6;
 }
 
 .rea a{
@@ -105,24 +118,34 @@ body{
 
 .validate{
   position: relative;
-  top: 100px;
 }
 
 .slider{
-  height:200px;
+  height:250px;
   position:relative;
-  top:-80px;
-  background-color:black;
+  top:-95px;
+  padding: 10px;
 }
 
 .slide{
-  height: 70px;
-  width:auto;
-  background-color:red;
-  padding-left: 30px;
-  padding-right: 30px;
-  color:white;
+  height: 200px;
+  width: 200px;
+  margin: 10px;
+  padding: 10px;
+}
 
+.photo-b{
+  height:200px;
+  width: 200px;
+    border-radius: 10px;
+  // box-shadow: 10px 5px 5px black;
+  // box-shadow: inset 0 0 3em white, 0 0 3em white;
+}
+
+.voyage{
+    position: relative;
+    bottom: 56px;
+    text-align: center;
 }
 
 // // Paralax

@@ -1,7 +1,19 @@
+.modal-content {
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
 .btn-save {
     position: absolute;
-    top: -8px;
-    right: -5px;
+    top: -15px;
+    right: 15px;
+    z-index: 1;
+}
+
+.btn-preferences {
+    position: absolute;
+    bottom: -40px;
+    left: 40%;
     z-index: 1;
 }
 .bg{
@@ -129,17 +141,25 @@ p.green{
   color: rgba(90, 184, 148, 0.9);
 }
 .map{
+
   height: 90vh;
-  width: 80vh;
+  width: 45vw;
   margin-top: 1em;
   border-radius: 8px;
   background-color: white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    position: sticky;
+  top: 70px;
 }
 .sticky-map-trip{
   position: sticky;
   top: 10px;
 }
+
+#map {
+
+}
+
 
 .sticky-top a {
   margin: 3vh 3vh 0 0;
@@ -147,10 +167,11 @@ p.green{
 
 .list-activity{
   width: 45%;
-  height: 90vh;
+  // height: 90vh;
   background-color: white;
   margin-left: 10px;
-  overflow: scroll;
+  display: flex;
+  flex-direction: column;
   // box-shadow: 0 0 5px rgba(0,0,0,0.05);
   // border: 1px solid rgba(69, 77, 102, 0.1);
   border-radius: 15px;
