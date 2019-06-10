@@ -183,7 +183,9 @@ p.green{
   opacity: inherit;
   opacity: 0.6;
 }
-
+a:hover.details-links{
+  border: none;
+}
 // .list-activity h2{
 //   font-weight: 600;
 //   color: rgba(69, 77, 102, 0.8);;
