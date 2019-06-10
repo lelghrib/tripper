@@ -53,25 +53,43 @@
       <div class="d-flex justify-content-center align-items-center">
         <div style="display: flex; align-items: center; justify-content: center;">
           <p class="timeline-details"><%= counter += 1 %></p>
-        </div>
-        <p class="city-name text-center" id="<%= step.city.name %>"><%= step.city.name %> - </p>
+
+ </div>
+ <p class="city-name text-center" id= "<%= step.city.name %>" ><%= step.city.name %> - <% if step.duration > 0 %><%= pluralize(step.duration, 'day') %> <% else %> <%= '< 1 day' %> <% end %></p>
       </div>
-      <%= link_to details_trip_path (@trip), class:'details-links' do%>
-      <% step.activities.each do |activity| %>
+ <%= link_to details_trip_path (@trip), class:'details-links' do%>
+
+      <% step.step_activities.each do |step_activity| %>
+      <% if step_activity.mistery %>
       <div class="card-product">
-        <%=image_tag(activity.photo) %>
+        <%=image_tag 'locked.png' %>
         <div class="card-product-infos">
-          <h2><%= activity.name %></h2>
-          <p><i class="far fa-clock"></i>About : <%= activity.duration/60 %>h</p>
+          <h2>Locked</h2>
+          <p>You will discover this activity the day before</p>
+        </div>
+      </div>
+      <% else %>
+        <div class="card-product">
+        <%=image_tag(step_activity.activity.photo) %>
+
+        <div class="card-product-infos">
+          <h2><%= step_activity.activity.name %></h2>
+          <p><i class="far fa-clock"></i>About : <%= step_activity.activity.duration/60 %>h</p>
           <p class="green">View details ...</p>
         </div>
       </div>
+
+      <% end %>
+
+            <% end %>
+
       <% end %>
       <% end %>
       <% end %>
     </div>
   </div>
 </div>
+
 </a>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -99,6 +117,7 @@
         <div class="form-group pr-4 form-control-label">
           <label for="beach" class="d-flex justify-content-around">Beach</label>
           <input type="range" class="custom-range" name="trip[criteria][beach]" min="0" max="100" step="1" id="beach" >
+
 
         </div>
         <div class="form-group pl-4 form-control-label">
