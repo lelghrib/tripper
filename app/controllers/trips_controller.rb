@@ -21,11 +21,12 @@ require 'open-uri'
   def show
     @trip = Trip.find(params[:id])
     @list_acti_map = []
+
     @trip.steps.each do |step|
         @list_acti_map << step.activities
     end
     response = ordonated_steps(@trip)
-    steps_to_map(response)
+    steps_to_map(response, false)
   end
 
   def ordonated_steps(trip)
@@ -53,22 +54,19 @@ require 'open-uri'
 
   end
 
-  def steps_to_map(response)
+  def steps_to_map(response, details)
 
       steps = response['waypoints'].sort_by! { |waypoint| waypoint['waypoint_index'] }
-      i = 0
+      i = -1
       @markers = steps.map do |step|
-        if i < (response["trips"][0]["legs"].count-1)
-          i += 1
-        else
-          i = 0
-        end
+
         leg = response["trips"][0]["legs"][i]
         this_step = Step.find{ |st| step['location'][0].round(2) == st.city.longitude.round(2) }
+          i += 1
 
 
         {
-          infoWindow: render_to_string(partial: "infowindow", locals: { step: this_step, api_step: leg }),
+          infoWindow: render_to_string(partial: "infowindow", locals: { step: this_step, api_step: leg, trip: Trip.find(params[:id]), infos: details }),
           lat: step['location'][1],
           lng: step['location'][0]
         }
@@ -157,7 +155,7 @@ require 'open-uri'
     @trip = Trip.find(params[:id])
     list = activities(@trip)
     response = ordonated_steps(@trip)
-    steps_to_map(response)
+    steps_to_map(response, true)
   end
 
   def activities(trip)
