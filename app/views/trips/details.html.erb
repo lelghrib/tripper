@@ -49,7 +49,7 @@
     <div class="list-activity">
       <h3 class="trip-header text-center mb-4">Trip's details</h3>
        <% counter = 0 %>
-      <% @trip.steps.each do |step| %>
+      <% @trip.steps.order(:order).reverse().each do |step| %>
       <div class="d-flex justify-content-center align-items-center">
         <div style="display: flex; align-items: center; justify-content: center;">
           <p class="timeline-details"><%= counter += 1 %></p>
