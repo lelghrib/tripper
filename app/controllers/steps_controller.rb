@@ -268,6 +268,9 @@ class StepsController < ApplicationController
   def create
     # find trip
     @trip = Trip.find(params[:trip_id])
+    unless @trip.steps.empty?
+      @trip.steps.destroy_all
+    end
     activities_choosen = []
     # clean params activities ids from ''
     if params[:activities_ids].present?
