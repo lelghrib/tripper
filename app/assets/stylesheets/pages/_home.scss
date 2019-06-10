@@ -66,8 +66,8 @@ body{
 .photo1{
   border-radius:2px;
   box-shadow:0 0 15px rgba(0,0,0,0.2);
-  height:250px;
-  width: 350px;
+  height:350px;
+  width: 600px;
   background-color: blue;
   margin: 20px;
   background-image: asset-url('journey.jpg');
@@ -77,8 +77,8 @@ body{
 .photo2{
   border-radius:2px;
   box-shadow:0 0 15px rgba(0,0,0,0.2);
-  height:250px;
-  width: 350px;
+  height:350px;
+  width: 600px;
   background-color: blue;
   margin: 20px;
   background-image: asset-url('adventure.jpg');
@@ -88,8 +88,8 @@ body{
 .photo3{
   border-radius:2px;
   box-shadow:0 0 15px rgba(0,0,0,0.2);
-  height:250px;
-  width: 350px;
+  height:350px;
+  width:600px;
   background-color: blue;
   margin: 20px;
   background-image: asset-url('road.jpg');
@@ -104,8 +104,9 @@ body{
 }
 
 .newsletter{
-  padding-right: 300px;
-  padding-left: 300px;
+  width:auto;
+  height: 300px;
+  background-color:#B5F0C6;
 }
 
 .rea a{
@@ -117,7 +118,6 @@ body{
 
 .validate{
   position: relative;
-  top: 100px;
 }
 
 .slider{
