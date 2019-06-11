@@ -101,7 +101,8 @@ p.timeline {
   margin-bottom: 0;
 }
 .timeline-container > hr{
-  margin-left: -19px;
+  margin-left: -33px;
+  margin-right: -27px;
   width: 50%;
 }
 .timeline-details{
@@ -148,6 +149,9 @@ p.city-title{
 }
 .car-km{
   margin-top: 60px;
+}
+.car-span-size{
+  width: 60px;
 }
 p.green{
   color: rgba(90, 184, 148, 0.9);

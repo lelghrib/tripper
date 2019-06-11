@@ -56,9 +56,9 @@ class TripsController < ApplicationController
     @markers = steps.map do |step|
       leg = response["trips"][0]["legs"][i]
       this_step = @trip.steps.find{ |st| step['location'][0].round(2) == st.city.longitude.round(2) }
-      i += 1
       this_step.distance_next_step = (response["trips"][0]["legs"][i]['distance']/1_000).round(2)
       this_step.save
+      i += 1
       # define the order of the trip steps
       step_to_order = @trip.steps.where(id: this_step.id).first
       step_to_order.order = i
