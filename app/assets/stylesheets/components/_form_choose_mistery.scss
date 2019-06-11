@@ -1,3 +1,9 @@
+.parent-class-mistery{
+  width: 100%;
+  height: 100%;
+}
+
+
 mistery-choices {
   display: flex;
   justify-content: space-between;
@@ -18,7 +24,6 @@ mistery-choices {
     position: relative;
 }
 .card-between-cards{
-  position: absolute;
   left: 203px;
 }
 .imposed-width{
