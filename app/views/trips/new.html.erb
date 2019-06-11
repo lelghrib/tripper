@@ -22,11 +22,14 @@
           <%= f.association :arrival_city %>
           <%= f.association :departure_city %>
         </div>
+        <div class="d-flex justify-content-around">
+
         <%= f.input :start_date, as: :string, input_html: { id: "range_start" } %>
         <%= f.input :end_date, as: :string, input_html: { id: "range_end" } %>
         <%= hidden_field_tag :criteria %>
-        <div class="mb-4 d-flex justify-content-start">
-          <span class="btn-next green-btn-criteria">
+         </div>
+        <div class="mb-4 d-flex justify-content-start position-next">
+          <span class="btn-next green-btn-criteria right-side-btn">
             Next
           </span>
         </div>
@@ -75,9 +78,9 @@
         <!--</form>  -->
       </div>
     </div>
-    <div class="pt-2 mb-4 btn-next d-flex justify-content-center col-md-6 ">
+    <div class="mb-4 d-flex justify-content-start position-next">
       <%#= f.button :submit, value: "Next",class: "btn green-btn-criteria" %>
-        <button type="submit" class="btn green-btn-criteria">Next</button>
+        <button type="submit" class="btn green-btn-criteria right-side-btn-criteria">Next</button>
 
     </div>
   </div>
