@@ -11,45 +11,46 @@ body{
   background-size: cover;
   background-position: center;
   background-image: asset-url("homepage/banner.jpg");
-  padding: 150px 0;
-  height: 600px;
+  padding: 284px 0;
+  height: 100vh;
   margin-bottom: 79px;
 }
 
 .banner h1 {
   margin: 0;
-  font-size: 40px;
+  font-size: 48px;
   font-weight: bold;
   color: white;
+  font-family: Roboto;
+  letter-spacing: 2px;
 }
 
 .banner p {
   font-size: 30px;
   color:white;
+  line-height: 2em;
+  opacity: 0.7;
+  font-family: Open Sans;
+  margin-bottom: 40px;
 }
 
-// .banner a {
-//   background: #57B894;
-//   border-radius: 7px;
-//   color : white;
-//   font-family: 'Montserrat', sans-serif;
-//   font-size: 17px;
-//   padding: 10px 15px;
-//   font-weight: 600;
-//   margin-top: 7vh;
-//   margin-bottom: 7vh;
-//   transition: all 0.4s ease;
-//   text-align: center;
-// }
+.banner a {
+  background: #57B894;
+  border-radius: 7px;
+  color : white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 17px;
+  padding: 15px 35px;
+  font-weight: 600;
+  margin-top: 7vh;
+  margin-bottom: 7vh;
+  transition: all 0.4s ease;
+  text-align: center;
+}
 
-// .banner a:hover{
-//   text-decoration: none;
-//   color:  #57B894;
-//   background-color: inherit;
-//   font-size: 20px;
-//   border: 1px solid #57B894;
-//   transition: all 0.4s ease;
-// }
+.banner a:hover{
+  text-decoration: none;
+}
 
 
 
