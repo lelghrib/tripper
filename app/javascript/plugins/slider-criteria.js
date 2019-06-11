@@ -1,3 +1,5 @@
+import { initRangeSlider } from '../components/sliders';
+
 $('.criteria-slider').slick({
   autoplay:false,
   swipe: false,
@@ -18,5 +20,7 @@ const btns = document.querySelectorAll(".btn-next");
 btns.forEach((btn) => {
   btn.addEventListener('click', () => {
     $('.criteria-slider').slick('slickNext');
+    initRangeSlider();
+
   })
 })
