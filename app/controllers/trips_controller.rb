@@ -2,7 +2,7 @@ require 'json'
 require 'open-uri'
 
 class TripsController < ApplicationController
-  #skip_before_action :authenticate_user!, only: ['new', 'mistery', 'show']
+  skip_before_action :authenticate_user!, only: [:new, :mistery, :show, :create, :change_mistery]
   def index
     @trips = Trip.where(user: current_user)
   end
