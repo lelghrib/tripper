@@ -188,6 +188,13 @@ class TripsController < ApplicationController
     # 1 step -  update percentage of mistery in trip
     @trip = Trip.find(params[:id])
      @trip.update(trip_params)
+     # 2 step -  put all step acti at false
+     @trip.steps.each do |step|
+      step.step_activities.each do |step_activity|
+        step_activity.mistery = false
+        step_activity.save
+      end
+     end
       # 2 step -  number of all activities in the trip
       @nb_all_activities_trip = 0
       @trip.steps.each do |step|
