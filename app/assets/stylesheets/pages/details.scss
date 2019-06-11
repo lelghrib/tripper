@@ -51,7 +51,6 @@ h3.trip-header, h3.trip-header-green{
 }
 h3.trip-header-green{
   background-color: #5AB794;
-
 }
 .btn{
   color:white;
@@ -63,20 +62,29 @@ h3.trip-header-green{
   margin: auto;
 }
 .filter, {
-  width: 15vw;
-  margin: 2em 0em;
-  padding: 0.5em;
+  width: 10vw;
+  // margin: 2em 0em;
+  // padding: 0.5em;
   text-align: center;
-  border-radius: 5px;
-  border: 1px solid rgba(90, 183, 148, 0.3);
-  color: rgb(90, 183, 148);
-  font-size: 16px;
+  // border-radius: 5px;
+  // border: 1px solid rgba(90, 183, 148, 0.3);
+  color: rgb(129, 201, 173);
+  // color: rgba(69, 77, 102, 0.8);
+  font-size: 14px;
+  margin-bottom: 0;
 }
  .filter > i {
   margin-right: 0.5em;
+  font-size: 1.3em;
+  // color: rgba(69, 77, 102, 0.8);
+  color: rgb(129, 201, 173);
+
+
+
  }
 .timeline-cities h2{
   font-weight: 500;
+  // color: rgb(129, 201, 173);
   color: #454D66;
   font-family: 'Raleway', ‘Montserrat’, sans-serif;
   font-size: 20px;
@@ -90,7 +98,9 @@ h3.trip-header-green{
   position: relative;
 }
 .timeline {
-  background-color: rgba(69, 77, 102, 1);
+  background-color: rgba(69, 77, 102, 0.8);
+  // background-color: rgb(129, 201, 173);
+
   color: white;
   border-radius: 50%;
   padding: 0.5em 1em;
@@ -143,15 +153,20 @@ p.city-title{
   font-weight: 600;
 }
 .car-icon {
-  color: #575F75;
+  color: rgba(69, 77, 102, 0.8);
+  // color: rgb(129, 201, 173);
   margin-bottom: 30px;
-  font-size: 18px;
+  font-size: 16px;
 }
 .car-km{
   margin-top: 60px;
+  font-family: 'Raleway', ‘Montserrat’, sans-serif;
 }
 .car-span-size{
   width: 60px;
+  color: rgba(69, 77, 102, 0.8);
+  // color: rgb(129, 201, 173);
+
 }
 p.green{
   color: rgba(90, 184, 148, 0.9);
