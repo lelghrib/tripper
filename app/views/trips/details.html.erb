@@ -1,12 +1,25 @@
 <div class="mb-4">
-  <h2 class="trip-header text-center ">Discover your Trip</h2>
-  <div class="preferences d-flex justify-content-around mt-2">
-    <p class="filter"><i class="fas fa-umbrella-beach"></i>Beach <%= @trip.criteria["beach"] %>%</p>
-    <p class="filter"><i class="fas fa-volleyball-ball"></i>Sport <%= @trip.criteria["sport"] %>%</p>
-    <p class="filter"><i class="fas fa-chess-queen"></i>Culture <%= @trip.criteria["culture"] %>%</p>
-    <p class="filter"><i class="fas fa-walking"></i> Visit <%= @trip.criteria["visit"] %>%</p>
+  <h2 class="trip-header text-center mb-5 ">Discover your Trip</h2>
+  <div class="preferences d-flex justify-content-center mt-2">
+    <div class="mb-8 mt-1">
+    <p class="filter"><i class="fas fa-umbrella-beach"></i></p>
+    <p class="filter">Beach <%= @trip.criteria["beach"] %>%</p>
+    </div>
+    <div class="mb-8 mt-1">
+    <p class="filter"><i class="fas fa-football-ball"></i></p>
+    <p class="filter">Sport <%= @trip.criteria["sport"] %>%</p>
+    </div>
+    <div class="mb-8 mt-1">
+    <p class="filter"><i class="fas fa-graduation-cap"></i></p>
+    <p class="filter">Culture <%= @trip.criteria["culture"] %>%</p>
+    </div>
+    <div class="mb-8 mt-1" >
+    <p class="filter"><i class="fas fa-camera"></i></p>
+    <p class="filter">Visit <%= @trip.criteria["visit"] %>%</p>
+    </div class="mb-8 mt-1">
   </div>
   <!-- <h3 class="form-header text-center">Timeline</h3> -->
+
   <div class="mb-6 timeline-cities d-flex justify-content-between align-items-center">
     <% @trip.steps.order(:order).reverse().each do |step| %>
     <h2><%= step.city.name %></h2>
@@ -20,8 +33,9 @@
     <hr>
     <!-- <div class="d-flex justify-content-center align-items-center"> -->
       <span class='text-center '>
-    <i class="fas fa-car car-icon"></i>
-    <span class='d-flex car-span-size'><%= step.distance_next_step %> km </span>
+    <span class="d-flex car-span-size"><%= step.distance_next_step %> km </span>
+        <i class="fas fa-car car-icon"></i>
+
     </span>
 
 
