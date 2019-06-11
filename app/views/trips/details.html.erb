@@ -1,24 +1,7 @@
 <div class="mb-4">
   <h2 class="trip-header text-center mb-5 ">Discover your Trip</h2>
-  <div class="preferences d-flex justify-content-center mt-2">
-    <div class="mb-8 mt-1">
-    <p class="filter"><i class="fas fa-umbrella-beach"></i></p>
-    <p class="filter">Beach <%= @trip.criteria["beach"] %>%</p>
-    </div>
-    <div class="mb-8 mt-1">
-    <p class="filter"><i class="fas fa-football-ball"></i></p>
-    <p class="filter">Sport <%= @trip.criteria["sport"] %>%</p>
-    </div>
-    <div class="mb-8 mt-1">
-    <p class="filter"><i class="fas fa-graduation-cap"></i></p>
-    <p class="filter">Culture <%= @trip.criteria["culture"] %>%</p>
-    </div>
-    <div class="mb-8 mt-1" >
-    <p class="filter"><i class="fas fa-camera"></i></p>
-    <p class="filter">Visit <%= @trip.criteria["visit"] %>%</p>
-    </div class="mb-8 mt-1">
-  </div>
-  <!-- <h3 class="form-header text-center">Timeline</h3> -->
+
+  <!------------------------------------- Timeline  -------------------------------->
 
   <div class="mb-6 timeline-cities d-flex justify-content-between align-items-center">
     <% @trip.steps.order(:order).reverse().each do |step| %>
@@ -38,12 +21,13 @@
 
     </span>
 
-
-    <!--  </div> -->
     <hr>
     <% end %>
     <% end %>
   </div>
+
+  <!-------------------------------------- MAP ------------------------------------->
+
   <div class="d-flex justify-content-around ml-6 mr-6 sticky-map-trip">
     <div class="map sticky-top ">
       <div class="d-flex justify-content-end btn-save">
@@ -67,8 +51,31 @@
         </div>
       </div>
     </div>
-    <!-- activity list  -->
+  <!------------------------------- activity list  -------------------------------->
     <div class="list-activity">
+
+  <!------------------------------------- filters  -------------------------------->
+      <div class="preferences d-flex justify-content-center">
+<!--   <div class="mb-4">
+ --><!--     <p class="filter"><i class="fas fa-umbrella-beach"></i></p>
+ -->    <p class="filter mb-4">Beach <%= @trip.criteria["beach"] %>%</p>
+<!--   </div>
+ --><!--   <div class="mb-4">
+ --><!--     <p class="filter"><i class="fas fa-football-ball"></i></p>
+ -->    <p class="filter mb-4">Sport <%= @trip.criteria["sport"] %>%</p>
+<!--   </div>
+  -->  <!-- <div class="mb-4"> -->
+ <!--     <p class="filter"><i class="fas fa-graduation-cap"></i></p>
+ -->    <p class="filter mb-4">Culture <%= @trip.criteria["culture"] %>%</p>
+<!--   </div>
+  <div class="mb-4" >
+ --><!--     <p class="filter"><i class="fas fa-camera"></i></p>
+ -->    <p class="filter mb-4">Visit <%= @trip.criteria["visit"] %>%</p>
+<!--   </div>
+ --></div>
+
+  <!------------------------------------- end filters  -------------------------------->
+
       <h3 class="trip-header text-center mb-4">Trip's details</h3>
       <% counter = 0 %>
       <% @trip.steps.order(:order).reverse().each do |step| %>
@@ -103,6 +110,9 @@
       <% end %>
     </div>
   </div>
+
+  <!------------------------------- End activity list  -------------------------------->
+
   <!-- début modal  -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
