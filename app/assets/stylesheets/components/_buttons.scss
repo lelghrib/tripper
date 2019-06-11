@@ -77,6 +77,17 @@ a:hover {
     transition: all 0.5s ease;
     padding: 0.7em;
 }
+.position-next{
+  position: relative;
+}
+.right-side-btn{
+  position: absolute;
+  right: 20px;
+}
+.right-side-btn-criteria{
+  position: absolute !important;
+  right: 410px;
+}
 
 
 
