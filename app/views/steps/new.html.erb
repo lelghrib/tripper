@@ -53,7 +53,8 @@
                   </div>
                   <% if @list_acti_sport_choose == [] &&  @list_acti_visit_choose == [] && @list_acti_beach_choose == []%>
                     <div class="mb-4 btn-next d-flex justify-content-center ">
-                    <%= f.button :submit, value: "Discover your trip",class: "btn green-btn-criteria" %>
+                    <%#= f.button :submit, value: "Discover your trip",class: "btn green-btn-criteria" %>
+                     <button type="submit" class="btn green-btn-criteria">Discover your trip</button>
                     </div>
                   <% else %>
                       <div class="mb-4 d-flex justify-content-end">
@@ -90,7 +91,8 @@
                       </div>
                     <% if @list_acti_visit_choose == [] && @list_acti_beach_choose == []%>
                      <div class="mb-4 btn-next d-flex justify-content-center ">
-                    <%= f.button :submit, value: "Discover your trip",class: "btn green-btn-criteria" %>
+                    <%#= f.button :submit, value: "Discover your trip",class: "btn green-btn-criteria" %>
+                    <button type="submit" class="btn green-btn-criteria">Discover your trip</button>
                     </div>
                   <% else %>
                     <div class="mb-4 d-flex justify-content-end">
@@ -130,7 +132,8 @@
                     </div>
                     <% if @list_acti_beach_choose == []%>
                     <div class="mb-4 btn-next d-flex justify-content-center">
-                    <%= f.button :submit, value: "Discover your trip",class: "btn green-btn-criteria" %>
+                    <%#= f.button :submit, value: "Discover your trip",class: "btn green-btn-criteria" %>
+                    <button type="submit" class="btn green-btn-criteria">Discover your trip</button>
                     </div>
                   <% else %>
                   <div class="mb-4 d-flex justify-content-end">
@@ -165,7 +168,8 @@
                      </div>
                   </div>
                <div class="mb-4 btn-next d-flex justify-content-center">
-                    <%= f.button :submit, value: "Discover your trip",class: "btn green-btn-criteria" %>
+                    <%#= f.button :submit, value: "Discover your trip",class: "btn green-btn-criteria" %>
+                    <button type="submit" class="btn green-btn-criteria">Discover your trip</button>
                     </div>
 
         </div>
