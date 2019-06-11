@@ -5,7 +5,7 @@
 <div class="trip-index-container">
 <h5>My trips ( <%= @trips.count %> )</h5>
 
-  <% @trips.each do |trip| %>
+  <% @trips.reverse.each do |trip| %>
     <%= link_to details_trip_path (trip) do%>
       <div class="card-trip mb-6">
         <%= image_tag(trip.steps.first.activities.first.photo)%>
