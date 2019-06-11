@@ -23,11 +23,11 @@
     required: true,
     input_html: { autocomplete: "new-password" } %>
   </div>
-  <div class="pt-6 pb-2">
+  <div class="pt-6 pb-2 sign-in-btn">
     <%= f.button :submit, class: "green-btn text-center", value:"Sign up" %>
   </div>
   <% end %>
-  <div class="form-shared-links">
+  <div class="form-shared-links sign-in-btn">
     <%= render "devise/shared/links" %>
   </div>
 </div>

@@ -13,35 +13,46 @@
   position: relative;
   height: auto;
 }
-
+p.address{
+  margin-left: 1em;
+  font-size: 10px;
+  font-style: italic;
+}
 #map{
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 .absolute{
   position: absolute;
 }
+p.type-activity {
+  // background-color: rgba(90, 183, 148, 0.8);
+  background-color: rgba(69, 77, 102, 0.3);
+  color: white;
+  width: 100%;
+  padding: 0.5em;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 0.7em;
+  border-radius: 4px 4px 0 0;
+  font-family: 'Raleway', ‘Montserrat’, sans-serif;
 
+}
+p.description{
+  color: #575F75;
+  text-align: justify;
+  opacity: 1;
+   }
 #but-absolute {
-  left: 850px;
+  left: 60%;
   top: 320px;
 }
-// .green-bouton{
-//     background: #57B894;
-//     border-radius: 37px;
-//     color: white;
-//     font-family: 'Montserrat', sans-serif;
-//     font-size: 17px;
-//     padding: 10px 15px;
-//     font-weight: bold;
-//     margin-top: 7vh;
-//     margin-bottom: 7vh;
-//     transition: all 0.4s ease;
-//     text-align: center;
-//     height: 37px;
-//     width: 85px;
-//     left: 295px;
-//     bottom: -18px;
-//     z-index: 2;
-//     position: absolute;
-//     line-height: 1em;
+h2.green{
+  color: rgb(129, 201, 173);
+}
+
+// .border-round{
+//   border-radius: 50%;
+//   border: 1px solid rgba(69, 77, 102, 0.3);
+//   padding: 0.5em;
 // }
+

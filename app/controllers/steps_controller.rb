@@ -1,6 +1,7 @@
-require 'pry-byebug'
+# require 'pry-byebug'
 
 class StepsController < ApplicationController
+  #skip_before_action :authenticate_user!, only: :new
 
   DUR_ACTIVITY_PER_DAY = 2 * 60
 
@@ -108,16 +109,6 @@ class StepsController < ApplicationController
     @fixed_activities_ids = push_elements_to_all_array(@list_acti_sport_fixed, @fixed_activities_ids)
     @fixed_activities_ids = push_elements_to_all_array(@list_acti_visit_fixed, @fixed_activities_ids)
     @fixed_activities_ids = push_elements_to_all_array(@list_acti_beach_fixed, @fixed_activities_ids)
-
-    @list_acti_sport_fixed.each do |activity|
-      @fixed_activities_ids << activity
-    end
-    @list_acti_visit_fixed.each do |activity|
-      @fixed_activities_ids << activity
-    end
-    @list_acti_beach_fixed.each do |activity|
-      @fixed_activities_ids << activity
-    end
     # 15.step - activities to choose for user
     @list_acti_culture_choose = activities_to_choose(@list_acti_culture_real, @list_acti_culture_double)
     @list_acti_sport_choose = activities_to_choose(@list_acti_sport_real, @list_acti_sport_double)
@@ -278,6 +269,9 @@ class StepsController < ApplicationController
   def create
     # find trip
     @trip = Trip.find(params[:trip_id])
+    unless @trip.steps.empty?
+      @trip.steps.destroy_all
+    end
     activities_choosen = []
     # clean params activities ids from ''
     if params[:activities_ids].present?
@@ -329,4 +323,10 @@ class StepsController < ApplicationController
     end
     redirect_to mistery_trip_path(@trip)
   end
+
+  def show
+
+    @step = Step.find(params[:id])
+  end
+
 end

@@ -2,7 +2,7 @@ require 'json'
 require 'open-uri'
 
 class TripsController < ApplicationController
-
+  #skip_before_action :authenticate_user!, only: ['new', 'mistery', 'show']
   def index
     @trips = Trip.where(user: current_user)
   end
@@ -158,6 +158,7 @@ class TripsController < ApplicationController
 
   def details
     @trip = Trip.find(params[:id])
+    @step = Step.new
     list = activities(@trip)
     response = ordonated_steps(@trip)
     steps_to_map(response, true)
@@ -198,7 +199,7 @@ class TripsController < ApplicationController
 
       @trip.steps.each do |step|
         #make visible if step has only one activity
-        if step.step_activities.count == 1
+        if step.step_activities.count == 1 && @trip.percentage_of_mistery != 100
           step.step_activities.first.mistery = false
         else
           # create a list of step activities
@@ -228,7 +229,12 @@ class TripsController < ApplicationController
       end
         end
 
-      redirect_to trip_path(@trip)
+      if user_signed_in?
+        redirect_to details_trip_path(@trip)
+      else
+        redirect_to trip_path(@trip)
+      end
+
   end
 
   private

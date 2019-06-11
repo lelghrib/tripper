@@ -5,16 +5,22 @@
 
 .btn-save {
     position: absolute;
-    top: -8px;
-    right: -5px;
+    top: -15px;
+    right: 15px;
     z-index: 1;
 }
 
 .btn-preferences {
-    position: absolute;
-    bottom: 8px;
-    left: 40%;
-    z-index: 1;
+  position: absolute;
+  bottom: -40px;
+  /* left: 40%; */
+  margin: auto;
+  z-index: 1;
+  width: 100%;
+}
+div#btn-preferences{
+ font-size: 1em;
+
 }
 .bg{
   // background-color: #FAFCFE;
@@ -84,16 +90,18 @@ h3.trip-header-green{
   position: relative;
 }
 .timeline {
-  background-color: rgba(69, 77, 102, 0.9);
+  background-color: rgba(69, 77, 102, 1);
   color: white;
   border-radius: 50%;
   padding: 0.5em 1em;
+  z-index: 40;
   // margin: 10%;
 }
 p.timeline {
   margin-bottom: 0;
 }
 .timeline-container > hr{
+  margin-left: -19px;
   width: 50%;
 }
 .timeline-details{
@@ -103,8 +111,9 @@ p.timeline {
   padding: 0.5em 1em;
   width: fit-content;
 }
-.car-icon{
-  font-size: 18px;
+p.timeline-details{
+  color: white;
+  margin-right: 1em;
 }
 p.city-name {
   font-weight: 500;
@@ -132,35 +141,40 @@ p.city-title{
    margin-right: 0.3em;
   font-weight: 600;
 }
-i.fa-car{
+.car-icon {
   color: #575F75;
+  margin-bottom: 30px;
+  font-size: 18px;
 }
 p.green{
   color: rgba(90, 184, 148, 0.9);
 }
 .map{
+
   height: 90vh;
-  width: 80vh;
+  width: 45vw;
   margin-top: 1em;
   border-radius: 8px;
   background-color: white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    position: sticky;
+  top: 70px;
 }
 .sticky-map-trip{
   position: sticky;
   top: 10px;
 }
-
 .sticky-top a {
-  margin: 3vh 3vh 0 0;
+  margin: 6vh 3vh 0 0;
 }
 
 .list-activity{
   width: 45%;
-  height: 90vh;
+  // height: 90vh;
   background-color: white;
   margin-left: 10px;
-  overflow: scroll;
+  display: flex;
+  flex-direction: column;
   // box-shadow: 0 0 5px rgba(0,0,0,0.05);
   // border: 1px solid rgba(69, 77, 102, 0.1);
   border-radius: 15px;
@@ -175,7 +189,9 @@ p.green{
   opacity: inherit;
   opacity: 0.6;
 }
-
+a:hover.details-links{
+  border: none;
+}
 // .list-activity h2{
 //   font-weight: 600;
 //   color: rgba(69, 77, 102, 0.8);;
@@ -197,3 +213,5 @@ p.green{
 //   width:auto;
 //   background-color: red;
 // }
+
+
