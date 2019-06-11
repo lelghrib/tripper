@@ -19,7 +19,10 @@
     <% if step.city != @trip.steps.last.city %>
     <hr>
     <!-- <div class="d-flex justify-content-center align-items-center"> -->
+      <span class='text-center '>
     <i class="fas fa-car car-icon"></i>
+    <span class='d-flex car-span-size'><%= step.distance_next_step %> km </span>
+    </span>
 
 
     <!--  </div> -->
