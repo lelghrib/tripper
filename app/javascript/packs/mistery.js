@@ -6,6 +6,13 @@ const checkboxclickmistery = () => {
       } else {
         if($('.parent-class-mistery.active').length < 1) {
          $(this).parent().addClass("active");
+        }else {
+          // remove active from one of the previously selected cards
+          let element = document.querySelector('.parent-class-mistery.active');
+          if (element){
+            $(element).removeClass("active");
+            $(this).parent().addClass("active");
+          }
         }
       }
 
@@ -15,7 +22,10 @@ const checkboxclickmistery = () => {
 const checkonemistery = () => {
 $('.check-mistery').on('change', function() {
    if($('.check-mistery:checked').length > 1) {
-       this.checked = false;
+       $('.check-mistery:checked').forEach( (element) => {
+          element.checked = false;
+       });
+       this.checked = true;
    }
 });
 }

@@ -8,15 +8,21 @@ document.querySelectorAll(".activity-choice").forEach((element) =>{
 
 const checkboxclickculture = () => {
   $(document).ready(function(){
-    $(".acti-cuture").click(function(){
-      if ($(this).parent().hasClass('active')) {
-        $(this).parent().removeClass("active");
-      } else {
+    $(".acti-culture").click(function(){
+        if ($(this).parent().hasClass('active')) {
+           $(this).parent().removeClass("active");
+       } else {
         if($('.parent-class-culture.active').length < 2) {
          $(this).parent().addClass("active");
+        } else {
+          // remove active from one of the previously selected cards
+          let element = document.querySelectorAll('.parent-class-culture.active')[1];
+          if (element){
+            $(element).removeClass("active");
+            $(this).parent().addClass("active");
+          }
         }
       }
-
     });
   });
 }
@@ -28,9 +34,15 @@ const checkboxclicksport = () => {
       } else {
         if($('.parent-class-sport.active').length < 2) {
          $(this).parent().addClass("active");
+        } else {
+          // remove active from one of the previously selected cards
+          let element = document.querySelectorAll('.parent-class-sport.active')[1];
+          if (element){
+            $(element).removeClass("active");
+            $(this).parent().addClass("active");
+          }
         }
       }
-
     });
   });
 }
@@ -42,9 +54,15 @@ const checkboxclickvisit = () => {
       } else {
         if($('.parent-class-visit.active').length < 2) {
          $(this).parent().addClass("active");
+        } else {
+          // remove active from one of the previously selected cards
+          let element = document.querySelectorAll('.parent-class-visit.active')[1];
+          if (element){
+            $(element).removeClass("active");
+            $(this).parent().addClass("active");
+          }
         }
       }
-
     });
   });
 }
@@ -56,9 +74,15 @@ const checkboxclickbeach = () => {
       } else {
         if($('.parent-class-beach.active').length < 2) {
          $(this).parent().addClass("active");
+        } else {
+          // remove active from one of the previously selected cards
+          let element = document.querySelectorAll('.parent-class-beach.active')[1];
+          if (element){
+            $(element).removeClass("active");
+            $(this).parent().addClass("active");
+          }
         }
       }
-
     });
   });
 }

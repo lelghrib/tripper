@@ -22,8 +22,8 @@
           <%= f.association :arrival_city %>
           <%= f.association :departure_city %>
         </div>
-        <%= f.input :start_date, as: :date %>
-        <%= f.input :end_date, as: :date %>
+        <%= f.input :start_date, as: :string, input_html: { id: "range_start" } %>
+        <%= f.input :end_date, as: :string, input_html: { id: "range_end" } %>
         <%= hidden_field_tag :criteria %>
         <div class="mb-4 d-flex justify-content-start">
           <span class="btn-next green-btn-criteria">

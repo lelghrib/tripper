@@ -43,7 +43,7 @@
                       <% @list_acti_culture_choose.each do |acti_culture| %>
                         <div class="card col-sm-5 mb-5 parent-class-culture" style="width: 18rem;">
                           <input type="checkbox"class="hidden check-culture" value="<%= acti_culture.id %>" name="activities_ids[]" id="step_activity_activity_ids_<%= acti_culture.id %>">
-                          <label for="step_activity_activity_ids_<%= acti_culture.id %>" class="activity-choice acti-cuture card-title margin-none pb-2">
+                          <label for="step_activity_activity_ids_<%= acti_culture.id %>" class="activity-choice acti-culture card-title margin-none pb-2">
                             <%= image_tag acti_culture.photo, class: "card-img-top" %>
                             <div class="mt-2"> <%= acti_culture.name %>  </div>
                           </label>
