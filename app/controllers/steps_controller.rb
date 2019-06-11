@@ -1,6 +1,7 @@
 # require 'pry-byebug'
 
 class StepsController < ApplicationController
+  #skip_before_action :authenticate_user!, only: :new
 
   DUR_ACTIVITY_PER_DAY = 2 * 60
 

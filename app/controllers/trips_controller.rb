@@ -2,7 +2,7 @@ require 'json'
 require 'open-uri'
 
 class TripsController < ApplicationController
-
+  #skip_before_action :authenticate_user!, only: ['new', 'mistery', 'show']
   def index
     @trips = Trip.where(user: current_user)
   end
@@ -229,7 +229,12 @@ class TripsController < ApplicationController
       end
         end
 
-      redirect_to trip_path(@trip)
+      if user_signed_in?
+        redirect_to details_trip_path(@trip)
+      else
+        redirect_to trip_path(@trip)
+      end
+
   end
 
   private
