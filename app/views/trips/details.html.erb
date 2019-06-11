@@ -8,15 +8,15 @@
   </div>
   <!-- <h3 class="form-header text-center">Timeline</h3> -->
   <div class="mb-6 timeline-cities d-flex justify-content-between align-items-center">
-    <% @trip.steps.each do |step| %>
+    <% @trip.steps.order(:order).reverse().each do |step| %>
     <h2><%= step.city.name %></h2>
     <% end %>
   </div>
   <div class="timeline-container d-flex justify-content-around align-items-center mb-5">
     <% counter = 0 %>
-    <% @trip.steps.each do |step| %>
+    <% @trip.steps.order(:order).reverse().each do |step| %>
     <p class="timeline"><%= counter += 1 %></p>
-    <% if step.city != @trip.steps.last.city %>
+    <% if step.city != @trip.steps.order(:order).reverse().last.city %>
     <hr>
     <!-- <div class="d-flex justify-content-center align-items-center"> -->
       <span class='text-center '>
