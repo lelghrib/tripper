@@ -38,11 +38,17 @@
         data-markers="<%= @markers.to_json %>"
         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
         >
+        <!-- appel modal 1 -->
         <div class="d-flex justify-content-center btn-preferences">
-          <div class="green-btn" id="btn-preferences" data-toggle="modal" data-target="#exampleModal"> Preferences</div>
+          <div class="green-btn mx-2" id="btn-preferences" data-toggle="modal" data-target="#exampleModal"> Preferences</div>
+
+        <!-- appel modal 2 -->
+
+          <div class="green-btn" id="btn-preferences" data-toggle="modal" data-target="#exampleModal2"> Personnalize</div>
         </div>
       </div>
     </div>
+    <!-- activity list  -->
     <div class="list-activity">
       <h3 class="trip-header text-center mb-4">Trip's details</h3>
       <% counter = 0 %>
@@ -78,6 +84,7 @@
       <% end %>
     </div>
   </div>
+  <!-- début modal  -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -125,26 +132,53 @@
   </div>
 </div>
 </div>
-<!--   <div class="step-details d-flex">
-<p>Step 1</p>
-</div>
--->
-<!-- Modal -->
-<!--   <div class="modal fade" id="SaveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">SAVE</h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      Your trip is sound and safe ;)
-    </div>
-    <div class="modal-footer"style="height: 50px">
-      <button type="button" class="green-btn" data-dismiss="modal">Close</button>
+<!-- fin modal -->
+<!-- début modal 2  -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+        <div class="text-center trip-header-new">Personnalize your trip</div>
+        </h5>
+      </div>
+      <div class="modal-body">
+        <div class="form-container-criteria-slider" id="preferences" >
+          <div class="d-flex justify-content-center pb-4">
+            <div class="col-md-7 mt-6">
+              <%= simple_form_for@trip, method: :patch, url: preferences_trip_path do |f| %>
+              <div class="d-flex justify-content-around mb-8">
+                <div class="form-group pr-4 form-control-label">
+                  <label for="party" class="d-flex justify-content-around">Party</label>
+                  <input type="range" class="custom-range" name="trip[criteria][party]" min="0" max="100" step="1" id="party" >
+                </div>
+         <!--        <div class="form-group pl-4 form-control-label">
+                  <label for="sport" class="d-flex justify-content-around">Sport</label>
+                  <input type="range" class="custom-range" name="trip[criteria][sport]" min="0" max="100" step="1" id="sport">
+                </div>
+              </div>
+              <div class="d-flex justify-content-around ">
+                <div class="form-group pr-4 form-control-label">
+                  <label for="culture" class="d-flex justify-content-around">Culture</label>
+                  <input type="range" class="custom-range" name="trip[criteria][culture]" min="0" max="100" step="1" id="culture">
+                </div>
+                <div class="form-group pl-4 form-control-label">
+                  <label for="visit" class="d-flex justify-content-around">Visit</label>
+                  <input type="range" class="custom-range" name="trip[criteria][visit]" min="0" max="100" step="1" id="visit">
+                </div> -->
+                <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <%= f.button :submit,class: "btn green-btn-criteria" %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-</div> -->
+</div>
+<!-- fin modal 2 -->
