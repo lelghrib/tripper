@@ -2,14 +2,12 @@
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
-
 .btn-save {
     position: absolute;
     top: -15px;
     right: 15px;
     z-index: 1;
 }
-
 .btn-preferences {
   position: absolute;
   bottom: -40px;
@@ -20,7 +18,6 @@
 }
 div#btn-preferences{
  font-size: 1em;
-
 }
 .bg{
   // background-color: #FAFCFE;
@@ -42,7 +39,7 @@ h2.trip-header{
 h3.trip-header, h3.trip-header-green{
   font-weight: 400;
   color: white;
-  background-color: rgba(69, 77, 102, 0.9);;
+  background-color: rgba(69, 77, 102, 0.9);
   font-family: 'Raleway', ‘Montserrat’, sans-serif;
   font-size: 20px;
   padding: 0.5em;
@@ -57,10 +54,10 @@ h3.trip-header-green{
   margin: 8px;
   position: relative;
 }
-.preferences{
-  width: 70vw;
-  margin: auto;
-}
+// .preferences{
+//   width: 70vw;
+//   margin: auto;
+// }
 .filter, {
   width: 10vw;
   // margin: 2em 0em;
@@ -70,16 +67,14 @@ h3.trip-header-green{
   // border: 1px solid rgba(90, 183, 148, 0.3);
   color: rgb(129, 201, 173);
   // color: rgba(69, 77, 102, 0.8);
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 0;
 }
  .filter > i {
   margin-right: 0.5em;
   font-size: 1.3em;
-  // color: rgba(69, 77, 102, 0.8);
-  color: rgb(129, 201, 173);
-
-
+  color: rgba(69, 77, 102, 0.8);
+  // color: rgb(129, 201, 173);
 
  }
 .timeline-cities h2{
