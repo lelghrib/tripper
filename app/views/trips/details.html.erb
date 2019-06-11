@@ -1,6 +1,26 @@
 <div class="mb-4">
   <h2 class="trip-header text-center mb-5 ">Discover your Trip</h2>
 
+
+    <!------------------------------------- filters  -------------------------------->
+      <div class="preferences d-flex justify-content-center">
+ <div class="mb-4">
+ <p class="filter"><i class="fas fa-umbrella-beach"></i></p>
+    <p class="filter mb-4">Beach <%= @trip.criteria["beach"] %>%</p>
+  </div>
+  <div class="mb-4">
+    <p class="filter"><i class="fas fa-football-ball"></i></p>
+    <p class="filter mb-4">Sport <%= @trip.criteria["sport"] %>%</p></div>
+   <div class="mb-4">
+    <p class="filter"><i class="fas fa-graduation-cap"></i></p>
+  <p class="filter mb-4">Culture <%= @trip.criteria["culture"] %>%</p></div>
+  <div class="mb-4" >
+    <p class="filter"><i class="fas fa-camera"></i></p>
+  <p class="filter mb-4">Visit <%= @trip.criteria["visit"] %>%</p>  </div>
+</div>
+
+  <!------------------------------------- end filters  -------------------------------->
+
   <!------------------------------------- Timeline  -------------------------------->
 
   <div class="mb-6 timeline-cities d-flex justify-content-between align-items-center">
@@ -53,29 +73,6 @@
     </div>
   <!------------------------------- activity list  -------------------------------->
     <div class="list-activity">
-
-  <!------------------------------------- filters  -------------------------------->
-      <div class="preferences d-flex justify-content-center">
-<!--   <div class="mb-4">
- --><!--     <p class="filter"><i class="fas fa-umbrella-beach"></i></p>
- -->    <p class="filter mb-4">Beach <%= @trip.criteria["beach"] %>%</p>
-<!--   </div>
- --><!--   <div class="mb-4">
- --><!--     <p class="filter"><i class="fas fa-football-ball"></i></p>
- -->    <p class="filter mb-4">Sport <%= @trip.criteria["sport"] %>%</p>
-<!--   </div>
-  -->  <!-- <div class="mb-4"> -->
- <!--     <p class="filter"><i class="fas fa-graduation-cap"></i></p>
- -->    <p class="filter mb-4">Culture <%= @trip.criteria["culture"] %>%</p>
-<!--   </div>
-  <div class="mb-4" >
- --><!--     <p class="filter"><i class="fas fa-camera"></i></p>
- -->    <p class="filter mb-4">Visit <%= @trip.criteria["visit"] %>%</p>
-<!--   </div>
- --></div>
-
-  <!------------------------------------- end filters  -------------------------------->
-
       <h3 class="trip-header text-center mb-4">Trip's details</h3>
       <% counter = 0 %>
       <% @trip.steps.order(:order).reverse().each do |step| %>
