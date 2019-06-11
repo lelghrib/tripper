@@ -2,25 +2,29 @@ body{
   background-color:white;
 }
 
+.container{
+  text-align:right;
+
+}
+
 .banner {
   background-size: cover;
   background-position: center;
-  background-image: asset-url("homepage/Frame.png");
-  background-color: rgba(0,0,255,0.3);
+  background-image: asset-url("homepage/banner.jpg");
   padding: 150px 0;
-  height: 570px;
+  height: 600px;
   margin-bottom: 79px;
 }
 
 .banner h1 {
   margin: 0;
-  font-size: 32px;
+  font-size: 40px;
   font-weight: bold;
   color: white;
 }
 
 .banner p {
-  font-size: 20px;
+  font-size: 30px;
   color:white;
 }
 
@@ -106,7 +110,8 @@ body{
 .newsletter{
   width:auto;
   height: 300px;
-  background-color:#B5F0C6;
+  padding-right: 120px;
+  padding-left: 120px;
 }
 
 .rea a{
@@ -121,21 +126,21 @@ body{
 }
 
 .slider{
-  height:250px;
+  height:150px;
   position:relative;
   top:-95px;
   padding: 10px;
 }
 
 .slide{
-  height: 200px;
-  width: 200px;
+  height: 80px;
+  width: 130px;
   margin: 10px;
   padding: 10px;
 }
 
 .photo-b{
-  height:200px;
+  height:100px;
   width: 200px;
     border-radius: 10px;
   // box-shadow: 10px 5px 5px black;
