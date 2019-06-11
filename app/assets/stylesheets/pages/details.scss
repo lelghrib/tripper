@@ -11,10 +11,16 @@
 }
 
 .btn-preferences {
-    position: absolute;
-    bottom: -40px;
-    left: 40%;
-    z-index: 1;
+  position: absolute;
+  bottom: -40px;
+  /* left: 40%; */
+  margin: auto;
+  z-index: 1;
+  width: 100%;
+}
+div#btn-preferences{
+ font-size: 1em;
+
 }
 .bg{
   // background-color: #FAFCFE;
@@ -159,7 +165,7 @@ p.green{
   top: 10px;
 }
 .sticky-top a {
-  margin: 3vh 3vh 0 0;
+  margin: 6vh 3vh 0 0;
 }
 
 .list-activity{

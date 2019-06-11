@@ -1,5 +1,5 @@
 .green-btn {
-  background: rgba(90, 184, 148, 1);
+  background-color: rgba(90, 184, 148, 0.7);
   border-radius: 8px;
   color : white;
   font-family: 'Montserrat', sans-serif;
@@ -8,20 +8,23 @@
   font-weight: bold;
   margin-top: 7vh;
   margin-bottom: 7vh;
-  transition: all 0.4s ease;
+  // transition: all 0.4s ease;
   text-align: center;
   letter-spacing: 0.1em;
 }
 
 .green-btn:hover{
   text-decoration: none;
-  color:  #57B894;
-  background-color: inherit;
-  font-size: 17px;
-  border: 1px solid #57B894;
-  transition: all 0.4s ease;
+  color: white;
+  background-color: rgba(90, 184, 148, 1);
+  border: none;
+  font-size: 16px;
+  // transition: all 0.4s ease;
 }
-
+.sign-in-btn{
+  width: 50%;
+  margin: auto;
+}
 .green-btn-criteria {
   letter-spacing: 0.1em;
   background: rgba(90, 184, 148, 1);
@@ -61,9 +64,8 @@ a:hover {
     font-size: 20px;
     // border: 1px solid #57B894;
     padding: 8px;
-    border-radius: 20px;
+    border-radius: 8px;
     // text-align: center;
-    margin: 0% 15%;
     font-size: 16px;
     transition: all 0.5s ease;
     line-height: 3em;
@@ -73,7 +75,7 @@ a:hover {
     border: 1px solid #57B894;
     color: #57B894;
     transition: all 0.5s ease;
-    padding: 1%;
+    padding: 0.7em;
 }
 
 
