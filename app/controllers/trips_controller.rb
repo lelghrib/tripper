@@ -56,9 +56,9 @@ class TripsController < ApplicationController
     @markers = steps.map do |step|
       leg = response["trips"][0]["legs"][i]
       this_step = @trip.steps.find{ |st| step['location'][0].round(2) == st.city.longitude.round(2) }
-      i += 1
       this_step.distance_next_step = (response["trips"][0]["legs"][i]['distance']/1_000).round(2)
       this_step.save
+      i += 1
       # define the order of the trip steps
       step_to_order = @trip.steps.where(id: this_step.id).first
       step_to_order.order = i
@@ -142,12 +142,45 @@ class TripsController < ApplicationController
 
   def preferences
     @trip = Trip.find(params[:id])
-    if @trip.update(trip_params)
+    @trip.steps.each do |step|
+      step.step_activities.each do |step_act|
+        if step_act.activity.activity_types == "party"
+          StepActivity.destroy(step_act.id)
+        end
+      end
+    end
+    @trip.criteria['party'] = params['trip']['criteria']['party']
+    count = 0
+    @trip.steps.each do |step|
+      count += step.duration
+    end
+    trip_cities = []
+    nb_party = count * (@trip.criteria['party'].to_i)/100.round
+    good_parties = order_by_ranking(Activity.all, "party")
+    @trip.steps.each do |step|
+      trip_cities << step.city
+    end
+    good_parties_good_city = good_parties.reject{|party| !trip_cities.include?party.city }
+    good_parties_good_city.first(nb_party).each do |party|
+      step_party = @trip.steps.find_by(city: party.city)
+      StepActivity.create!(step: step_party, activity: party)
+
+    end
+    if @trip.save
       redirect_to details_trip_path(@trip)
     else
       render :edit
     end
   end
+
+  def order_by_ranking(array, type)
+  result = array.select do |array_act|
+    array_act.activity_types == type
+  end
+  result.sort_by!{|act| act.ranking_interest }
+  return result
+  end
+
 
   def update
     @trip = Trip.find(params[:id])

@@ -2,7 +2,7 @@ body{
   background-color:white;
 }
 
-.container{
+.container-home{
   text-align:right;
 
 }
@@ -113,6 +113,12 @@ body{
   height: 300px;
   padding-right: 120px;
   padding-left: 120px;
+
+}
+
+#mc_embed_signup{
+  box-shadow:0 0 15px rgba(0,0,0,0.2);
+  border-radius:8px;
 }
 
 .rea a{

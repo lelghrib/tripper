@@ -1,24 +1,22 @@
 import "bootstrap";
 import "slick-carousel";
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
 import "../plugins/slider-criteria";
 import "../plugins/slider";
-
-
-// import 'mapbox-gl/dist/mapbox-gl.css'; // <-- you need to uncomment the stylesheet_pack_tag in the layout!
-
+import { checkboxclickmistery, checkonemistery } from './mistery';
+import '../plugins/flatpickr';
+import { checkboxclickculture, checkboxclickbeach, checkboxclickvisit, checkboxclicksport, checktwoculture, checktwosport, checktwovisit, checktwobeach } from './form';
 import { initMapbox } from '../plugins/init_mapbox';
+import {scrollFunction} from '../components/topbutton';
+import {topFunction} from '../components/topbutton';
+import { initRangeSlider } from '../components/sliders';
+
 
 initMapbox();
 
-import {scrollFunction} from '../components/topbutton';
-import {topFunction} from '../components/topbutton';
 // scrollFunction();
 // topFunction();
 
 // add active class on choosen activities
-import { checkboxclickculture, checkboxclickbeach, checkboxclickvisit, checkboxclicksport, checktwoculture, checktwosport, checktwovisit, checktwobeach } from './form';
 checkboxclickculture();
 checkboxclickbeach();
 checkboxclickvisit();
@@ -28,10 +26,12 @@ checktwosport();
 checktwovisit();
 checktwobeach();
 
-import { checkboxclickmistery, checkonemistery } from './mistery';
 checkboxclickmistery();
 checkonemistery();
 
-import '../plugins/flatpickr';
 
 
+
+const btn_pref = document.querySelector('#btn-preferences');
+
+btn_pref.addEventListener('click', initRangeSlider());
