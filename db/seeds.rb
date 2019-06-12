@@ -14,7 +14,7 @@ csv.each do |row|
   r = row
   Activity.create!({
 
-    city_id: r["city_id"],
+    city_id: r["city_id"].to_i,
     address: r["address"],
     duration: r["duration"],
     activity_types: r["activity_types"],

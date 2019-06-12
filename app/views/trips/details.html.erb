@@ -129,30 +129,26 @@
       </div>
       <div class="modal-body">
         <div class="form-container-criteria-slider" id="preferences" >
-          <div class="d-flex justify-content-center pb-4">
-            <div class="col-md-7 mt-6">
+          <div class="d-flex justify-content-center ">
+            <div class="col-md-7 ">
               <%= simple_form_for@trip do |f| %>
-              <div class="d-flex justify-content-around mb-8">
-                <div class="form-group pr-4 form-control-label">
+                <div class="form-group  form-control-label">
                   <label for="beach" class="d-flex justify-content-around">Beach</label>
                   <input type="range" class="custom-range" name="trip[criteria][beach]" min="0" max="100" step="1" id="beach" >
                 </div>
-                <div class="form-group pl-4 form-control-label">
+                <div class="form-group  form-control-label">
                   <label for="sport" class="d-flex justify-content-around">Sport</label>
                   <input type="range" class="custom-range" name="trip[criteria][sport]" min="0" max="100" step="1" id="sport">
                 </div>
-              </div>
-              <div class="d-flex justify-content-around ">
-                <div class="form-group pr-4 form-control-label">
+                <div class="form-group  form-control-label">
                   <label for="culture" class="d-flex justify-content-around">Culture</label>
                   <input type="range" class="custom-range" name="trip[criteria][culture]" min="0" max="100" step="1" id="culture">
                 </div>
-                <div class="form-group pl-4 form-control-label">
+                <div class="form-group  form-control-label">
                   <label for="visit" class="d-flex justify-content-around">Visit</label>
                   <input type="range" class="custom-range" name="trip[criteria][visit]" min="0" max="100" step="1" id="visit">
                 </div>
                 <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-              </div>
             </div>
           </div>
         </div>
