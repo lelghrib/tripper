@@ -220,7 +220,6 @@ class TripsController < ApplicationController
   end
 
   def change_mistery
-    raise
     # 1 step -  update percentage of mistery in trip
     @trip = Trip.find(params[:id])
      @trip.update(trip_params)
