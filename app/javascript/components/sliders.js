@@ -8,8 +8,8 @@ function findGradientColor() {
   const rangeFill = el.querySelector(".rangeslider__fill");
   /*console.log(rangeFill);*/
 
-  const blue = {r:74, g:86, b:157}
-  const red = {r:220, g:36, b:36}
+  const blue = {r:38, g:208, b:206}
+  const red = {r:26, g:41, b:128}
 
   function findPercent() {
     const range = el.querySelector(".rangeslider").offsetWidth;
