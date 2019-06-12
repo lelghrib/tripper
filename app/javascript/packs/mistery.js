@@ -11,6 +11,7 @@ const checkboxclickmistery = () => {
           let element = document.querySelector('.parent-class-mistery.active');
           if (element){
             $(element).removeClass("active");
+            $(element).find("input[type=checkbox]").prop("checked", false);
             $(this).parent().addClass("active");
           }
         }
