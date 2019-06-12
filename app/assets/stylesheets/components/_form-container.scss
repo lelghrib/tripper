@@ -21,10 +21,12 @@
   font-weight: 400;
   letter-spacing: 0.2em;
   color: white;
-  background-color: rgba(69, 77, 102, 0.9);
+  // background-color: rgba(69, 77, 102, 0.9);
   font-family: 'Montserrat', sans-serif;
   font-size: 30px;
   padding: 1.5em;
+  background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('721.jpg');
+  background-size: cover;
   // border-radius: 10px;
 }
 .form-header{
