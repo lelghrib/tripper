@@ -19,6 +19,7 @@ const checkboxclickculture = () => {
           let element = document.querySelectorAll('.parent-class-culture.active')[1];
           if (element){
             $(element).removeClass("active");
+            $(element).find("input[type=checkbox]").prop("checked", false);
             $(this).parent().addClass("active");
           }
         }
@@ -39,6 +40,7 @@ const checkboxclicksport = () => {
           let element = document.querySelectorAll('.parent-class-sport.active')[1];
           if (element){
             $(element).removeClass("active");
+            $(element).find("input[type=checkbox]").prop("checked", false);
             $(this).parent().addClass("active");
           }
         }
@@ -59,6 +61,7 @@ const checkboxclickvisit = () => {
           let element = document.querySelectorAll('.parent-class-visit.active')[1];
           if (element){
             $(element).removeClass("active");
+            $(element).find("input[type=checkbox]").prop("checked", false);
             $(this).parent().addClass("active");
           }
         }
@@ -79,6 +82,7 @@ const checkboxclickbeach = () => {
           let element = document.querySelectorAll('.parent-class-beach.active')[1];
           if (element){
             $(element).removeClass("active");
+            $(element).find("input[type=checkbox]").prop("checked", false);
             $(this).parent().addClass("active");
           }
         }

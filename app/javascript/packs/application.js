@@ -29,9 +29,3 @@ checktwobeach();
 checkboxclickmistery();
 checkonemistery();
 
-
-
-
-const btn_pref = document.querySelector('#btn-preferences');
-
-btn_pref.addEventListener('click', initRangeSlider());

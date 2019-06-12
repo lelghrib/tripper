@@ -83,7 +83,7 @@
         <p class="city-name text-center"><%= step.city.name %> - <% if step.duration > 0 %><%= pluralize(step.duration, 'day') %> <% else %> <%= '< 1 day' %> <% end %></p>
       </div>
       <%= link_to step_path(step), class:'details-links' do%>
-      <% step.step_activities.each do |step_activity| %>
+      <% step.step_activities.reverse.each do |step_activity| %>
       <% if step_activity.mistery %>
       <div class="card-product">
         <%=image_tag 'locked3.png' %>
@@ -97,7 +97,15 @@
         <%=image_tag(step_activity.activity.photo) %>
         <div class="card-product-infos">
           <h2><%= step_activity.activity.name %></h2>
-          <p><i class="far fa-clock"></i>About : <%= step_activity.activity.duration/60 %>h</p>
+          <p><i class="far fa-clock"></i>About :
+            <% if step_activity.activity.duration % 60 == 0 %>
+              <%= step_activity.activity.duration/60 %>h</p>
+            <% elsif step_activity.activity.duration/60 < 1 %>
+              <%= step_activity.activity.duration %>min</p>
+              <% else %>
+              <%= step_activity.activity.duration/60 %>h <%= step_activity.activity.duration % 60 %>min</p>
+            <% end %>
+
           <p class="green">View details ...</p>
         </div>
       </div>
@@ -208,3 +216,4 @@
 </div>
 </div>
 <!-- fin modal 2 -->
+    <%= javascript_pack_tag 'rangesliders_pack' %>
