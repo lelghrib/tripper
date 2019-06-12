@@ -2,7 +2,7 @@ require 'csv'
 # Creating cities
 puts "destroying existing activities"
 Activity.destroy_all
-array_of_cities = %w(Florence Rome Naples Bologne Bari Positano Anzio Piombino)
+array_of_cities = %w(Florence Rome Naples Bologne Bari Positano Anzio Piombino Lecce)
 array_of_cities.each do |city|
   City.create!(country: "Italy", name: city)
 end
@@ -14,7 +14,7 @@ csv.each do |row|
   r = row
   Activity.create!({
 
-    city_id: r["city_id"],
+    city_id: r["city_id"].to_i,
     address: r["address"],
     duration: r["duration"],
     activity_types: r["activity_types"],
