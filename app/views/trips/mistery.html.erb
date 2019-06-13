@@ -1,5 +1,6 @@
 <div class="container-fullscreen">
   <div class="form-container-criteria-slider ">
+    <h2 class="mb-4 text-center trip-header">Choose your mistery level</h2>
     <div class="tabs-container mt-3">
       <div class="tab-button">1</div>
       <hr>
@@ -11,7 +12,6 @@
     </div>
     <div class="d-flex justify-content-center">
       <div class="container mt-3">
-        <p>How surprise would you like to be?</p>
         <!-- Planning 1 -->
         <%= simple_form_for @trip, :url => change_mistery_trip_path(@trip), :method => :patch do |f| %>
         <!-- Inject fixed activities -->
