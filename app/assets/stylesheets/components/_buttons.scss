@@ -41,19 +41,18 @@
 
 .green-btn-criteria:hover{
   text-decoration: none;
-  color:  #57B894;
-  background-color: inherit;
-  font-size: 17px;
-  border: 1px solid #57B894;
-  transition: all 0.4s ease;
+  color: white;
+  background-color: rgba(90, 184, 148, 1);
+  border: none;
+  font-size: 16px;
 }
 
 a:hover {
   text-decoration: none;
-  color:  #57B894;
+  color:  #3FCF8E;
   background-color: inherit;
   font-size: 16px;
-  border-bottom: 2px solid #57B894;
+  border-bottom: 2px solid #3FCF8E;
   // border-radius: 5em;
   transition: all 0.4s ease;
 }
@@ -61,7 +60,7 @@ a:hover {
 .form-shared-links a {
     font-family: Montserrat;
     text-decoration: none;
-    color: #57B894;
+    color: #3FCF8E;
     font-size: 20px;
     // border: 1px solid #57B894;
     padding: 8px;
@@ -73,8 +72,8 @@ a:hover {
 }
 
 .form-shared-links a:hover {
-    border: 1px solid #57B894;
-    color: #57B894;
+    border: 1px solid #3FCF8E;
+    color: #3FCF8E;
     transition: all 0.5s ease;
     padding: 0.7em;
 }
