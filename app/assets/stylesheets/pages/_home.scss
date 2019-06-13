@@ -3,14 +3,17 @@ body{
 }
 
 .container-home{
-  text-align:right;
+  text-align:left;
+  position: absolute;
+  bottom: 300px;
+  left: 90px;
 
 }
 
 .banner {
   background-size: cover;
   background-position: center;
-  background-image: asset-url("homepage/banner.jpg");
+  background-image: asset-url("homepage/banner.png");
   padding: 284px 0;
   height: 100vh;
   margin-bottom: 79px;
@@ -18,16 +21,16 @@ body{
 
 .banner h1 {
   margin: 0;
-  font-size: 48px;
+  font-size: 45px;
   font-weight: bold;
-  color: white;
+  color: #6C5EBF;
   font-family: Roboto;
   letter-spacing: 2px;
 }
 
 .banner p {
-  font-size: 30px;
-  color:white;
+  font-size: 25px;
+  color:#6C5EBF;
   line-height: 2em;
   opacity: 0.7;
   font-family: Open Sans;
@@ -56,6 +59,15 @@ body{
   margin-right: 120px !important;
 }
 
+.voyage h4{
+  color:#6C5EBF;
+  margin-top: 110px;
+}
+
+h4{
+  color:#6C5EBF;
+}
+
 .explications{
   height:auto;
   padding: 20px;
@@ -71,36 +83,31 @@ body{
 }
 
 .photo1{
-  border-radius:2px;
-  box-shadow:0 0 15px rgba(0,0,0,0.2);
-  height:350px;
-  width: 600px;
-  background-color: blue;
+
+  height:280px;
+  width: 295px;
   margin: 20px;
-  background-image: asset-url('journey.jpg');
-  background-size:cover;
+  background-image: asset-url('travelers.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .photo2{
-  border-radius:2px;
-  box-shadow:0 0 15px rgba(0,0,0,0.2);
-  height:350px;
-  width: 600px;
-  background-color: blue;
+  height: 280px;
+  width: 295px;
   margin: 20px;
-  background-image: asset-url('adventure.jpg');
-  background-size:cover;
+  background-image: asset-url('adventure.svg');
+  background-size:contain;
+  background-repeat: no-repeat;
 }
 
 .photo3{
-  border-radius:2px;
-  box-shadow:0 0 15px rgba(0,0,0,0.2);
-  height:350px;
-  width:600px;
-  background-color: blue;
+  height:280px;
+  width:295px;
   margin: 20px;
-  background-image: asset-url('road.jpg');
-  background-size:cover;
+  background-image: asset-url('connected.svg');
+  background-size:contain;
+  background-repeat: no-repeat;
 }
 
 .explain{
@@ -119,37 +126,21 @@ body{
 }
 
 #mc_embed_signup{
-  box-shadow:0 0 15px rgba(0,0,0,0.2);
+  border: 2px solid #6C5EBF;
   border-radius:8px;
 }
 
 .rea a{
-  background-color:#57B894;
+  background-color:#3FCF8E;
   font-size: bolder;
   padding:10px;
   color: white;
   border-radius: 8px;
-
-
 }
 
 
 .validate{
   position: relative;
-}
-
-.slider{
-  height:150px;
-  position:relative;
-  top:-95px;
-  padding: 10px;
-}
-
-.slide{
-  height: 80px;
-  width: 130px;
-  margin: 10px;
-  padding: 10px;
 }
 
 .photo-b{
