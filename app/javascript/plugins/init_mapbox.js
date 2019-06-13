@@ -84,7 +84,7 @@ const initMapbox = () => {
           "line-cap": "round"
         },
         "paint": {
-          "line-color": "#57b894",
+          "line-color": "#3FCF8E",
           "line-width": 5,
           'line-opacity': .7
         }

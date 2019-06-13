@@ -35,11 +35,12 @@ h2.trip-header{
   padding: 1.5em;
   letter-spacing: 0.2em;
   margin-bottom: 0;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(721.jpg);
 }
 h3.trip-header, h3.trip-header-green{
   font-weight: 400;
   color: white;
-  background-color: rgba(69, 77, 102, 0.9);
+  background-color: #5448FF;
   font-family: 'Raleway', ‘Montserrat’, sans-serif;
   font-size: 20px;
   padding: 0.5em;
@@ -65,7 +66,7 @@ h3.trip-header-green{
   text-align: center;
   // border-radius: 5px;
   // border: 1px solid rgba(90, 183, 148, 0.3);
-  color: rgb(129, 201, 173);
+  color: #3fcf8e;
   // color: rgba(69, 77, 102, 0.8);
   font-size: 16px;
   margin-bottom: 0;
@@ -74,7 +75,7 @@ h3.trip-header-green{
   margin-right: 0.5em;
   font-size: 1.3em;
   //color: rgba(69, 77, 102, 0.8);
-  color: rgb(129, 201, 173);
+  color: #3fcf8e;
 
  }
 .timeline-cities h2{
@@ -164,10 +165,9 @@ p.city-title{
 
 }
 p.green{
-  color: rgba(90, 184, 148, 0.9);
+  color: #3fcf8e;
 }
 .map{
-
   height: 90vh;
   width: 45vw;
   margin-top: 1em;
